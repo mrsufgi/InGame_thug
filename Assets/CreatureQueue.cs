@@ -16,6 +16,7 @@ public class CreatureQueue : MonoBehaviour {
 
     public GameObject Dequeue()
     {
+        print(q.Count);
         return q.Dequeue();
     }
 
@@ -24,6 +25,7 @@ public class CreatureQueue : MonoBehaviour {
         if (obj.tag == "Creature")
         {
             q.Enqueue(obj);
+            print(q.Count);
         }
     }
 

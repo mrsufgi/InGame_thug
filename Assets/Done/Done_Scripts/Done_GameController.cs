@@ -18,7 +18,7 @@ public class Done_GameController : MonoBehaviour
 	public Text restartText;
 	public Text gameOverText;
 
-    public CreatureQueue q;
+    
 	public int creature_R_Vol;
 	public int creature_L_Vol;
 	public int creature_Bonus_1;
@@ -26,8 +26,10 @@ public class Done_GameController : MonoBehaviour
 	public int creature_Bonus_3;
 	public int creature_Surprise;
 	public int creature_Bomb;
-	
-	private bool gameOver;
+
+    private CreatureQueue q;
+
+    private bool gameOver;
 	private bool restart;
 	private int score=0;
 	private int[] numSign;
@@ -42,6 +44,7 @@ public class Done_GameController : MonoBehaviour
 		UpdateScore ();
 		StartCoroutine (SpawnWaves ());
 		numSign = new int[]{1,-1};
+        q = GameObject.FindGameObjectWithTag("CreatureQueue").GetComponent<CreatureQueue>();
 	}
 	
 	void Update ()

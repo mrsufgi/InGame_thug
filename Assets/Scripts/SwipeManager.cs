@@ -4,10 +4,14 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class SwipeManager : MonoBehaviour
 {
-    public CreatureQueue q;
+    private CreatureQueue q;
     public float ForceMultiplier;
     public float SwipeSpeed;
-   
+
+    public void Start()
+    {
+        q = GameObject.FindGameObjectWithTag("CreatureQueue").GetComponent<CreatureQueue>();
+    }
     protected virtual void OnEnable()
     {
 
@@ -27,16 +31,18 @@ public class SwipeManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(finger.StartScreenPosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
-        //Check if the ray hits any collider
-		if (hit.collider.gameObject != null) {
+        ////Check if the ray hits any collider
+        //if (hit.collider.gameObject != null)
+        //{
 
-			if (hit.collider.gameObject == gameObject) {
+        //    if (hit.collider.gameObject == gameObject)
+        //    {
 
-				Debug.Log ("Swiping");
+                Debug.Log ("Swiping");
                 // Get the rigidbody component
                 //Rigidbody2D rigidbody = GetComponent<Rigidbody2D> ();
                 Rigidbody2D rigidbody = q.Dequeue().GetComponent<Rigidbody2D>();
-
+                
 
                 // Add force to the rigidbody based on the swipe force
                 // rigidbody.AddForce (finger.ScaledSwipeDelta * ForceMultiplier);
@@ -59,7 +65,7 @@ public class SwipeManager : MonoBehaviour
                     // do nothing.
                 }
                 Debug.Log (finger.ScaledSwipeDelta);
-			}
-		}
+		//	}
+		//}
     }
 }
