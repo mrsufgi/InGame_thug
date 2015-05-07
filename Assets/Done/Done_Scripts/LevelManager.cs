@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
-	public LevelManager levelManager;
+	public LevelConfiguration levelCongif;
 
 	/* GUI */	
-	public GameObject gameOverMenu;
+//	public GameObject gameOverMenu;
 	public Text scoreText;
 	public Text scoreGameOverText;
 	public Text highText;
@@ -19,7 +19,8 @@ public class LevelManager : MonoBehaviour
     public Queue<Creature> q;
 
 	/* Level Depended vars */
-	private CreatureFreqClass[] creaturesfrequencies; //[creature][freq = 1 to 10]
+	private int[] creaturesfrequencies; //[freq = 1 to 10]
+	private GameObject[] creaturesType; 
 	private GameObject[] creatures; 
 	private Vector3 spawnValues;
 	private float spawnWait;
@@ -41,11 +42,12 @@ public class LevelManager : MonoBehaviour
 		creaturesArraySize = 10;
 
 		UpdateScore ();
-		spawnValues = levelManager.spawnValues;
-		spawnWait = levelManager.spawnWait;
-		startWait = levelManager.startWait;
+		spawnValues = levelCongif.spawnValues;
+		spawnWait = levelCongif.spawnWait;
+		startWait = levelCongif.startWait;
 
-		creaturesfrequencies = levelManager.creaturesfrequencies;
+		creaturesfrequencies = levelCongif.frequency;
+		creaturesType = levelCongif.creatures;
 		creatures = new GameObject[creaturesArraySize];
 		getFrequenciesOfCreatures ();
 
@@ -56,21 +58,14 @@ public class LevelManager : MonoBehaviour
 
 	private void getFrequenciesOfCreatures()
 	{
+		/*if creature x has frewquency 6 - add it 6 times to creatures array*/
 		int index = 0;
-		for (int i = 0; i < creaturesfrequencies.Length; i++) 
-		{
-			for (int j = 0; j < creaturesfrequencies[i].frequency; j++) 
+		while (index  < creaturesArraySize) {
+			for (int i = 0; i < creaturesfrequencies[index]; i++) 
 			{
-				/*if creature x has frewquency 6 - add it 6 times to creatures array*/
-				if(index < creatures.Length)
-				{
-					creatures[index] = creaturesfrequencies[i].go;
-					index++;
-				} else
-				{
-					Debug.Log(" !!  Error in index value in getFrequenciesOfCreatures() method");
-				}
+				creatures[index] =  creaturesType[index];
 			}
+			index++;
 		}
 	}
 	
@@ -134,8 +129,8 @@ public class LevelManager : MonoBehaviour
 
 		Time.timeScale = 0;
 	
-		if(gameOverMenu != null)
-			gameOverMenu.SetActive (true);
+//		if(gameOverMenu != null)
+//			gameOverMenu.SetActive (true);
 	}
 
     // WHAT? 
