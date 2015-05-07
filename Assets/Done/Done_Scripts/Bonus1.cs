@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Bonus1 : MonoBehaviour {
 	public int scoreValue;
 	public GameObject explosion;
-	private Done_GameController gameController;
+	private LevelManager gameController;
 
 	public Sprite s1;
 	public Sprite s2;
@@ -13,7 +13,7 @@ public class Bonus1 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");		
-		gameController = gameControllerObject.GetComponent <Done_GameController>();
+		gameController = gameControllerObject.GetComponent <LevelManager>();
 
 		SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer> ();
 

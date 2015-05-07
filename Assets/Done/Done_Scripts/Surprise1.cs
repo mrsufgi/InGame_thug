@@ -1,15 +1,15 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Surprise1 : MonoBehaviour {
 
 	public GameObject[] prefabs;	
-	private Done_GameController gameController;
+	private LevelManager gameController;
 	
 	// Use this for initialization
 	void Start () {
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");		
-		gameController = gameControllerObject.GetComponent <Done_GameController>();
+		gameController = gameControllerObject.GetComponent <LevelManager>();
 
 		SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer> ();
 	}

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Creature : MonoBehaviour {
@@ -10,7 +10,7 @@ public class Creature : MonoBehaviour {
 	public GameObject explosion;
 	public GameObject playerExplosion;
 	public int scoreValue;
-	private Done_GameController gameController;
+	private LevelManager gameController;
 	public enum_Side side;
 	public float timeBonus;
 	private Timer timerGameObject;
@@ -32,7 +32,7 @@ public class Creature : MonoBehaviour {
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
 		if (gameControllerObject != null)
 		{
-			gameController = gameControllerObject.GetComponent <Done_GameController>();
+			gameController = gameControllerObject.GetComponent <LevelManager>();
           //  print("set");
 		}
 		if (gameController == null)

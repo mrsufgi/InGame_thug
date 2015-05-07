@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 // This script will push a rigidbody around when you swipe
 [RequireComponent(typeof(Rigidbody2D))]
@@ -6,7 +6,7 @@ public class SwipeManager : MonoBehaviour
 {
     public float ForceMultiplier;
     public float SwipeSpeed;
-    private Done_GameController gameController;
+    private LevelManager gameController;
 
     public void Start()
     {
@@ -14,7 +14,7 @@ public class SwipeManager : MonoBehaviour
         GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
         if (gameControllerObject != null)
         {
-            gameController = gameControllerObject.GetComponent<Done_GameController>();
+            gameController = gameControllerObject.GetComponent<LevelManager>();
         }
         if (gameController == null)
         {

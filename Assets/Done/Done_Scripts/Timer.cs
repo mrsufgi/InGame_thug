@@ -8,14 +8,14 @@ public class Timer : MonoBehaviour {
 	public float maxTime = 100f;
 	public Scrollbar sb; 
 	public float timeToDecrease;
-	private Done_GameController gameController;
+	private LevelManager gameController;
 
 
 	void Start () {
 		sb.size = 1;
 		InvokeRepeating ("decreaseTimeRemaining", 1.0f, 0.06f);
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
-		gameController = gameControllerObject.GetComponent <Done_GameController>();
+		gameController = gameControllerObject.GetComponent <LevelManager>();
 		timeRemaining = maxTime;
 	}
 

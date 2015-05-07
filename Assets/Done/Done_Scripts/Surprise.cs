@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public enum E_SurpriseType
@@ -23,14 +23,14 @@ public class Surprise : MonoBehaviour {
 	private SpriteRenderer sr;
 
 //	public E_SurpriseType surpriseType;
-	private Done_GameController gameController;
+	private LevelManager gameController;
 	private Timer timerGameObject;
 	private E_SurpriseType surpriseType;
 	
 	// Use this for initialization
 	void Start () {
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");		
-		gameController = gameControllerObject.GetComponent <Done_GameController>();
+		gameController = gameControllerObject.GetComponent <LevelManager>();
 
 		GameObject timer = GameObject.FindGameObjectWithTag ("Timer");
 		timerGameObject = timer.GetComponent <Timer>();

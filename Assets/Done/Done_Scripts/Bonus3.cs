@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Bonus3 : MonoBehaviour {
@@ -6,13 +6,13 @@ public class Bonus3 : MonoBehaviour {
 	public GameObject explosion;
 	public Sprite s1;
 
-	private Done_GameController gameController;
+	private LevelManager gameController;
 	private Timer timerGameObject;
 	
 	// Use this for initialization
 	void Start () {
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");		
-		gameController = gameControllerObject.GetComponent <Done_GameController>();
+		gameController = gameControllerObject.GetComponent <LevelManager>();
 
 		GameObject timer = GameObject.FindGameObjectWithTag ("Timer");
 		timerGameObject = timer.GetComponent <Timer>();

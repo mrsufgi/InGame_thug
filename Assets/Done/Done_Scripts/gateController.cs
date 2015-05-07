@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class gateController : MonoBehaviour {
 
 	//public enum_Side side;
-	private Done_GameController gameController;
+	private LevelManager gameController;
 	private GameObject gameControllerObject;
 	
 	void Start ()
@@ -12,7 +12,7 @@ public class gateController : MonoBehaviour {
 		 gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
 		if (gameControllerObject != null)
 		{
-			gameController = gameControllerObject.GetComponent <Done_GameController>();
+			gameController = gameControllerObject.GetComponent <LevelManager>();
 		}
 		if (gameController == null)
 		{

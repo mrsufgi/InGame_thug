@@ -1,16 +1,16 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Bomb : MonoBehaviour {
 	public int scoreValue;
 	public GameObject explosion;
-	private Done_GameController gameController;
+	private LevelManager gameController;
 
 
 	// Use this for initialization
 	void Start () {
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
-			gameController = gameControllerObject.GetComponent <Done_GameController>();
+			gameController = gameControllerObject.GetComponent <LevelManager>();
 	}
 	
 	// Update is called once per frame
