@@ -108,6 +108,8 @@
     <Compile Include="Assets\LeanTouch\Scripts\LeanFinger.cs" />
     <Compile Include="Assets\LeanTouch\Scripts\LeanTouch.cs" />
     <Compile Include="Assets\Scripts\Creature.cs" />
+    <Compile Include="Assets\Scripts\LevelUpEventHandler.cs" />
+    <Compile Include="Assets\Scripts\MainGame.cs" />
     <Compile Include="Assets\Scripts\SwipeManager.cs" />
     <Compile Include="Assets\TRASH\CreatureQueue.cs" />
     <Compile Include="Assets\WorldLoader.cs" />
