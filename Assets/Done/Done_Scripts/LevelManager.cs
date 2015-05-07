@@ -73,20 +73,20 @@ public class LevelManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds (startWait);
 		int rand;
-		GameObject hazard;
+		GameObject curCreature;
 		Vector3 spawnPosition;
 		while (true)
 		{
 			while(!gameOver)
 			{
 				rand = Random.Range (0,10);
-				hazard = creatures [rand];
+				curCreature = creatures [rand];
 
                 spawnPosition = new Vector3
 					(Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
 			
 				Quaternion spawnRotation = Quaternion.identity;
-                GameObject creature = (GameObject)Instantiate(hazard, spawnPosition, spawnRotation);
+				GameObject creature = (GameObject)Instantiate(curCreature, spawnPosition, spawnRotation);
                 q.Enqueue(creature.GetComponent<Creature>());
 				yield return new WaitForSeconds (spawnWait);
 			}
