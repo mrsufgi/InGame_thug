@@ -4,7 +4,7 @@ using System.Collections;
 public class CreatureFreqClass
 {
 	public GameObject go {get;set;}
-	public int frequenct {get;set;}
+	public int frequency {get;set;}
 }
 
 public class LevelConfiguration : MonoBehaviour {

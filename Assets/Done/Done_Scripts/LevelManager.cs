@@ -59,12 +59,12 @@ public class LevelManager : MonoBehaviour
 		int index = 0;
 		for (int i = 0; i < creaturesfrequencies.Length; i++) 
 		{
-			for (int j = 0; j < creaturesfrequencies[i,1]; j++) 
+			for (int j = 0; j < creaturesfrequencies[i].frequency; j++) 
 			{
 				/*if creature x has frewquency 6 - add it 6 times to creatures array*/
 				if(index < creatures.Length)
 				{
-					creatures[index] = creaturesfrequencies[i,0];
+					creatures[index] = creaturesfrequencies[i].go;
 					index++;
 				} else
 				{
