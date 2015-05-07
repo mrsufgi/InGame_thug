@@ -12,6 +12,10 @@ public class Done_DestroyByContact2 : MonoBehaviour
 	private Timer timerGameObject;
 
 
+    void OnDisable()
+    {
+
+    }
 	void Start ()
 	{
 
@@ -84,7 +88,5 @@ public class Done_DestroyByContact2 : MonoBehaviour
 			Destroy(other.gameObject);
 			Destroy (gameObject);
 		}
-
 	}
-
 }

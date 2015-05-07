@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Done_GameController : MonoBehaviour
 {
@@ -27,7 +28,8 @@ public class Done_GameController : MonoBehaviour
 	public int creature_Surprise;
 	public int creature_Bomb;
 
-    private CreatureQueue q;
+    //Queue that holds game object - yet accepts only gameObject with tag = "Creature"
+    public Queue<Creature> q;
 
     private bool gameOver;
 	private bool restart;
@@ -44,8 +46,8 @@ public class Done_GameController : MonoBehaviour
 		UpdateScore ();
 		StartCoroutine (SpawnWaves ());
 		numSign = new int[]{1,-1};
-        q = GameObject.FindGameObjectWithTag("CreatureQueue").GetComponent<CreatureQueue>();
-	}
+        q = new Queue<Creature>();
+    }
 	
 	void Update ()
 	{
@@ -109,7 +111,8 @@ public class Done_GameController : MonoBehaviour
 					(Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
 			
 				Quaternion spawnRotation = Quaternion.identity;
-				q.Enqueue((GameObject) Instantiate (hazard, spawnPosition, spawnRotation));
+                GameObject creature = (GameObject)Instantiate(hazard, spawnPosition, spawnRotation);
+                q.Enqueue(creature.GetComponent<Creature>());
 				yield return new WaitForSeconds (spawnWait);
 			}
 

@@ -5,29 +5,25 @@ using System.Collections.Generic;
 public class CreatureQueue : MonoBehaviour {
     
     //Queue that holds game object - yet accepts only gameObject with tag = "Creature"
-    Queue<GameObject> q;
+    Queue<Creature> q;
 	void Start () {
-        q = new Queue<GameObject>();
+        q = new Queue<Creature>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	}
 
-    public GameObject Dequeue()
+    public Creature Dequeue()
     {
-        print(q.Count);
-        return q.Dequeue();
+            return q.Dequeue();
     }
 
-    public void Enqueue(GameObject obj)
+    public void Enqueue(Creature obj)
     {
-        if (obj.tag == "Creature")
-        {
             q.Enqueue(obj);
-            print(q.Count);
-        }
     }
+
 
     public bool isEmpty()
     {

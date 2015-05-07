@@ -4,13 +4,22 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class SwipeManager : MonoBehaviour
 {
-    private CreatureQueue q;
     public float ForceMultiplier;
     public float SwipeSpeed;
+    private Done_GameController gameController;
 
     public void Start()
     {
-        q = GameObject.FindGameObjectWithTag("CreatureQueue").GetComponent<CreatureQueue>();
+
+        GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+        if (gameControllerObject != null)
+        {
+            gameController = gameControllerObject.GetComponent<Done_GameController>();
+        }
+        if (gameController == null)
+        {
+            Debug.Log("Cannot find 'GameController' script");
+        }
     }
     protected virtual void OnEnable()
     {
@@ -28,8 +37,8 @@ public class SwipeManager : MonoBehaviour
     public void OnFingerSwipe(Lean.LeanFinger finger)
     {
         //Create a Ray on the tapped / clicked position
-        Ray ray = Camera.main.ScreenPointToRay(finger.StartScreenPosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+        //     Ray ray = Camera.main.ScreenPointToRay(finger.StartScreenPosition);
+        //   RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
         ////Check if the ray hits any collider
         //if (hit.collider.gameObject != null)
@@ -37,35 +46,53 @@ public class SwipeManager : MonoBehaviour
 
         //    if (hit.collider.gameObject == gameObject)
         //    {
-
-                Debug.Log ("Swiping");
-                // Get the rigidbody component
-                //Rigidbody2D rigidbody = GetComponent<Rigidbody2D> ();
-                Rigidbody2D rigidbody = q.Dequeue().GetComponent<Rigidbody2D>();
-                
-
-                // Add force to the rigidbody based on the swipe force
-                // rigidbody.AddForce (finger.ScaledSwipeDelta * ForceMultiplier);
+        // Get the rigidbody component
+        //Rigidbody2D rigidbody = GetComponent<Rigidbody2D> ();
 
 
-                // Add force to the rigidbody based on the FIXED SPEED 
-                // WORK ONLY FOR LEFT OR RIGHT ! ! !  TOP AND BOT WONT DO SHIT!
-                // Store the swipe delta in a temp variable
-                var swipe = finger.SwipeDelta;
-              
-                if (swipe.x < -Mathf.Abs(swipe.y))
-                {
-                    rigidbody.AddForce(new Vector2(transform.position.x - SwipeSpeed, transform.position.y), ForceMode2D.Force);
+        // TODO: you can initiate swipes of object there are not visible (but are already running)
+        // you should prevent swipe to effect them if there are no visible item in queue...
 
-                } else if (swipe.x > Mathf.Abs(swipe.y))
-                {
-                    rigidbody.AddForce(new Vector2(transform.position.x + SwipeSpeed, transform.position.y), ForceMode2D.Force);
-                } else
-                {
-                    // do nothing.
-                }
-                Debug.Log (finger.ScaledSwipeDelta);
-		//	}
-		//}
+        Debug.Log("Swiping");
+        Rigidbody2D rigidbody;
+        if (gameController.q.Count != 0)
+        {
+            Creature dequeuedCreature = gameController.q.Dequeue();
+            dequeuedCreature.swiped = true;
+            rigidbody = dequeuedCreature.GetComponent<Rigidbody2D>();
+
+        }
+        else
+        {
+            return;
+        }
+
+
+        // Add force to the rigidbody based on the FIXED SPEED 
+        // WORK ONLY FOR LEFT OR RIGHT ! ! !  TOP AND BOT WONT DO SHIT!
+        // Store the swipe delta in a temp variable
+        var swipe = finger.SwipeDelta;
+
+        if (swipe.x < -Mathf.Abs(swipe.y))
+        {
+            rigidbody.velocity = new Vector2(0, 0);
+            rigidbody.AddForce(new Vector2(transform.position.x - SwipeSpeed, 0));
+
+        }
+        else if (swipe.x > Mathf.Abs(swipe.y))
+        {
+            rigidbody.velocity = new Vector2(0, 0);
+            rigidbody.AddForce(new Vector2(transform.position.x + SwipeSpeed, 0));
+        }
+
+        // saved for other gestures
+        else
+        {
+            // do nothing.
+        }
+
+        //Debug.Log(finger.ScaledSwipeDelta);
+        //	}
+        //}
     }
 }
