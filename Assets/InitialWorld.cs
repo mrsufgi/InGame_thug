@@ -68,7 +68,7 @@ public class InitialWorld
         // mission that can happen during the entire game session
         //XXXX.Schedule = Schedule.AnyTimeOnce();
 
-        // Once users finish Jungle world, they can continue to Desert world.
+        // Once users finish blue world, they can continue to red world.
         Gate blueGate = new WorldCompletionGate(
           "redGate_ID",                            // Item ID
           blueWorld.ID                              // Associated world ID
