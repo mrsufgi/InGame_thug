@@ -7,6 +7,7 @@ public class LevelConfiguration : MonoBehaviour {
 	public Vector3 spawnValues;
 	public float spawnWait;
 	public float startWait;
+	public GameObject[] gates;
 
 
 
