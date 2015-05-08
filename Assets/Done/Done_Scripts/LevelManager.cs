@@ -46,6 +46,8 @@ public class LevelManager : MonoBehaviour
 		spawnWait = levelCongif.spawnWait;
 		startWait = levelCongif.startWait;
 
+		locateGates ();
+
 		creaturesfrequencies = levelCongif.frequency;
 		creaturesType = levelCongif.creatures;
 		creatures = new GameObject[creaturesArraySize];
@@ -68,7 +70,31 @@ public class LevelManager : MonoBehaviour
 			index++;
 		}
 	}
-	
+
+	private void locateGates()
+	{
+		Vector3 spawnPosition;
+		GameObject[] gates = levelCongif.gates;
+
+		foreach (GameObject gate in gates)
+		{
+			spawnPosition = new Vector3(gate.transform.position.x,
+			                            gate.transform.position.y,
+			                            gate.transform.position.z);
+
+//			spawnPosition = new Vector3(0,
+//			                           0,
+//			                          0);
+			Quaternion spawnRotation = Quaternion.identity;
+		    spawnRotation = Quaternion.identity;
+			GameObject creature = (GameObject)Instantiate(gate, spawnPosition, spawnRotation);
+
+			/*Update gate color*/
+//			float r,g,b,a;
+//			creature.GetComponent<SpriteRenderer>().color = Color(r,g,b,a);			
+		}
+	}
+
 	IEnumerator SpawnWaves ()
 	{
 		yield return new WaitForSeconds (startWait);
