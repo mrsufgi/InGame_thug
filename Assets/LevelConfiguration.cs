@@ -1,12 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CreatureFreqClass
-{
-	public GameObject go {get;set;}
-	public int frequency {get;set;}
-}
-
 public class LevelConfiguration : MonoBehaviour {
 	
 //	public GameObject[] hazards;
@@ -16,9 +10,9 @@ public class LevelConfiguration : MonoBehaviour {
 
 
 
-	public CreatureFreqClass[] creatures; //araray of creatures for this level [prefab][percentage of 100%] 
+	public int[] frequency; //araray of creatures for this level [prefab][percentage of 100%] 
 	//!the higher the precentage - the more this obejct will be shown
-	public int[] creature_Bonus_1;//araray of bonuses for this level
+	public GameObject[] creatures;//araray of bonuses for this level
 
 
 	
