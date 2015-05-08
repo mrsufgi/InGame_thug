@@ -11,27 +11,13 @@ using System.Linq;
 public class InitialWorld
 {
 
-    private World world;
-
-    public World World
-    {
-        get
-        {
-            return world;
-        }
-
-        set
-        {
-            world = value;
-        }
-    }
 
 
     //
     // Utility method for creating the game's worlds
     // and levels hierarchy
     //
-    private World createMainWorld()
+    public World createMainWorld()
     {
         /** Worlds **/
 
@@ -131,10 +117,7 @@ public class InitialWorld
     // Various event handling methods
     //
 
-    public World GetInitialWorld()
-    {
-        return world;
-    }
+
 
     //
     // Initialize all of SOOMLA's modules
@@ -147,7 +130,7 @@ public class InitialWorld
         // private static LevelUpEventHandler handler = new LevelUpEventHandler();
         // ProfileEvents.OnLoginFinished += onLoginFinished;
 
-        world = createMainWorld();
+  //      world = createMainWorld();
         //// MOUDULES
         //SoomlaHighway.Initialize();
         //// SoomlaStore.Initialize(new ExampleAssets());
