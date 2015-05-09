@@ -5,15 +5,21 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour {
 
 	public float timeRemaining = 100f;
-	public float maxTime = 100f;
-	public Scrollbar sb; 
+	public float maxTime = 1000f;
+//	public Scrollbar sb; 
+
 	public float timeToDecrease;
 	private LevelManager gameController;
 
+	public GameObject panel;
+	private RectTransform rt ;
+
 
 	void Start () {
-		sb.size = 1;
-		InvokeRepeating ("decreaseTimeRemaining", 1.0f, 0.06f);
+//		sb.size = 1;
+		rt = panel.GetComponent<RectTransform>();   
+
+		InvokeRepeating ("decreaseTimeRemaining", 1.0f, 0.1f);
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
 		gameController = gameControllerObject.GetComponent <LevelManager>();
 		timeRemaining = maxTime;
@@ -22,14 +28,10 @@ public class Timer : MonoBehaviour {
 
 	void Update()
 	{
-//		if (timeRemaining == 0 )
-//		{
-//			gameController.GameOver();
-//		}
-
-		sb.size = (float) timeRemaining / 100;
-
-		
+		if (timeRemaining == 0 )
+		{
+			gameController.GameOver();
+		}
 	}
 
 	void decreaseTimeRemaining()
@@ -39,7 +41,12 @@ public class Timer : MonoBehaviour {
 			gameController.GameOver ();
 		} else {
 			timeRemaining -= timeToDecrease;
-			//Debug.Log ("timeRemaining " + timeRemaining);
+
+			float timeRemainingRelative = timeRemaining / maxTime;
+			int width = (int) (timeRemainingRelative * rt.rect.width);
+//			Debug.Log ("timeRemaining : " + timeRemaining  + " maxTime" + maxTime);
+			
+			rt.sizeDelta = new Vector2( width, rt.sizeDelta.y);
 		}
 	}
 

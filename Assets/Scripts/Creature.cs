@@ -69,7 +69,6 @@ public class Creature : MonoBehaviour {
 					Instantiate(levelManager.levelCongif.pointsRight,
 					            this.transform.position,
 					            Quaternion.identity);
-					Debug.Log("here");
 					levelManager.AddScore (scoreValue);
                     Destroy (gameObject);
 				}
