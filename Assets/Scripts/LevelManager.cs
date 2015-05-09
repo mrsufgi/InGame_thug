@@ -16,7 +16,9 @@ public class LevelManager : MonoBehaviour
 	public Text scoreTimesUpText;
 	public Text timesUpText;
 	public Text endLevelBtnTxt;
-//	public Text highText;
+
+	public AudioClip startLevelSound;
+	//	public Text highText;
 //	public Text restartText;
 
 	   	
@@ -66,7 +68,8 @@ public class LevelManager : MonoBehaviour
 
 	public void startLevel()
 	{
-		panelMissionDisplay.SetActive (false);
+		panelMissionDisplay.SetActive (false);		
+		AudioSource.PlayClipAtPoint (startLevelSound, transform.position);
 		timer.startTimer ();
 		StartCoroutine (SpawnWaves ());
 	}
