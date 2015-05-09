@@ -11,12 +11,14 @@ public class LevelManager : MonoBehaviour
 //	public GameObject gameOverMenu;
 	public Text scoreText;
 	public Text pointsMission;  //from mission canvas
-	public GameObject panel; 
-	/*
-	public Text scoreGameOverText;
-	public Text highText;
-	public Text restartText;
-	public Text gameOverText;*/
+	public GameObject panelMissionDisplay; 
+	public GameObject panelTimesUp; 	
+	public Text scoreTimesUpText;
+	public Text timesUpText;
+	public Text endLevelBtnTxt;
+//	public Text highText;
+//	public Text restartText;
+
 	   	
     //Queue that holds game object - yet accepts only gameObject with tag = "Creature"
     public Queue<Creature> q;
@@ -36,6 +38,9 @@ public class LevelManager : MonoBehaviour
 
 	void Start ()
 	{
+		panelTimesUp.SetActive (false);
+		scoreTimesUpText.text = "";
+		scoreTimesUpText.text = "";
 		pointsMission.text = getPointsTarget ().ToString ();
 
 		gameOver = false;
@@ -61,7 +66,7 @@ public class LevelManager : MonoBehaviour
 
 	public void startLevel()
 	{
-		panel.SetActive (false);
+		panelMissionDisplay.SetActive (false);
 		timer.startTimer ();
 		StartCoroutine (SpawnWaves ());
 	}
@@ -135,7 +140,6 @@ public class LevelManager : MonoBehaviour
 		int tempScore = score;
 		if ((tempScore += newScoreValue) < 0)//cannot be negative
 			return;
-
 		score += newScoreValue;
 		UpdateScore ();
 	}
@@ -147,8 +151,26 @@ public class LevelManager : MonoBehaviour
 	
 	public void GameOver ()
 	{
-//		gameOverText.text = "Game Over!";
-//		scoreGameOverText.text =  "Score: "+score;
+		panelTimesUp.SetActive (true);
+
+		string outputToUser;
+		string outputScoreToUser;
+
+		if (score >= levelCongif.levelPointsTarget) {		
+			outputScoreToUser="";
+			outputToUser = "Well Done! \n Mission Accomplished" ;
+			endLevelBtnTxt.text= "Next";
+		} else {
+			endLevelBtnTxt.text = "Play Again";
+			outputToUser = "Mission Missed" ;
+			outputScoreToUser = "Mission:\n" +
+				levelCongif.levelPointsTarget + " Space Points"+  
+					"\nYou Got: " + score;
+
+		}
+
+		timesUpText.text = outputToUser;
+		scoreTimesUpText.text =  outputScoreToUser;
 
 		string highScoreKey = "HighScore";
 		int highScore = PlayerPrefs.GetInt (highScoreKey, 0);
