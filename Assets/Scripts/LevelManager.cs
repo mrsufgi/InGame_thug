@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
 //	public GameObject gameOverMenu;
 	public Text scoreText;
 	public Text pointsMission;  //from mission canvas
-	public GameObject panelMissionDisplay; 
+    public GameObject panelMissionDisplay; 
 	public GameObject panelTimesUp; 	
 	public Text scoreTimesUpText;
 	public Text timesUpText;
@@ -20,6 +20,10 @@ public class LevelManager : MonoBehaviour
 //	public Text restartText;
 
 	   	
+    private bool isGameStopped=false;
+    public GameObject pauseMenu;				// The pause menu UI element to be activated on pause
+    private bool paused = false;				// The boolean value to keep track of whether or not the game is currently paused
+	
     //Queue that holds game object - yet accepts only gameObject with tag = "Creature"
     public Queue<Creature> q;
 
@@ -66,7 +70,10 @@ public class LevelManager : MonoBehaviour
 
 	public void startLevel()
 	{
-		panelMissionDisplay.SetActive (false);
+        if (panelMissionDisplay != null) {
+            Debug.Log("panelMission exist");
+		    panelMissionDisplay.SetActive(false);
+        }
 		timer.startTimer ();
 		StartCoroutine (SpawnWaves ());
 	}
@@ -198,6 +205,31 @@ public class LevelManager : MonoBehaviour
 		Time.timeScale = 1;
 		Application.LoadLevel (1);
 	}
+
+    public void Play()
+    {
+        Time.timeScale = 1;
+        Debug.Log("play pressed");
+        // Deactivate the pause menu UI element
+        if (pauseMenu != null)
+            pauseMenu.SetActive(false);
+
+        paused = false;
+        isGameStopped = false;
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        Debug.Log("pause pressed");
+        // Activate the pause menu UI element
+        if (pauseMenu != null)
+            pauseMenu.SetActive(true);
+
+        paused = true;
+        isGameStopped = true;
+        //spriteRenderer.sprite = pause_sprite1_Pause; // set the sprite to sprite1- pause
+    }
 
 	public int getPointsTarget()
 	{
