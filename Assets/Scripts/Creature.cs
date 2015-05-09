@@ -21,6 +21,7 @@ public class Creature : MonoBehaviour {
         if (!swiped)
         {
             print("dequeue now");
+            if (gameController.q.Count != 0)
             gameController.q.Dequeue();
         }
     }
@@ -59,7 +60,7 @@ public class Creature : MonoBehaviour {
 				if (explosion != null) {
 					Instantiate (explosion, transform.position, transform.rotation);
 				}
-                gameController.q.Dequeue();
+     
                 Destroy (gameObject);
 			} else {
 				if (side == enum_Side.side_right) { 
