@@ -3,10 +3,11 @@ using System.Collections;
 using Soomla.Levelup;
 using Soomla.Highway;
 using Soomla;
-using Soomla.Store;
+//using Soomla.Store;
 using Soomla.Profile;
 using System.Collections.Generic;
 using System.Linq;
+using Soomla.Store;
 
 public class InitialWorld
 {
@@ -19,8 +20,38 @@ public class InitialWorld
     //
     public World createMainWorld()
     {
-        /** Worlds **/
+     //   PlayerPrefs.DeleteAll();
 
+    /** Scores **/
+
+    Score pointScore = new Score(
+          "pointScore_ID",                            // ID
+          "Point Score",                              // Name
+          true                                        // Higher is better
+        );
+
+
+        Score gasCoins = new VirtualItemScore(
+              "gasCoins_ID",                           // ID  
+              "gasCoins Score",                             // Name
+              true,                                 // Higher is better
+              StoreAssets.COIN_CURRENCY.ID
+        );
+
+
+        /** Missions **/
+
+        // well - everything must be parsed of course.. 
+        Mission pointMission = new RecordMission(
+          "pointMission_ID",                          // ID
+          "Point Mission",                            // Name
+          null,            // Rewards
+          pointScore.ID,                              // Associated score
+          100                                           // Desired record 
+        );
+
+
+        /** Worlds **/
         // Initial world
         World mainWorld = new World(
           "main_world", null, null, null,
@@ -39,45 +70,32 @@ public class InitialWorld
           null  // Missions
         );
 
-        /** Scores **/
-
-        Score pointScore = new Score(
-          "pointScore_ID",                            // ID
-          "Point Score",                              // Name
-          true                                        // Higher is better
-        );
-
-        Score gasCoins = new Score(
-          "gasCoins_ID",                           // ID  
-          "gasCoins Score",                             // Name
-          true                                        // Higher is better
-        );
-
-        /** Missions **/
-
-        // well - everything must be parsed of course.. 
-        Mission pointMission = new RecordMission(
-          "pointMission_ID",                          // ID
-          "Point Mission",                            // Name
-          null,            // Rewards
-          pointScore.ID,                              // Associated score
-          100                                           // Desired record 
-        );
 
 
         // mission that can happen during the entire game session
         //XXXX.Schedule = Schedule.AnyTimeOnce();
 
         // Once users finish blue world, they can continue to red world.
-        Gate blueGate = new WorldCompletionGate(
+        Gate redGate = new WorldCompletionGate(
           "redGate_ID",                            // Item ID
           blueWorld.ID                              // Associated world ID
         );
-        redWorld.Gate = blueGate;
+
+        Gate redRecordGate = new RecordGate(
+          "redRecordGate_ID",
+          gasCoins.ID,
+          100.0);
+
+        Gate redWorldORGate = new GatesListOR(
+            "redWorldORGate_ID",
+            new List<Gate>() { redRecordGate, redGate });
+
+        
+        redWorld.Gate = redWorldORGate;
 
         // See private function below
-        AddGatesToWorld(blueWorld);
-        AddGatesToWorld(redWorld);
+    //    AddGatesToWorld(blueWorld);
+  //      AddGatesToWorld(redWorld);
 
 
         /** Add Worlds to Initial World **/
@@ -85,7 +103,8 @@ public class InitialWorld
         mainWorld.AddInnerWorld(redWorld);
 
         /** Add gas points**/
-        gasCoins.StartValue = 1000;
+        //        gasCoins.StartValue = 1000.0;
+        
         mainWorld.AddScore(gasCoins);
         return mainWorld;
     }

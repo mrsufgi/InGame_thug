@@ -2,6 +2,7 @@
 using System.Collections;
 using Soomla.Levelup;
 using Soomla;
+using Soomla.Store;
 
 public class WorldLoader : MonoBehaviour {
 
@@ -10,9 +11,31 @@ public class WorldLoader : MonoBehaviour {
     // static loader...
     public void World_two_Load()
     {
-        if (SoomlaLevelUp.GetWorld("blueWorld_ID").IsCompleted())
-        {
-            Application.LoadLevel("level");
+        SoomlaLevelUp.GetWorld("blueWorld_ID").SetCompleted(true);
+
+        
+
+        //if (SoomlaLevelUp.GetGate("redRecordGate_ID").Open()) {
+        //    print(SoomlaLevelUp.GetGate("redRecordGate_ID").IsOpen());
+        //}
+
+        //if (SoomlaLevelUp.GetGate("redGate_ID").Open())
+        //{
+        //    print(SoomlaLevelUp.GetGate("redGate_ID").IsOpen());
+        //}
+
+        //if (SoomlaLevelUp.GetGate("redWorldORGate_ID").Open())
+        //{
+        //    print(SoomlaLevelUp.GetGate("redWorldORGate_ID").IsOpen());
+        //}
+
+        if (SoomlaLevelUp.GetWorld("redWorld_ID").Gate.Open()) {
+            //    Application.LoadLevel("level");
+            print(SoomlaLevelUp.GetWorld("main_world").GetSingleScore().Latest + "");
+            SoomlaLevelUp.GetScore("gasCoins_ID").Inc(1500);
+            StoreInventory.GiveItem(StoreAssets.COIN_CURRENCY.ID, 1000);
+            print(SoomlaLevelUp.GetWorld("main_world").GetSingleScore().GetTempScore() + "");
+            print("should load");
         } else
         {
             print("fu");

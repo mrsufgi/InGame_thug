@@ -100,12 +100,12 @@ namespace Soomla.Levelup {
 		/// <returns>The gate.</returns>
 		/// <param name="gateId">ID of the <c>Gate</c> to be fetched.</param>
 		public static Gate GetGate(string gateId) {
-			if (InitialWorld.Gate != null &&
-			    InitialWorld.Gate.ID == gateId) {
-				return InitialWorld.Gate;
+			Gate gate = fetchGate(gateId, InitialWorld.Gate);
+			if( gate != null){
+				return gate;
 			}
 
-			Gate gate = fetchGate(gateId, InitialWorld.Missions);
+			gate = fetchGate(gateId, InitialWorld.Missions);
 			if (gate != null) {
 				return gate;
 			}

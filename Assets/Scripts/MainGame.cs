@@ -13,11 +13,13 @@ public class MainGame : MonoBehaviour {
     void Start () {
         // Initialize Event Handler
 
-
+        // CLEAR PLAYERPREF!!!!!!!!!!!!!!
+       PlayerPrefs.DeleteAll();
 
         // Initialize LevelUp
         World mainWorld = new InitialWorld().createMainWorld();
-        SoomlaHighway.Initialize();
+         SoomlaHighway.Initialize();
+        SoomlaStore.Initialize(new StoreAssets());
         SoomlaLevelUp.Initialize(mainWorld);
 
 	}
