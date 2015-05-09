@@ -10,6 +10,7 @@ public class LevelConfiguration : MonoBehaviour {
 	public GameObject[] gates;
 	public GameObject pointsLeft;
 	public GameObject pointsRight;
+	public int levelPointsTarget = 100;
 
 
 

@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
 	/* GUI */	
 //	public GameObject gameOverMenu;
 	public Text scoreText;
+	public Text pointsMission;  //from mission canvas
+	public GameObject panel; 
 	/*
 	public Text scoreGameOverText;
 	public Text highText;
@@ -28,36 +30,39 @@ public class LevelManager : MonoBehaviour
 	private float startWait;
 	/* General */
     private bool gameOver;
-	private bool restart;
 	private int score = 0;
-	private int[] numSign;
 	private int creaturesArraySize;
 
 	void Start ()
 	{
+		pointsMission.text = getPointsTarget ().ToString ();
+
 		gameOver = false;
-		restart = false;
-//		restartText.text = "";
-//		gameOverText.text = "";
+		//		restartText.text = "";
+		//		gameOverText.text = "";
 		score = 0;
 		creaturesArraySize = 10;
-
+		
 		UpdateScore ();
 		spawnValues = levelCongif.spawnValues;
 		spawnWait = levelCongif.spawnWait;
 		startWait = levelCongif.startWait;
-
+		
 		locateGates ();
-
+		
 		creaturesfrequencies = levelCongif.frequency;
 		creaturesType = levelCongif.creatures;
 		creatures = new GameObject[creaturesArraySize];
 		getFrequenciesOfCreatures ();
 
+		q = new Queue<Creature>();
+	}
+
+	public void startLevel()
+	{
+		panel.SetActive (false);
 		StartCoroutine (SpawnWaves ());
-		numSign = new int[]{1,-1};
-        q = new Queue<Creature>();
-    }
+	}
 
 	private void getFrequenciesOfCreatures()
 	{
@@ -168,6 +173,11 @@ public class LevelManager : MonoBehaviour
 	public void reload(){
 		Time.timeScale = 1;
 		Application.LoadLevel (1);
+	}
+
+	public int getPointsTarget()
+	{
+		return levelCongif.levelPointsTarget;
 	}
 
 }
