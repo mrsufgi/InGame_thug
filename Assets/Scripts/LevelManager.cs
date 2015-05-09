@@ -32,6 +32,7 @@ public class LevelManager : MonoBehaviour
     private bool gameOver;
 	private int score = 0;
 	private int creaturesArraySize;
+	public Timer timer;
 
 	void Start ()
 	{
@@ -61,6 +62,7 @@ public class LevelManager : MonoBehaviour
 	public void startLevel()
 	{
 		panel.SetActive (false);
+		timer.startTimer ();
 		StartCoroutine (SpawnWaves ());
 	}
 
