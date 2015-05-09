@@ -84,6 +84,9 @@ public class InitialWorld
         mainWorld.AddInnerWorld(blueWorld);
         mainWorld.AddInnerWorld(redWorld);
 
+        /** Add gas points**/
+        gasCoins.StartValue = 1000;
+        mainWorld.AddScore(gasCoins);
         return mainWorld;
     }
 
