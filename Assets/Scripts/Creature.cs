@@ -6,23 +6,23 @@ public class Creature : MonoBehaviour {
     public bool swiped = false;
     public int bonusModifier;
     
-
 	public GameObject explosion;
 	public GameObject playerExplosion;
 	public int scoreValue;
-	private LevelManager gameController;
+	
 	public enum_Side side;
 	public float timeBonus;
-	private Timer timerGameObject;
 
+	private LevelManager levelManager;
+	private Timer timerGameObject;
 
     void OnDestroy()
     {
         if (!swiped)
         {
             print("dequeue now");
-            if (gameController.q.Count != 0)
-            gameController.q.Dequeue();
+            if (levelManager.q.Count != 0)
+            levelManager.q.Dequeue();
         }
     }
 	void Start ()
@@ -33,10 +33,10 @@ public class Creature : MonoBehaviour {
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
 		if (gameControllerObject != null)
 		{
-			gameController = gameControllerObject.GetComponent <LevelManager>();
+			levelManager = gameControllerObject.GetComponent <LevelManager>();
           //  print("set");
 		}
-		if (gameController == null)
+		if (levelManager == null)
 		{
 			Debug.Log ("Cannot find 'GameController' script");
 		}
@@ -65,7 +65,12 @@ public class Creature : MonoBehaviour {
 			} else {
 				if (side == enum_Side.side_right) { 
 					timerGameObject.increaseTimeRemaining(timeBonus);
-					gameController.AddScore (scoreValue);
+
+					Instantiate(levelManager.levelCongif.pointsLeft,
+					            this.transform.position,
+					            Quaternion.identity);
+					Debug.Log("here");
+					levelManager.AddScore (scoreValue);
                     Destroy (gameObject);
 				}
 			}
@@ -81,7 +86,10 @@ public class Creature : MonoBehaviour {
 				} else{
 					if(side == enum_Side.side_left) { 		
 					timerGameObject.increaseTimeRemaining(timeBonus);	
-					gameController.AddScore(scoreValue);
+					Instantiate(levelManager.levelCongif.pointsRight,
+					            this.transform.position,
+					            Quaternion.identity);
+					levelManager.AddScore(scoreValue);
 						Destroy (gameObject);
 					}
 				}
@@ -93,7 +101,7 @@ public class Creature : MonoBehaviour {
 			{
 				Instantiate(explosion, transform.position, transform.rotation);
 			}
-			gameController.AddScore(-scoreValue);
+			levelManager.AddScore(-scoreValue);
 			Destroy(other.gameObject);
 			Destroy (gameObject);
 		}

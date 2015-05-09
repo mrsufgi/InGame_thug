@@ -10,10 +10,11 @@ public class LevelManager : MonoBehaviour
 	/* GUI */	
 //	public GameObject gameOverMenu;
 	public Text scoreText;
+	/*
 	public Text scoreGameOverText;
 	public Text highText;
 	public Text restartText;
-	public Text gameOverText;
+	public Text gameOverText;*/
 	   	
     //Queue that holds game object - yet accepts only gameObject with tag = "Creature"
     public Queue<Creature> q;
@@ -36,8 +37,8 @@ public class LevelManager : MonoBehaviour
 	{
 		gameOver = false;
 		restart = false;
-		restartText.text = "";
-		gameOverText.text = "";
+//		restartText.text = "";
+//		gameOverText.text = "";
 		score = 0;
 		creaturesArraySize = 10;
 
@@ -139,8 +140,8 @@ public class LevelManager : MonoBehaviour
 	
 	public void GameOver ()
 	{
-		gameOverText.text = "Game Over!";
-		scoreGameOverText.text =  "Score: "+score;
+//		gameOverText.text = "Game Over!";
+//		scoreGameOverText.text =  "Score: "+score;
 
 		string highScoreKey = "HighScore";
 		int highScore = PlayerPrefs.GetInt (highScoreKey, 0);
@@ -149,7 +150,7 @@ public class LevelManager : MonoBehaviour
 			PlayerPrefs.Save();
 		}
 
-		highText.text =  "High Score: " + highScore;
+//		highText.text =  "High Score: " + highScore;
 		gameOver = true;
 		StartCoroutine (wait ());
 
