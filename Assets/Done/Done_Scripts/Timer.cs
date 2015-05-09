@@ -6,6 +6,8 @@ public class Timer : MonoBehaviour {
 
 	public float timeRemaining = 100f;
 	public float maxTime = 1000f;
+	public Text timeText;
+
 //	public Scrollbar sb; 
 
 	public float timeToDecrease;
@@ -13,18 +15,22 @@ public class Timer : MonoBehaviour {
 
 	public GameObject panel;
 	private RectTransform rt ;
+	private float initialWidth;
 
 
 	void Start () {
-//		sb.size = 1;
 		rt = panel.GetComponent<RectTransform>();   
+		initialWidth = rt.rect.width;
 
-		InvokeRepeating ("decreaseTimeRemaining", 1.0f, 0.1f);
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
 		gameController = gameControllerObject.GetComponent <LevelManager>();
 		timeRemaining = maxTime;
 	}
 
+	public void startTimer()
+	{
+		InvokeRepeating ("decreaseTimeRemaining", 1.0f, 0.25f);
+	}
 
 	void Update()
 	{
@@ -43,10 +49,12 @@ public class Timer : MonoBehaviour {
 			timeRemaining -= timeToDecrease;
 
 			float timeRemainingRelative = timeRemaining / maxTime;
-			int width = (int) (timeRemainingRelative * rt.rect.width);
-//			Debug.Log ("timeRemaining : " + timeRemaining  + " maxTime" + maxTime);
-			
+			int width = (int) (timeRemainingRelative * initialWidth);
+			Debug.Log ("timeRemaining : " + timeRemaining  + " maxTime" + maxTime);
+
+			Debug.Log("rt.rect.width:  " + rt.rect.width.ToString() + "  width: " +width );
 			rt.sizeDelta = new Vector2( width, rt.sizeDelta.y);
+			timeText.text =  (((int)timeRemaining) ).ToString();
 		}
 	}
 

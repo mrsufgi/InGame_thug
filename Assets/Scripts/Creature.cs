@@ -63,10 +63,9 @@ public class Creature : MonoBehaviour {
      
                 Destroy (gameObject);
 			} else {
-				if (side == enum_Side.side_right) { 
-					timerGameObject.increaseTimeRemaining(timeBonus);
-
-					Instantiate(levelManager.levelCongif.pointsRight,
+				if (side == enum_Side.side_right) 
+				{ 
+								Instantiate(levelManager.levelCongif.pointsRight,
 					            this.transform.position,
 					            Quaternion.identity);
 					levelManager.AddScore (scoreValue);
@@ -84,7 +83,6 @@ public class Creature : MonoBehaviour {
                 Destroy (gameObject);
 				} else{
 					if(side == enum_Side.side_left) { 		
-					timerGameObject.increaseTimeRemaining(timeBonus);	
 					Instantiate(levelManager.levelCongif.pointsLeft,
 					            this.transform.position,
 					            Quaternion.identity);
