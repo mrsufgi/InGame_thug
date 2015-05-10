@@ -11,13 +11,21 @@ public class LevelManager : MonoBehaviour
 //	public GameObject gameOverMenu;
 	public Text scoreText;
 	public Text pointsMission;  //from mission canvas
-	public GameObject panel; 
-	/*
-	public Text scoreGameOverText;
-	public Text highText;
-	public Text restartText;
-	public Text gameOverText;*/
+    public GameObject panelMissionDisplay; 
+	public GameObject panelTimesUp; 	
+	public Text scoreTimesUpText;
+	public Text timesUpText;
+	public Text endLevelBtnTxt;
+
+	public AudioClip startLevelSound;
+	//	public Text highText;
+//	public Text restartText;
+
 	   	
+    private bool isGameStopped=false;
+    public GameObject pauseMenu;				// The pause menu UI element to be activated on pause
+    private bool paused = false;				// The boolean value to keep track of whether or not the game is currently paused
+	
     //Queue that holds game object - yet accepts only gameObject with tag = "Creature"
     public Queue<Creature> q;
 
@@ -36,6 +44,9 @@ public class LevelManager : MonoBehaviour
 
 	void Start ()
 	{
+		panelTimesUp.SetActive (false);
+		scoreTimesUpText.text = "";
+		scoreTimesUpText.text = "";
 		pointsMission.text = getPointsTarget ().ToString ();
 
 		gameOver = false;
@@ -61,7 +72,15 @@ public class LevelManager : MonoBehaviour
 
 	public void startLevel()
 	{
-		panel.SetActive (false);
+
+		panelMissionDisplay.SetActive (false);		
+		AudioSource.PlayClipAtPoint (startLevelSound, transform.position);
+
+        if (panelMissionDisplay != null) {
+            Debug.Log("panelMission exist");
+		    panelMissionDisplay.SetActive(false);
+        }
+
 		timer.startTimer ();
 		StartCoroutine (SpawnWaves ());
 	}
@@ -135,7 +154,6 @@ public class LevelManager : MonoBehaviour
 		int tempScore = score;
 		if ((tempScore += newScoreValue) < 0)//cannot be negative
 			return;
-
 		score += newScoreValue;
 		UpdateScore ();
 	}
@@ -147,8 +165,26 @@ public class LevelManager : MonoBehaviour
 	
 	public void GameOver ()
 	{
-//		gameOverText.text = "Game Over!";
-//		scoreGameOverText.text =  "Score: "+score;
+		panelTimesUp.SetActive (true);
+
+		string outputToUser;
+		string outputScoreToUser;
+
+		if (score >= levelCongif.levelPointsTarget) {		
+			outputScoreToUser="";
+			outputToUser = "Well Done! \n Mission Accomplished" ;
+			endLevelBtnTxt.text= "Next";
+		} else {
+			endLevelBtnTxt.text = "Play Again";
+			outputToUser = "Mission Missed" ;
+			outputScoreToUser = "Mission:\n" +
+				levelCongif.levelPointsTarget + " Space Points"+  
+					"\nYou Got: " + score;
+
+		}
+
+		timesUpText.text = outputToUser;
+		scoreTimesUpText.text =  outputScoreToUser;
 
 		string highScoreKey = "HighScore";
 		int highScore = PlayerPrefs.GetInt (highScoreKey, 0);
@@ -176,6 +212,31 @@ public class LevelManager : MonoBehaviour
 		Time.timeScale = 1;
 		Application.LoadLevel (1);
 	}
+
+    public void Play()
+    {
+        Time.timeScale = 1;
+        Debug.Log("play pressed");
+        // Deactivate the pause menu UI element
+        if (pauseMenu != null)
+            pauseMenu.SetActive(false);
+
+        paused = false;
+        isGameStopped = false;
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        Debug.Log("pause pressed");
+        // Activate the pause menu UI element
+        if (pauseMenu != null)
+            pauseMenu.SetActive(true);
+
+        paused = true;
+        isGameStopped = true;
+        //spriteRenderer.sprite = pause_sprite1_Pause; // set the sprite to sprite1- pause
+    }
 
 	public int getPointsTarget()
 	{

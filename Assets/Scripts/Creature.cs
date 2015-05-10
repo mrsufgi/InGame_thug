@@ -15,6 +15,9 @@ public class Creature : MonoBehaviour {
 
 	private LevelManager levelManager;
 	private Timer timerGameObject;
+	public AudioClip[] leftCreatureSounds;
+	public AudioClip[] rightCreatureSounds;
+
 
     void OnDestroy()
     {
@@ -58,6 +61,8 @@ public class Creature : MonoBehaviour {
 						
 			if (side == enum_Side.side_left) { 	
 				if (explosion != null) {
+					int i  = Random.Range (0, leftCreatureSounds.Length);
+					AudioSource.PlayClipAtPoint (leftCreatureSounds [i], transform.position);
 					Instantiate (explosion, transform.position, transform.rotation);
 				}
      
@@ -65,7 +70,7 @@ public class Creature : MonoBehaviour {
 			} else {
 				if (side == enum_Side.side_right) 
 				{ 
-								Instantiate(levelManager.levelCongif.pointsRight,
+					Instantiate(levelManager.levelCongif.pointsRight,
 					            this.transform.position,
 					            Quaternion.identity);
 					levelManager.AddScore (scoreValue);
@@ -78,6 +83,8 @@ public class Creature : MonoBehaviour {
 				if(side == enum_Side.side_right) { 
 					if (explosion != null)
 					{
+					int i  = Random.Range (0, rightCreatureSounds.Length);
+					AudioSource.PlayClipAtPoint (rightCreatureSounds [i], transform.position);		
 						Instantiate(explosion, transform.position, transform.rotation);
 					}
                 Destroy (gameObject);
