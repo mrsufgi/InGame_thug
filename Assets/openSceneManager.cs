@@ -10,8 +10,11 @@ public class openSceneManager : MonoBehaviour {
 
 
 	// Use this for initialization
+
 	void Start () {
-		AudioSource.PlayClipAtPoint (startScreenClip, transform.position);
+		if (startScreenClip != null) {
+			AudioSource.PlayClipAtPoint (startScreenClip, transform.position);
+		}
 		StartCoroutine (StartGame());
 
 	}

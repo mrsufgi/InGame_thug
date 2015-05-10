@@ -24,25 +24,32 @@ public class GUIController : MonoBehaviour {
 
         // update gasCoins text
         gasCoinText.text = "Gas Coins: " +  StoreAssets.COIN_CURRENCY.GetBalance();
+		if (StoreAssets.COIN_CURRENCY.GetBalance() >= 50)
+		{
+			pay.interactable = true;
+		}
 
 	}
 
    public void PayCoins()
     {
-        StoreAssets.COIN_CURRENCY.Take(50);
+//		if (StoreAssets.COIN_CURRENCY.GetBalance () >= 50) {
+//			StoreAssets.COIN_CURRENCY.Take (50);
+//		}
         StartCoroutine(wait());
+		Debug.Log ("here");
+		Application.LoadLevel(level);
     }
 
     IEnumerator wait()
     {
         yield return new WaitForSeconds(startWait);
-        Application.LoadLevel(level);
-
     }
 
     public void CollectCoins()
     {
         StoreAssets.COIN_CURRENCY.Give(50);
+		StoreAssets.COIN_CURRENCY.Save ();
     }
 
 }

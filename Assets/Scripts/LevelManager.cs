@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class LevelManager : MonoBehaviour
 {
 	public LevelConfiguration levelCongif;
+	private static int level=3;
 
 	/* GUI */	
 //	public GameObject gameOverMenu;
@@ -73,6 +74,7 @@ public class LevelManager : MonoBehaviour
 	public void startLevel()
 	{
 
+		Time.timeScale = 1;
 		panelMissionDisplay.SetActive (false);		
 		AudioSource.PlayClipAtPoint (startLevelSound, transform.position);
 
@@ -83,6 +85,15 @@ public class LevelManager : MonoBehaviour
 
 		timer.startTimer ();
 		StartCoroutine (SpawnWaves ());
+	}
+
+
+
+	public void nextLevel()
+	{
+
+		level++;
+		Application.LoadLevel (level);
 	}
 
 	private void getFrequenciesOfCreatures()
@@ -124,14 +135,19 @@ public class LevelManager : MonoBehaviour
 
 	IEnumerator SpawnWaves ()
 	{
-		yield return new WaitForSeconds (startWait);
+
+//		yield return new WaitForSeconds (1);
+
 		int rand;
 		GameObject curCreature;
 		Vector3 spawnPosition;
+		Debug.Log ("0");
 		while (true)
 		{
+			Debug.Log ("1");
 			while(!gameOver)
 			{
+				Debug.Log ("2");
 				rand = Random.Range (0,10);
 				curCreature = creatures [rand];
 
@@ -197,6 +213,7 @@ public class LevelManager : MonoBehaviour
 		gameOver = true;
 		StartCoroutine (wait ());
 
+		Debug.Log ("bla");
 		Time.timeScale = 0;
 	
 //		if(gameOverMenu != null)
