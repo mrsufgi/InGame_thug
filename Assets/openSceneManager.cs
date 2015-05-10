@@ -5,6 +5,7 @@ public class openSceneManager : MonoBehaviour {
 
 	public float startWait = 5;
 	public AudioClip startScreenClip;
+    public int LevelID;
 
 
 
@@ -23,7 +24,7 @@ public class openSceneManager : MonoBehaviour {
 	IEnumerator StartGame ()
 	{
 		yield return new WaitForSeconds (startWait);
-		Application.LoadLevel (1);				
+		Application.LoadLevel (LevelID);				
 	}
 
 }

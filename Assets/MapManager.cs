@@ -1,16 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-public class MapManager : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-
-=======
->>>>>>> origin/master
 using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour {
@@ -24,10 +13,6 @@ public class MapManager : MonoBehaviour {
             if (i != 1)
                 buttons[i].interactable = false;
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 	}
 	
 	// Update is called once per frame
@@ -35,10 +20,5 @@ public class MapManager : MonoBehaviour {
 	
 	}
 
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> origin/master
 }
