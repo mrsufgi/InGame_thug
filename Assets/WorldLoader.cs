@@ -30,14 +30,17 @@ public class WorldLoader : MonoBehaviour {
         //}
 
         if (SoomlaLevelUp.GetWorld("redWorld_ID").Gate.Open()) {
-            //    Application.LoadLevel("level");
+            
             print(SoomlaLevelUp.GetWorld("main_world").GetSingleScore().Latest + "");
           //  SoomlaLevelUp.GetScore("gasCoins_ID").Inc(1500);
             StoreInventory.GiveItem(StoreAssets.COIN_CURRENCY.ID, 1000);
             print(SoomlaLevelUp.GetWorld("main_world").GetSingleScore().GetTempScore() + "");
             print("should load");
-            
-        } else
+            Application.LoadLevel("world");
+
+
+        }
+        else
         {
             print("fu");
         }
@@ -45,8 +48,8 @@ public class WorldLoader : MonoBehaviour {
 
     public void World_one_Load()
     {
-      
-        Application.LoadLevel("level");
+
+        Application.LoadLevel("world");
 
     } 
 

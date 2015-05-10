@@ -81,7 +81,7 @@ public class StoreAssets : IStoreAssets
     /** Virtual Categories **/
 
     public static VirtualCategory GENERAL_CATEGORY = new VirtualCategory(
-      "General", new List<string>(new string[] { SHIELD_GOOD.Name })
+      "General", new List<string>(new string[] { SHIELD_GOOD.ID })
     );
 
 }

@@ -94,8 +94,8 @@ public class InitialWorld
         redWorld.Gate = redWorldORGate;
 
         // See private function below
-    //    AddGatesToWorld(blueWorld);
-  //      AddGatesToWorld(redWorld);
+        AddGatesToWorld(blueWorld);
+       AddGatesToWorld(redWorld);
 
 
         /** Add Worlds to Initial World **/
