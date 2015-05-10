@@ -3,7 +3,6 @@ using System.Collections;
 using Soomla.Levelup;
 using Soomla;
 using UnityEngine.UI;
-using Soomla.Store;
 
 public class GUIController : MonoBehaviour {
 
@@ -17,7 +16,7 @@ public class GUIController : MonoBehaviour {
 	void Update () {
 
         // update gasCoins text
-        gasCoinText.text = StoreInventory.GetItemBalance("coin_currency_ID") + " " ;
+        gasCoinText.text = StoreAssets.COIN_CURRENCY.GetBalance() + "";
 
 
 	}
