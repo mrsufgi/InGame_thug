@@ -59,12 +59,7 @@ public class SwipeManager : MonoBehaviour
         {
             Creature dequeuedCreature = gameController.q.Dequeue();
             dequeuedCreature.swiped = true;
-			if(dequeuedCreature != null){
            	 rigidbody = dequeuedCreature.GetComponent<Rigidbody2D>();
-			}
-			else{
-				return;
-			}
 
         }
         else

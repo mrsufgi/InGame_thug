@@ -21,12 +21,13 @@ public class Creature : MonoBehaviour {
 
     void OnDestroy()
     {
-        if (!swiped)
-        {
-            print("dequeue now");
-            if (levelManager.q.Count != 0)
-            levelManager.q.Dequeue();
-        }
+        if (!swiped) {
+			print ("dequeue now");
+			if (levelManager.q.Count != 0)
+				levelManager.q.Dequeue ();
+		} else {
+
+ 		}
     }
 	void Start ()
 	{
@@ -54,6 +55,7 @@ public class Creature : MonoBehaviour {
 			{
 				Instantiate(explosion, transform.position, transform.rotation);
 			}
+			print("dashit");
             Destroy (gameObject);
 		}
 
