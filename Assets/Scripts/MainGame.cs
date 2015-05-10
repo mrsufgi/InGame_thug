@@ -14,14 +14,14 @@ public class MainGame : MonoBehaviour {
         // Initialize Event Handler
 
         // CLEAR PLAYERPREF!!!!!!!!!!!!!!
-     //  PlayerPrefs.DeleteAll();
+      PlayerPrefs.DeleteAll();
 
         // Initialize LevelUp
         World mainWorld = new InitialWorld().createMainWorld();
    //      SoomlaHighway.Initialize();
         SoomlaStore.Initialize(new StoreAssets());
         SoomlaLevelUp.Initialize(mainWorld);
-        StoreAssets.COIN_CURRENCY.Give(1000);
+        StoreAssets.COIN_CURRENCY.Give(200);
 
 	}
 	

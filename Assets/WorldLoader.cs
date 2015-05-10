@@ -46,6 +46,11 @@ public class WorldLoader : MonoBehaviour {
         }
     }
 
+    void Start()
+    {
+        Application.LoadLevel("world");
+    }
+
     public void World_one_Load()
     {
 
