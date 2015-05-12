@@ -3,8 +3,10 @@ using System.Collections;
 using Soomla.Levelup;
 using Soomla;
 using UnityEngine.UI;
+using Soomla.Store;
 
 public class GUIController : MonoBehaviour {
+
 
     public Button pay;
     public Button Collect;
@@ -17,19 +19,27 @@ public class GUIController : MonoBehaviour {
         {
             pay.interactable = false;
         }
+
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-
-        // update gasCoins text
-        gasCoinText.text = "Gas Coins: " +  StoreAssets.COIN_CURRENCY.GetBalance();
-
+        if (gasCoinText != null)
+        {
+            gasCoinText.text = "wohoo";
+            // update gasCoins text
+            if (StoreInventory.GetItemBalance("coin_currency_ID") > 0)
+                gasCoinText.text = "Gas +" + StoreInventory.GetItemBalance("coin_currency_ID");
+            else
+                gasCoinText.text = "damn";
+        }   
+     //   gasCoinText.text = "yay";
 	}
 
    public void PayCoins()
     {
-        StoreAssets.COIN_CURRENCY.Take(50);
+       
         StartCoroutine(wait());
     }
 
@@ -38,6 +48,11 @@ public class GUIController : MonoBehaviour {
         yield return new WaitForSeconds(startWait);
         Application.LoadLevel(level);
 
+    }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);    
     }
 
     public void CollectCoins()
