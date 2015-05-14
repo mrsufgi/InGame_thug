@@ -26,7 +26,7 @@ GameObject:
   - 4: {fileID: 420684}
   - 114: {fileID: 11460058}
   m_Layer: 0
-  m_Name: Parallax 1
+  m_Name: ParallaxBackground
   m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
     - {fileID: 134386}
     SpeedRatio: .620000005
     RepositionLogic:
-      PositionMode: 0
+      PositionMode: 4
       ScaleHeight: 0
       SortingOrder: -5
       MinYPercent: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
     - {fileID: 171806}
     SpeedRatio: .230000004
     RepositionLogic:
-      PositionMode: 0
+      PositionMode: 4
       ScaleHeight: 0
       SortingOrder: -3
       MinYPercent: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
     - {fileID: 146032}
     SpeedRatio: 0
     RepositionLogic:
-      PositionMode: 0
+      PositionMode: 4
       ScaleHeight: 0
       SortingOrder: -10
       MinYPercent: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
     - {fileID: 176966}
     SpeedRatio: .5
     RepositionLogic:
-      PositionMode: 0
+      PositionMode: 4
       ScaleHeight: 0
       SortingOrder: -2
       MinYPercent: 0

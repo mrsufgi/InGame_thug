@@ -45,6 +45,10 @@ public class FreeParallax : MonoBehaviour
                 return;
             }
         }
+        if (Elements == null || Elements.Count == 0)
+        {
+            return;
+        }
 
         for (int i = 0; i < Elements.Count; i++)
         {
@@ -140,7 +144,10 @@ public enum FreeParallaxPositionMode
     IndividualStartOffScreen,
 
     [Tooltip("No wrap, this is an individual object that starts on screen")]
-    IndividualStartOnScreen
+    IndividualStartOnScreen,
+
+    [Tooltip("Wrap and maintain original position")]
+    WrapAnchorNone
 }
 
 /// <summary>
@@ -200,6 +207,7 @@ public class FreeParallaxElement
         {
             GameObject obj = GameObject.Instantiate(GameObjects[0]) as GameObject;
             obj.transform.parent = GameObjects[0].transform.parent;
+            obj.transform.position = GameObjects[0].transform.position;
             GameObjects.Add(obj);
         }
 
@@ -260,7 +268,7 @@ public class FreeParallaxElement
                         Debug.LogWarning("Game object in element index " + index.ToString() + " did not fit the screen width but was asked to wrap, so it was stretched. This can be fixed " +
                                          "by making sure any parallax graphics that wrap are at least 1.1x times the largest width resolution you support.");
                         Vector3 scale = obj.transform.localScale;
-						scale.x = (scale.x * (1.0f / objWidth)) + 0.1f;
+                        scale.x = (scale.x * (1.0f / objWidth)) + 0.1f;
                         obj.transform.localScale = scale;
                     }
                 }
@@ -273,7 +281,7 @@ public class FreeParallaxElement
                         Debug.LogWarning("Game object in element index " + index.ToString() + " did not fit the screen height but was asked to wrap, so it was stretched. This can be fixed " +
                                          "by making sure any parallax graphics that wrap are at least 1.1x times the largest height resolution you support.");
                         Vector3 scale = obj.transform.localScale;
-						scale.y = (scale.y * (1.0f / objHeight)) + 0.1f;
+                        scale.y = (scale.y * (1.0f / objHeight)) + 0.1f;
                         obj.transform.localScale = scale;
                     }
                 }
@@ -350,7 +358,7 @@ public class FreeParallaxElement
                         FreeParallax.SetPosition(obj, r, topWorld.x - r.bounds.size.x, offset + r.bounds.size.y);
                     }
                 }
-                else
+                else if (RepositionLogic.PositionMode == FreeParallaxPositionMode.WrapAnchorBottom)
                 {
                     if (p.IsHorizontal)
                     {
@@ -359,6 +367,18 @@ public class FreeParallaxElement
                     else
                     {
                         FreeParallax.SetPosition(obj, r, screenLeft.x, offset);
+                    }
+                }
+                else
+                {
+                    // no anchor, maintain position
+                    if (p.IsHorizontal)
+                    {
+                        FreeParallax.SetPosition(obj, r, offset, r.bounds.min.y);
+                    }
+                    else
+                    {
+                        FreeParallax.SetPosition(obj, r, r.bounds.min.x, offset);
                     }
                 }
 
@@ -515,9 +535,9 @@ public class FreeParallaxElement
                     else
                     {
                         Vector3 bottomEdge = c.ViewportToWorldPoint(Vector3.zero);
-						float randX = UnityEngine.Random.Range(RepositionLogic.MinXPercent, RepositionLogic.MaxXPercent);
-						float randY = UnityEngine.Random.Range(RepositionLogic.MinYPercent, RepositionLogic.MaxYPercent);
-						Vector3 newWorldPoint = c.ViewportToWorldPoint(new Vector3(randX, randY));
+                        float randX = UnityEngine.Random.Range(RepositionLogic.MinXPercent, RepositionLogic.MaxXPercent);
+                        float randY = UnityEngine.Random.Range(RepositionLogic.MinYPercent, RepositionLogic.MaxYPercent);
+                        Vector3 newWorldPoint = c.ViewportToWorldPoint(new Vector3(randX, randY));
                         FreeParallax.SetPosition(obj, r, newWorldPoint.x, bottomEdge.y - newWorldPoint.y);
                     }
                 }
@@ -530,8 +550,8 @@ public class FreeParallaxElement
                     else
                     {
                         Vector3 topEdge = c.ViewportToWorldPoint(Vector3.one);
-						float randX = UnityEngine.Random.Range(RepositionLogic.MinXPercent, RepositionLogic.MaxXPercent);
-						float randY = UnityEngine.Random.Range(RepositionLogic.MinYPercent, RepositionLogic.MaxYPercent);
+                        float randX = UnityEngine.Random.Range(RepositionLogic.MinXPercent, RepositionLogic.MaxXPercent);
+                        float randY = UnityEngine.Random.Range(RepositionLogic.MinYPercent, RepositionLogic.MaxYPercent);
                         Vector3 newWorldPoint = c.ViewportToWorldPoint(new Vector3(randX, randY));
                         FreeParallax.SetPosition(obj, r, newWorldPoint.x, topEdge.y + newWorldPoint.y);
                     }
