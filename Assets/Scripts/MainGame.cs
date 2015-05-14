@@ -14,19 +14,31 @@ public class MainGame : MonoBehaviour {
         // Initialize Event Handler
 
         // CLEAR PLAYERPREF!!!!!!!!!!!!!!
-     //  PlayerPrefs.DeleteAll();
+        //   PlayerPrefs.DeleteAll();
 
-        // Initialize LevelUp
-        World mainWorld = new InitialWorld().createMainWorld();
-   //      SoomlaHighway.Initialize();
+
+      //  SoomlaHighway.Initialize();
+      //  IStoreAssets store = new StoreAssets();
+      //  store.GetVersion();
+        SoomlaHighway.Initialize();
         SoomlaStore.Initialize(new StoreAssets());
-        SoomlaLevelUp.Initialize(mainWorld);
-        StoreAssets.COIN_CURRENCY.Give(1000);
-
+        // Initialize LevelUp
+       // World mainWorld = new InitialWorld().createMainWorld();
+        
+         
+        
+        SoomlaLevelUp.Initialize(new InitialWorld().createMainWorld());
+        //   StoreAssets.COIN_CURRENCY.Give(1000);
+        
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Awake()
+    {
+    //    DontDestroyOnLoad(this);
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 }

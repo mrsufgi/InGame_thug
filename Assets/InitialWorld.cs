@@ -35,7 +35,7 @@ public class InitialWorld
               "gasCoins_ID",                           // ID  
               "gasCoins Score",                             // Name
               true,                                 // Higher is better
-              StoreAssets.COIN_CURRENCY.ID
+              StoreInfoAndroid.Currencies[0].ID
         );
 
 
