@@ -27,10 +27,10 @@ public class GUIController : MonoBehaviour {
 	void Update () {
         if (gasCoinText != null)
         {
-            gasCoinText.text = "wohoo";
+          //  gasCoinText.text = "wohoo";
             // update gasCoins text
             if (StoreInventory.GetItemBalance("coin_currency_ID") > 0)
-                gasCoinText.text = "Gas +" + StoreInventory.GetItemBalance("coin_currency_ID");
+                gasCoinText.text = "" + StoreInventory.GetItemBalance("coin_currency_ID");
             else
                 gasCoinText.text = "damn";
         }   
