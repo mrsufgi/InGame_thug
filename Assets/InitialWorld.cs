@@ -20,15 +20,21 @@ public class InitialWorld
     //
     public World createMainWorld()
     {
-     //   PlayerPrefs.DeleteAll();
+        //   PlayerPrefs.DeleteAll();
 
-    /** Scores **/
+        /** Scores **/
 
-    Score pointScore = new Score(
-          "pointScore_ID",                            // ID
-          "Point Score",                              // Name
-          true                                        // Higher is better
-        );
+        Score pointScore = new Score(
+              "pointScore_ID",                            // ID
+              "Point Score",                              // Name
+              true                                        // Higher is better
+            );
+
+        Score starRank = new Score(
+            "starRank_ID",
+            "Star Rank",
+            true
+    );
 
 
         Score gasCoins = new VirtualItemScore(
@@ -38,17 +44,39 @@ public class InitialWorld
               StoreInfoAndroid.Currencies[0].ID
         );
 
+        /** Rewards **/
+
+        Reward medalReward = new BadgeReward(
+          "medalReward_ID",                           // ID
+          "Medal Reward"                              // Name
+        );
 
         /** Missions **/
 
         // well - everything must be parsed of course.. 
-        Mission pointMission = new RecordMission(
-          "pointMission_ID",                          // ID
-          "Point Mission",                            // Name
-          null,            // Rewards
+        Mission pointMission1 = new RecordMission(
+          "pointMission_1_ID",                          // ID
+          "Point Mission 1",                            // Name
+          new List<Reward>() { medalReward },            // Rewards
           pointScore.ID,                              // Associated score
           100                                           // Desired record 
         );
+
+        Mission pointMission2 = new RecordMission(
+       "pointMission_2_ID",                          // ID
+       "Point Mission 2",                            // Name
+       new List<Reward>() { medalReward },            // Rewards
+       pointScore.ID,                              // Associated score
+       200                                           // Desired record 
+     );
+
+        Mission pointMission3 = new RecordMission(
+      "pointMission_ID_3_ID",                          // ID
+      "Point Mission 3",                            // Name
+      new List<Reward>() { medalReward },                                       // Rewards
+      pointScore.ID,                              // Associated score
+      300                                           // Desired record 
+    );
 
 
         /** Worlds **/
@@ -70,6 +98,21 @@ public class InitialWorld
           null  // Missions
         );
 
+        /** Levels **/
+
+        blueWorld.BatchAddLevelsWithTemplates(
+          12,                                          // Number of levels
+          null,                                       // Gate template
+          new List<Score>() { pointScore, starRank},          // Score templates
+         new List<Mission>() { pointMission1, pointMission2, pointMission3 }                                         // Mission templates
+        );
+
+        redWorld.BatchAddLevelsWithTemplates(
+          12,                                          // Number of levels
+          null,                                       // Gate template
+          new List<Score>() { pointScore, starRank},          // Score templates
+          new List<Mission>() {pointMission1, pointMission2, pointMission3}                                        // Mission templates
+        );
 
 
         // mission that can happen during the entire game session
@@ -90,12 +133,18 @@ public class InitialWorld
             "redWorldORGate_ID",
             new List<Gate>() { redRecordGate, redGate });
 
-        
+
+        starRank.StartValue = 2;
+        blueWorld.GetInnerWorldAt(0).AddScore(starRank);
+       
+
+
         redWorld.Gate = redWorldORGate;
 
         // See private function below
-    //    AddGatesToWorld(blueWorld);
-  //      AddGatesToWorld(redWorld);
+       AddGatesToWorld(blueWorld);
+       AddGatesToWorld(redWorld);
+
 
 
         /** Add Worlds to Initial World **/
@@ -103,8 +152,6 @@ public class InitialWorld
         mainWorld.AddInnerWorld(redWorld);
 
         /** Add gas points**/
-        //        gasCoins.StartValue = 1000.0;
-        
         mainWorld.AddScore(gasCoins);
         return mainWorld;
     }
@@ -116,9 +163,10 @@ public class InitialWorld
         for (int i = 1; i < world.InnerWorldsMap.Count; i++)
         {
 
-            Level previousLevel = (Level)world.GetInnerWorldAt(i - 1);
+            Level previousLevel = (Level)world.GetInnerWorldAt(i - 1);    
             Level currentLevel = (Level)world.GetInnerWorldAt(i);
 
+            
 
             // The associated world of this Level's WorldCompletionGate is the
             // previous level.
@@ -126,6 +174,8 @@ public class InitialWorld
               "prevLevelCompletionGate_" + world.ID + "_level_" + i.ToString(), // ID
               previousLevel.ID                                    // Associated World
             );
+
+         //   currentLevel.AddMission()
 
             // The gates in this Level's GatesListAND are the 2 gates declared above.
             currentLevel.Gate = new GatesListAND(

@@ -39,14 +39,18 @@ public class WorldLoader : MonoBehaviour {
             
         } else
         {
-            print("fu");
+           
         }
+       
     }
 
     public void World_one_Load()
     {
-      
+        World w = SoomlaLevelUp.GetWorld("blueWorld_ID");
+        //Level currentInstantiatedLevel = (Level)w.GetInnerWorldAt(1);
+    //    currentInstantiatedLevel.Gate.ForceOpen(true);
         Application.LoadLevel("world");
+
 
     } 
 

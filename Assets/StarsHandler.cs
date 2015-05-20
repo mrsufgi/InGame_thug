@@ -1,15 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class StarsHandler : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public Sprite m_ActiveStar;
+    public Sprite m_NotActiveStar;
+
+    void Start()
+    {
+     //   SetActiveStarSprite(false);
+    }
+    public void SetActiveStarSprite(bool i_flag)
+    {
+        if (i_flag)
+        {
+            this.GetComponent<Image>().sprite = m_ActiveStar;
+        }
+        else
+        {
+            this.GetComponent<Image>().sprite = m_NotActiveStar;
+        }
+    }
 }
