@@ -10,8 +10,8 @@ public class MapManager : MonoBehaviour {
 	    for( int i = 0; i < buttons.Length; i++)
         {
             //Lock all Buttona except 1
-            if (i != 1)
-                buttons[i].interactable = false;
+        //    if (i != 1)
+//                buttons[i].interactable = false;
         }
 	}
 	

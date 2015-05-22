@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using Soomla.Levelup;
 using System.Collections.Generic;
+using System.Linq;
 
 public class GUILevelSelectCreator : MonoBehaviour {
 
@@ -14,6 +15,7 @@ public class GUILevelSelectCreator : MonoBehaviour {
     void Start()
     {
         m_currentWorld = SoomlaLevelUp.GetWorld("blueWorld_ID");
+  
         //   levelCount = SoomlaLevelUp.GetLevelCountInWorld(m_currentWorld);
         //int j = 0;
         //for (int i = 0; i < levelCount; i++)
@@ -33,9 +35,15 @@ public class GUILevelSelectCreator : MonoBehaviour {
                 j++;
             }
             currentInstantiatedLevel = (Level)m_currentWorld.GetInnerWorldAt(i);
+            
+              //  print(currentInstantiatedLevel.Scores.Values.ElementAt<Score>(1).ID);
 
- 
             //create a new item, name it, and set the parent
+
+            if (i > 0)
+            {
+                currentInstantiatedLevel.Gate.Open();
+            }
                 if (currentInstantiatedLevel.CanStart())
 
                 {
@@ -68,7 +76,7 @@ public class GUILevelSelectCreator : MonoBehaviour {
             //    print(currentInstantiatedLevel.GetSingleScore().ID);
 
             //}
-            Score starRank = currentInstantiatedLevel.Scores["starRank_ID"];
+            Score starRank = currentInstantiatedLevel.Scores.Values.ElementAt<Score>(1);
 
                 if (starRank.HasRecordReached(k + 1))
                 {

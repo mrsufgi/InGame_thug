@@ -98,6 +98,7 @@ public class InitialWorld
           null  // Missions
         );
 
+        starRank.StartValue = 2;
         /** Levels **/
 
         blueWorld.BatchAddLevelsWithTemplates(
@@ -134,9 +135,7 @@ public class InitialWorld
             new List<Gate>() { redRecordGate, redGate });
 
 
-        starRank.StartValue = 2;
-        blueWorld.GetInnerWorldAt(0).AddScore(starRank);
-       
+  
 
 
         redWorld.Gate = redWorldORGate;
@@ -164,9 +163,7 @@ public class InitialWorld
         {
 
             Level previousLevel = (Level)world.GetInnerWorldAt(i - 1);    
-            Level currentLevel = (Level)world.GetInnerWorldAt(i);
-
-            
+            Level currentLevel = (Level)world.GetInnerWorldAt(i);        
 
             // The associated world of this Level's WorldCompletionGate is the
             // previous level.
@@ -175,12 +172,15 @@ public class InitialWorld
               previousLevel.ID                                    // Associated World
             );
 
-         //   currentLevel.AddMission()
-
+            Gate bGate = new BalanceGate(
+             "bGate",                              // ID
+             StoreInfo.Currencies[0].ID,                            // Associated Item ID
+                600                          // Desired balance
+);
             // The gates in this Level's GatesListAND are the 2 gates declared above.
             currentLevel.Gate = new GatesListAND(
               "gate_" + world.ID + "_level_" + i.ToString(),                    // ID
-              new List<Gate>() { prevLevelCompletionGate }  // List of Gates
+              new List<Gate>() {bGate}  // List of Gates
             );
         }
     }
