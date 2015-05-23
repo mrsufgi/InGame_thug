@@ -119,12 +119,12 @@ namespace Soomla.Profile {
 			AndroidJNI.PopLocalFrame(IntPtr.Zero);
 		}
 
-		protected override void _pushEventGetContactsStarted (Provider provider, int pageNumber, string payload) {
+		protected override void _pushEventGetContactsStarted (Provider provider, bool fromStart, string payload) {
 			if (SoomlaProfile.IsProviderNativelyImplemented(provider)) return;
 			AndroidJNI.PushLocalFrame(100);
 			using(AndroidJavaClass jniSoomlaProfile = new AndroidJavaClass("com.soomla.profile.unity.ProfileEventHandler")) {
 				ProfileJNIHandler.CallStaticVoid(jniSoomlaProfile, "pushEventGetContactsStarted", 
-				                                 provider.ToString(), payload);
+				                                 provider.ToString(), fromStart, payload);
 			}
 			AndroidJNI.PopLocalFrame(IntPtr.Zero);
 		}
@@ -140,17 +140,17 @@ namespace Soomla.Profile {
 			AndroidJNI.PushLocalFrame(100);
 			using(AndroidJavaClass jniSoomlaProfile = new AndroidJavaClass("com.soomla.profile.unity.ProfileEventHandler")) {
 				ProfileJNIHandler.CallStaticVoid(jniSoomlaProfile, "pushEventGetContactsFinished", 
-				                                 provider.ToString(), contacts.ToString(), payload);
+				                                 provider.ToString(), contacts.ToString(), payload, contactsPage.HasMore);
 			}
 			AndroidJNI.PopLocalFrame(IntPtr.Zero);
 		}
 
-		protected override void _pushEventGetContactsFailed (Provider provider, int pageNumber, string message, string payload) {
+		protected override void _pushEventGetContactsFailed (Provider provider, string message, bool fromStart, string payload) {
 			if (SoomlaProfile.IsProviderNativelyImplemented(provider)) return;
 			AndroidJNI.PushLocalFrame(100);
 			using(AndroidJavaClass jniSoomlaProfile = new AndroidJavaClass("com.soomla.profile.unity.ProfileEventHandler")) {
 				ProfileJNIHandler.CallStaticVoid(jniSoomlaProfile, "pushEventGetContactsFailed", 
-				                                 provider.ToString(), message, payload);
+				                                 provider.ToString(), message, fromStart, payload);
 			}
 			AndroidJNI.PopLocalFrame(IntPtr.Zero);
 		}

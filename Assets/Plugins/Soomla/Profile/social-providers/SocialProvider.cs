@@ -64,7 +64,7 @@ namespace Soomla.Profile
 		/// <summary>
 		/// See docs in <see cref="SoomlaProfile.GetContacts"/>
 		/// </summary>
-		public abstract void GetContacts(int pageNumber, ContactsSuccess success, ContactsFailed fail);
+		public abstract void GetContacts(bool fromStart, ContactsSuccess success, ContactsFailed fail);
 
 		/// <summary>
 		/// See docs in <see cref="SoomlaProfile.Logout"/>
@@ -94,8 +94,15 @@ namespace Soomla.Profile
 		/// <summary>
 		/// See docs in <see cref="SoomlaProfile.Like"/>
 		/// </summary>
-		public abstract void Like(string pageName);
+		public abstract void Like(string pageId);
 
+		/// <summary>
+		/// The place, where you can configure the provider, using params passed by user. 
+		/// It's relevant for non-native providers only.
+		/// </summary>
+		/// <param name="providerParams">Params of this provider, passed during Profile initialization.</param>
+		public virtual void Configure(Dictionary<string, string> providerParams) {}
+		
 		// TODO: irrelevant for now. Will be updated soon.
 		//		public abstract void GetFeed(FeedSuccess success, FeedFailed fail);
 

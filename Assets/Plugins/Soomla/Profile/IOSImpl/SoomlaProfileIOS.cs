@@ -38,16 +38,16 @@ namespace Soomla.Profile {
 		[DllImport ("__Internal")]
 		private static extern bool soomlaProfile_IsLoggedIn(string provider);
 		[DllImport ("__Internal")]
-		private static extern void soomlaProfile_UpdateStatus(string provider, string status, string payload);
+		private static extern void soomlaProfile_UpdateStatus(string provider, string status, string payload, bool showConfirmation, string customMessage);
 		[DllImport ("__Internal")]
 		private static extern void soomlaProfile_UpdateStory(string provider, string message,
 		                                                     string name, string caption, string description,
-		                                                     string link, string pictureUrl, string payload);
+		                                                     string link, string pictureUrl, string payload, bool showConfirmation, string customMessage);
 		[DllImport ("__Internal")]
 		private static extern void soomlaProfile_UploadImage(string provider, string message, string fileName,
-		                                                     string imageBase64Str, string payload);
+		                                                     string imageBase64Str, string payload, bool showConfirmation, string customMessage);
 		[DllImport ("__Internal")]
-		private static extern void soomlaProfile_GetContacts(string provider, string payload);
+		private static extern void soomlaProfile_GetContacts(string provider, bool fromStart, string payload);
 		[DllImport ("__Internal")]
 		private static extern int soomlaProfile_GetStoredUserProfile(string provider, out IntPtr json);
 		[DllImport ("__Internal")]
@@ -57,6 +57,9 @@ namespace Soomla.Profile {
 
 		[DllImport ("__Internal")]
 		private static extern void soomlaProfile_OpenAppRatingPage();
+
+		[DllImport ("__Internal")]
+		private static extern void soomlaProfile_MultiShare(string text, string imageFilePath);
 
 		protected override void _initialize (string customParamsJson) {
 			soomlaProfile_Initialize(customParamsJson);
@@ -74,23 +77,27 @@ namespace Soomla.Profile {
 			return soomlaProfile_IsLoggedIn(provider.ToString());
 		}
 
-		protected override void _updateStatus(Provider provider, string status, string payload){
-			soomlaProfile_UpdateStatus(provider.ToString(), status, payload); 
+		protected override void _updateStatus(Provider provider, string status, string payload, 
+		                                      bool showConfirmation, string customMessage) {
+			soomlaProfile_UpdateStatus(provider.ToString(), status, payload, showConfirmation, customMessage); 
 		}
 
 		protected override void _updateStory(Provider provider, string message, string name, 
 		                                     string caption, string description, string link,
-		                                     string pictureUrl, string payload){
-			soomlaProfile_UpdateStory(provider.ToString(), message, name, caption, description, link, pictureUrl, payload);
+		                                     string pictureUrl, string payload, 
+		                                     bool showConfirmation, string customMessage) {
+			soomlaProfile_UpdateStory(provider.ToString(), message, name, caption, description, link, pictureUrl, payload, showConfirmation, customMessage);
 		}
 
-		protected override void _uploadImage(Provider provider, string message, string fileName, byte[] imageBytes, int jpegQuality, string payload){
+		protected override void _uploadImage(Provider provider, string message, 
+		                                     string fileName, byte[] imageBytes, int jpegQuality, string payload, 
+		                                     bool showConfirmation, string customMessage){
 			string base64Str = Convert.ToBase64String(imageBytes);
-			soomlaProfile_UploadImage(provider.ToString(), message, fileName, base64Str, payload);
+			soomlaProfile_UploadImage(provider.ToString(), message, fileName, base64Str, payload, showConfirmation, customMessage);
 		}
 
-		protected override void _getContacts(Provider provider, string payload){
-			soomlaProfile_GetContacts(provider.ToString(), payload);
+		protected override void _getContacts(Provider provider, bool fromStart, string payload){
+			soomlaProfile_GetContacts(provider.ToString(), fromStart, payload);
 		}
 
 		protected override UserProfile _getStoredUserProfile(Provider provider) { 
@@ -117,6 +124,11 @@ namespace Soomla.Profile {
 		protected override void _openAppRatingPage() {
 			soomlaProfile_OpenAppRatingPage();
 		}
+
+		protected override void _multiShare(string text, string imageFilePath) {
+			soomlaProfile_MultiShare(text, imageFilePath);
+		}
+
 
 		#endif
 	}

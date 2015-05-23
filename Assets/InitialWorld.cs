@@ -8,6 +8,7 @@ using Soomla.Profile;
 using System.Collections.Generic;
 using System.Linq;
 using Soomla.Store;
+using System;
 
 public class InitialWorld
 {
@@ -174,16 +175,29 @@ public class InitialWorld
 
             Gate bGate = new BalanceGate(
              "bGate",                              // ID
-             StoreInfo.Currencies[0].ID,                            // Associated Item ID
+             StoreInfo.Currencies[0].ID,           // Associated Item ID
                 600                          // Desired balance
 );
+           
+
             // The gates in this Level's GatesListAND are the 2 gates declared above.
-            currentLevel.Gate = new GatesListAND(
+            currentLevel.Gate = new GatesListOR(
               "gate_" + world.ID + "_level_" + i.ToString(),                    // ID
-              new List<Gate>() {bGate}  // List of Gates
+              new List<Gate>() {gatesListORGenerator(i), prevLevelCompletionGate }  // List of Gates
             );
+         //   currentLevel.Gate = pGate;
         }
     }
+
+    private PurchasableGate gatesListORGenerator(int i)
+    {
+        PurchasableGate gate = new PurchasableGate(
+              "LevelLock_W1_L" + i.ToString() + "_ID",              // ID
+               StoreInfo.GetItemByItemId("LevelLock_W1_L" + i.ToString() + "_ID").ID               // Associated item ID
+            );
+        return gate;
+    }
+
 
     //
     // Various event handling methods

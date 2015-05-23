@@ -7,6 +7,7 @@ public class StarsHandler : MonoBehaviour {
     public Sprite m_ActiveStar;
     public Sprite m_NotActiveStar;
 
+
     void Start()
     {
      //   SetActiveStarSprite(false);

@@ -1,24 +1,6 @@
 fileFormatVersion: 2
 guid: 93cbcedfbcc7844aa98b9f92d957d04e
-timeCreated: 1431015215
-licenseType: Free
-PluginImporter:
-  serializedVersion: 1
-  iconMap: {}
-  executionOrder: {}
-  isPreloaded: 0
-  platformData:
-    Android:
-      enabled: 1
-      settings:
-        CPU: ARMv7
-    Any:
-      enabled: 0
-      settings: {}
-    Editor:
-      enabled: 0
-      settings:
-        DefaultValueInitialized: true
+DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 

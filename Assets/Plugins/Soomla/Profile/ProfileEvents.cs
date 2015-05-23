@@ -334,7 +334,9 @@ namespace Soomla.Profile {
 
 			JSONObject payloadJSON = new JSONObject(eventJson ["payload"].str);
 
-			ProfileEvents.OnGetContactsStarted (provider, 0, ProfilePayload.GetUserPayload (payloadJSON));
+			bool fromStart = eventJson["fromStart"].b;
+
+			ProfileEvents.OnGetContactsStarted (provider, fromStart, ProfilePayload.GetUserPayload (payloadJSON));
 		}
 
 		/// <summary>
@@ -351,6 +353,8 @@ namespace Soomla.Profile {
 			
 			Provider provider = Provider.fromInt ((int)eventJson["provider"].n);
 
+			bool hasMore = eventJson["hasMore"].b;
+
 			JSONObject payloadJSON = new JSONObject(eventJson ["payload"].str);
 
 			JSONObject userProfilesArray = eventJson ["contacts"];
@@ -362,9 +366,9 @@ namespace Soomla.Profile {
 			SocialPageData<UserProfile> data = new SocialPageData<UserProfile>();
 			data.PageData = userProfiles;
 			data.PageNumber = 0;
-			data.HasMore = false;
+			data.HasMore = hasMore;
 				                
-			ProfileEvents.OnGetContactsFinished (provider, data, ProfilePayload.GetUserPayload(payloadJSON));
+			ProfileEvents.OnGetContactsFinished(provider, data, ProfilePayload.GetUserPayload(payloadJSON));
 		}
 
 		/// <summary>
@@ -384,7 +388,9 @@ namespace Soomla.Profile {
 
 			JSONObject payloadJSON = new JSONObject(eventJson ["payload"].str);
 
-			ProfileEvents.OnGetContactsFailed (provider, 0, errorMessage, ProfilePayload.GetUserPayload(payloadJSON));
+			bool fromStart = eventJson["fromStart"].b;
+
+			ProfileEvents.OnGetContactsFailed (provider, errorMessage, fromStart, ProfilePayload.GetUserPayload(payloadJSON));
 		}
 
 		/// <summary>
@@ -476,11 +482,11 @@ namespace Soomla.Profile {
 
 		public static Action<Provider, SocialActionType, string> OnSocialActionCancelled = delegate {};
 
-		public static Action<Provider, int, string, string> OnGetContactsFailed = delegate {};
+		public static Action<Provider, string, bool, string> OnGetContactsFailed = delegate {};
 		
 		public static Action<Provider, SocialPageData<UserProfile>, string> OnGetContactsFinished = delegate {};
 		
-		public static Action<Provider, int, string> OnGetContactsStarted = delegate {};
+		public static Action<Provider, bool, string> OnGetContactsStarted = delegate {};
 
 		public static Action<Provider, string> OnGetFeedFailed = delegate {};
 		
@@ -540,9 +546,9 @@ namespace Soomla.Profile {
 			protected virtual void _pushEventSocialActionFinished(Provider provider, SocialActionType actionType, string payload){}
 			protected virtual void _pushEventSocialActionCancelled(Provider provider, SocialActionType actionType, string payload){}
 			protected virtual void _pushEventSocialActionFailed(Provider provider, SocialActionType actionType, string message, string payload){}
-			protected virtual void _pushEventGetContactsStarted(Provider provider, int pageNumber, string payload){}
+			protected virtual void _pushEventGetContactsStarted(Provider provider, bool fromStart, string payload){}
 			protected virtual void _pushEventGetContactsFinished(Provider provider, SocialPageData<UserProfile> contactsPage, string payload){}
-			protected virtual void _pushEventGetContactsFailed(Provider provider, int pageNumber, string message, string payload){}
+			protected virtual void _pushEventGetContactsFailed(Provider provider, string message, bool fromStart, string payload){}
 			protected virtual void _pushEventInviteStarted(Provider provider, string payload){}
 			protected virtual void _pushEventInviteFinished(Provider provider, string requestId, List<string> invitedIds, string payload){}
 			protected virtual void _pushEventInviteFailed(Provider provider, string message, string payload){}

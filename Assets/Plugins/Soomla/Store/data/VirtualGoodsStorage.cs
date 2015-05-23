@@ -292,7 +292,7 @@ namespace Soomla.Store
 			
 			if (string.IsNullOrEmpty(upItemId)) {
 				SoomlaUtils.LogDebug(TAG, "You tried to fetch the current upgrade of " + good.ItemId
-				                     + " but there's not upgrade to it.");
+				                     + " but there's no upgrade for it.");
 				return null;
 			}
 			

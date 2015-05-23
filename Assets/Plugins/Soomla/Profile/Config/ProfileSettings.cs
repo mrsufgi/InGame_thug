@@ -54,6 +54,8 @@ namespace Soomla.Profile
 //		GUIContent fbAppId = new GUIContent("FB app Id:");
 //		GUIContent fbAppNS = new GUIContent("FB app namespace:");
 
+		GUIContent fbPermissionsContent = new GUIContent ("Permissions [?]", "Permissions your app will request from users");
+		
 		GUIContent gpClientId = new GUIContent ("Client ID [?]", "Client id of your google+ app (iOS only)");
 
 		GUIContent twCustKey = new GUIContent ("Consumer Key [?]", "Consumer key of your twitter app");
@@ -269,6 +271,15 @@ namespace Soomla.Profile
 		void DrawPlatformParams(string socialPlatform, bool isDisabled){
 			switch(socialPlatform)
 			{
+			case "facebook":
+				EditorGUI.BeginDisabledGroup(isDisabled);
+				EditorGUILayout.BeginHorizontal();
+				EditorGUILayout.Space();
+				EditorGUILayout.LabelField(fbPermissionsContent,  GUILayout.Width(150), SoomlaEditorScript.FieldHeight);
+				FBPermissions = EditorGUILayout.TextField(FBPermissions, SoomlaEditorScript.FieldHeight);
+				EditorGUILayout.EndHorizontal();
+				EditorGUI.EndDisabledGroup();
+				break;
 			case "google":
 				EditorGUI.BeginDisabledGroup(isDisabled);
 				EditorGUILayout.BeginHorizontal();
@@ -404,6 +415,28 @@ namespace Soomla.Profile
 				}
 			}
 		}
+
+		public static string FB_PERMISSIONS_DEFAULT = "email,publish_action,user_birthday,user_photos,user_friends,read_stream";
+
+
+		public static string FBPermissions
+		{
+			get {
+				string value;
+				return SoomlaEditorScript.Instance.SoomlaSettings.TryGetValue("FBPermissions", out value) ? value : FB_PERMISSIONS_DEFAULT;
+			}
+			set
+			{
+				string v;
+				SoomlaEditorScript.Instance.SoomlaSettings.TryGetValue("FBPermissions", out v);
+				if (v != value)
+				{
+					SoomlaEditorScript.Instance.setSettingsValue("FBPermissions",value);
+					SoomlaEditorScript.DirtyEditor ();
+				}
+			}
+		}
+
 
 		/** GOOGLE+ **/
 

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Soomla.Levelup;
 using System.Collections.Generic;
 using System.Linq;
+using Soomla.Store;
 
 public class GUILevelSelectCreator : MonoBehaviour {
 
@@ -35,29 +36,44 @@ public class GUILevelSelectCreator : MonoBehaviour {
                 j++;
             }
             currentInstantiatedLevel = (Level)m_currentWorld.GetInnerWorldAt(i);
-            
-              //  print(currentInstantiatedLevel.Scores.Values.ElementAt<Score>(1).ID);
+
+            //  print(currentInstantiatedLevel.Scores.Values.ElementAt<Score>(1).ID);
 
             //create a new item, name it, and set the parent
-
+            bool v_LockedLevelFlag = true;
+            LockedLevelHandler lockedLevelHandler = null;
             if (i > 0)
             {
-                currentInstantiatedLevel.Gate.Open();
+             //   currentInstantiatedLevel.Gate.Open();
             }
-                if (currentInstantiatedLevel.CanStart())
+            if (currentInstantiatedLevel.CanStart())
 
-                {
-                    newItem = Instantiate(OpenLevel) as GameObject;
-                }
-                else
-                {
-                    newItem = Instantiate(LockedLevel) as GameObject;
-                }
-            
+            {
+                v_LockedLevelFlag = false;
+                newItem = Instantiate(OpenLevel) as GameObject;
+            }
+            else
+            {
+                v_LockedLevelFlag = true;
+                newItem = Instantiate(LockedLevel) as GameObject;
+                lockedLevelHandler = newItem.GetComponent<LockedLevelHandler>();
+                lockedLevelHandler.LockedLevel = currentInstantiatedLevel;
+
+            }
+
             newItem.name = gameObject.name + " item at (" + i + "," + j + ")";
             newItem.transform.parent = gameObject.transform;
             newItem.transform.localScale = new Vector3(0.9f, 0.9f, 1);
-            newItem.GetComponentInChildren<Text>().text = i + 1 + "";
+
+            if (!v_LockedLevelFlag)
+            {
+                newItem.GetComponentInChildren<Text>().text = i + 1 + "";
+            } else
+            {
+                PurchasableGate pg = Util.GetPurchasableGateInORList((GatesListOR) currentInstantiatedLevel.Gate);
+                double price =  Util.GetVirtualItemPriceByID(pg.AssociatedItemId);
+                newItem.GetComponentInChildren<Text>().text = price + "";
+            }
 
             // Handle stars (active
             StarsHandler[] sh = newItem.GetComponentsInChildren<StarsHandler>();

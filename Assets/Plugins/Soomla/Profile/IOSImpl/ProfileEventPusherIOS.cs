@@ -47,11 +47,11 @@ namespace Soomla.Profile {
 		[DllImport ("__Internal")]
 		private static extern void soomlaProfile_PushEventSocialActionFailed(string provider, string actionType, string message, string payload);
 		[DllImport ("__Internal")]
-		private static extern void soomlaProfile_PushEventGetContactsStarted(string provider, string payload);
+		private static extern void soomlaProfile_PushEventGetContactsStarted(string provider, bool fromStart, string payload);
 		[DllImport ("__Internal")]
-		private static extern void soomlaProfile_PushEventGetContactsFinished(string provider, string userProfilesJson, string payload);
+		private static extern void soomlaProfile_PushEventGetContactsFinished(string provider, string userProfilesJson, string payload, bool hasNext);
 		[DllImport ("__Internal")]
-		private static extern void soomlaProfile_PushEventGetContactsFailed(string provider, string message, string payload);
+		private static extern void soomlaProfile_PushEventGetContactsFailed(string provider, string message, bool fromStart, string payload);
 
 
 		// event pushing back to native (when using FB Unity SDK)
@@ -100,9 +100,9 @@ namespace Soomla.Profile {
 			if (SoomlaProfile.IsProviderNativelyImplemented(provider)) return;
 			soomlaProfile_PushEventSocialActionFailed(provider.ToString(), actionType.ToString(), message, payload);
 		}
-		protected override void _pushEventGetContactsStarted (Provider provider, int pageNumber, string payload) {
+		protected override void _pushEventGetContactsStarted (Provider provider, bool fromStart, string payload) {
 			if (SoomlaProfile.IsProviderNativelyImplemented(provider)) return;
-			soomlaProfile_PushEventGetContactsStarted(provider.ToString(), payload);
+			soomlaProfile_PushEventGetContactsStarted(provider.ToString(), fromStart, payload);
 		}
 		protected override void _pushEventGetContactsFinished (Provider provider, SocialPageData<UserProfile> contactsPage, string payload) {
 			if (SoomlaProfile.IsProviderNativelyImplemented(provider)) return;
@@ -112,11 +112,11 @@ namespace Soomla.Profile {
 			}
 			JSONObject contacts = new JSONObject(profiles.ToArray());
 
-			soomlaProfile_PushEventGetContactsFinished(provider.ToString(), contacts.ToString(), payload);
+			soomlaProfile_PushEventGetContactsFinished(provider.ToString(), contacts.ToString(), payload, contactsPage.HasMore);
 		}
-		protected override void _pushEventGetContactsFailed (Provider provider, int pageNumber, string message, string payload) {
+		protected override void _pushEventGetContactsFailed (Provider provider, string message, bool fromStart, string payload) {
 			if (SoomlaProfile.IsProviderNativelyImplemented(provider)) return;
-			soomlaProfile_PushEventGetContactsFailed(provider.ToString(), message, payload);
+			soomlaProfile_PushEventGetContactsFailed(provider.ToString(), message, fromStart, payload);
 		}
 #endif
 	}

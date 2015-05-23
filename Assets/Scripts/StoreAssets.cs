@@ -7,7 +7,7 @@ public class StoreAssets : IStoreAssets
 {
     public int GetVersion()
     {
-        return 0;
+        return 4;
     }
 
     // NOTE: Even if you have no use in one of these functions, you still need to
@@ -20,7 +20,9 @@ public class StoreAssets : IStoreAssets
 
     public VirtualGood[] GetGoods()
     {
-        return new VirtualGood[] { SHIELD_GOOD, NO_ADS_LTVG };
+        return new VirtualGood[] { WORLD_ONE_LOCK_LEVEL_01, WORLD_ONE_LOCK_LEVEL_02, WORLD_ONE_LOCK_LEVEL_03, WORLD_ONE_LOCK_LEVEL_04, WORLD_ONE_LOCK_LEVEL_05, WORLD_ONE_LOCK_LEVEL_06,
+        WORLD_ONE_LOCK_LEVEL_07, WORLD_ONE_LOCK_LEVEL_08, WORLD_ONE_LOCK_LEVEL_09, WORLD_ONE_LOCK_LEVEL_10, WORLD_ONE_LOCK_LEVEL_11, WORLD_ONE_LOCK_LEVEL_12
+        };
     }
 
     public VirtualCurrencyPack[] GetCurrencyPacks()
@@ -55,15 +57,126 @@ public class StoreAssets : IStoreAssets
       )
     );
 
-    /** Virtual Goods **/
+    /** LEVEL LOCKS **/
 
-    public static VirtualGood SHIELD_GOOD = new SingleUseVG(
-      "Shield",                             // Name
-      "Protect yourself from enemies",      // Description
-      "shield_ID",                          // Item ID
+    public static VirtualGood WORLD_ONE_LOCK_LEVEL_01 = new LifetimeVG(
+      "LevelLock",                             // Name
+      "open level gate",      // Description
+      "LevelLock_W1_L1_ID",                          // Item ID
       new PurchaseWithVirtualItem(          // Purchase type (with virtual currency)
        "coin_currency_ID",                     // ID of the item used to pay with
-        225                                    // Price (amount of coins)
+        1000                                    // Price (amount of coins)
+      )
+    );
+
+    public static VirtualGood WORLD_ONE_LOCK_LEVEL_02 = new LifetimeVG(
+      "LevelLock02",                             // Name
+      "open level gate",      // Description
+      "LevelLock_W1_L2_ID",                          // Item ID
+      new PurchaseWithVirtualItem(          // Purchase type (with virtual currency)
+       "coin_currency_ID",                     // ID of the item used to pay with
+        2000                                    // Price (amount of coins)
+      )
+    );
+
+    public static VirtualGood WORLD_ONE_LOCK_LEVEL_03 = new LifetimeVG(
+      "LevelLock03",                             // Name
+      "open level gate",      // Description
+      "LevelLock_W1_L3_ID",                          // Item ID
+      new PurchaseWithVirtualItem(          // Purchase type (with virtual currency)
+       "coin_currency_ID",                     // ID of the item used to pay with
+        3000                                    // Price (amount of coins)
+      )
+    );
+
+    public static VirtualGood WORLD_ONE_LOCK_LEVEL_04 = new LifetimeVG(
+  "LevelLock04",                             // Name
+  "open level gate",      // Description
+  "LevelLock_W1_L4_ID",                          // Item ID
+  new PurchaseWithVirtualItem(          // Purchase type (with virtual currency)
+   "coin_currency_ID",                     // ID of the item used to pay with
+    1000                                    // Price (amount of coins)
+  )
+);
+
+    public static VirtualGood WORLD_ONE_LOCK_LEVEL_05 = new LifetimeVG(
+      "LevelLock05",                             // Name
+      "open level gate",      // Description
+      "LevelLock_W1_L5_ID",                          // Item ID
+      new PurchaseWithVirtualItem(          // Purchase type (with virtual currency)
+       "coin_currency_ID",                     // ID of the item used to pay with
+        2000                                    // Price (amount of coins)
+      )
+    );
+
+    public static VirtualGood WORLD_ONE_LOCK_LEVEL_06= new LifetimeVG(
+      "LevelLock06",                             // Name
+      "open level gate",      // Description
+      "LevelLock_W1_L6_ID",                          // Item ID
+      new PurchaseWithVirtualItem(          // Purchase type (with virtual currency)
+       "coin_currency_ID",                     // ID of the item used to pay with
+        3500                                    // Price (amount of coins)
+      )
+    );
+
+
+    public static VirtualGood WORLD_ONE_LOCK_LEVEL_07 = new LifetimeVG(
+   "LevelLock",                             // Name
+   "open level gate",      // Description
+   "LevelLock_W1_L7_ID",                          // Item ID
+   new PurchaseWithVirtualItem(          // Purchase type (with virtual currency)
+    "coin_currency_ID",                     // ID of the item used to pay with
+     1000                                    // Price (amount of coins)
+   )
+ );
+
+    public static VirtualGood WORLD_ONE_LOCK_LEVEL_08 = new LifetimeVG(
+      "LevelLock02",                             // Name
+      "open level gate",      // Description
+      "LevelLock_W1_L8_ID",                          // Item ID
+      new PurchaseWithVirtualItem(          // Purchase type (with virtual currency)
+       "coin_currency_ID",                     // ID of the item used to pay with
+        2000                                    // Price (amount of coins)
+      )
+    );
+
+    public static VirtualGood WORLD_ONE_LOCK_LEVEL_09 = new LifetimeVG(
+      "LevelLock03",                             // Name
+      "open level gate",      // Description
+      "LevelLock_W1_L9_ID",                          // Item ID
+      new PurchaseWithVirtualItem(          // Purchase type (with virtual currency)
+       "coin_currency_ID",                     // ID of the item used to pay with
+        3000                                    // Price (amount of coins)
+      )
+    );
+
+    public static VirtualGood WORLD_ONE_LOCK_LEVEL_10 = new LifetimeVG(
+  "LevelLock04",                             // Name
+  "open level gate",      // Description
+  "LevelLock_W1_L10_ID",                          // Item ID
+  new PurchaseWithVirtualItem(          // Purchase type (with virtual currency)
+   "coin_currency_ID",                     // ID of the item used to pay with
+    1000                                    // Price (amount of coins)
+  )
+);
+
+    public static VirtualGood WORLD_ONE_LOCK_LEVEL_11 = new LifetimeVG(
+      "LevelLock05",                             // Name
+      "open level gate",      // Description
+      "LevelLock_W1_L11_ID",                          // Item ID
+      new PurchaseWithVirtualItem(          // Purchase type (with virtual currency)
+       "coin_currency_ID",                     // ID of the item used to pay with
+        2000                                    // Price (amount of coins)
+      )
+    );
+
+    public static VirtualGood WORLD_ONE_LOCK_LEVEL_12 = new LifetimeVG(
+      "LevelLock06",                             // Name
+      "open level gate",      // Description
+      "LevelLock_W1_L12_ID",                          // Item ID
+      new PurchaseWithVirtualItem(          // Purchase type (with virtual currency)
+       "coin_currency_ID",                     // ID of the item used to pay with
+        3500                                    // Price (amount of coins)
       )
     );
 
@@ -81,7 +194,14 @@ public class StoreAssets : IStoreAssets
     /** Virtual Categories **/
 
     public static VirtualCategory GENERAL_CATEGORY = new VirtualCategory(
-      "General", new List<string>(new string[] { SHIELD_GOOD.Name })
+      "General", new List<string>(new string[] { WORLD_ONE_LOCK_LEVEL_01.ID, WORLD_ONE_LOCK_LEVEL_02.ID, WORLD_ONE_LOCK_LEVEL_03.ID })
+    );
+
+    public static VirtualCategory WORLD_LOCKS = new VirtualCategory(
+        "Cakes and Sweets",                         // Name
+    new List<string>(new string[]               // List of item IDs
+        { WORLD_ONE_LOCK_LEVEL_01.ID, WORLD_ONE_LOCK_LEVEL_02.ID, WORLD_ONE_LOCK_LEVEL_03.ID, WORLD_ONE_LOCK_LEVEL_04.ID, WORLD_ONE_LOCK_LEVEL_05.ID, WORLD_ONE_LOCK_LEVEL_06.ID,
+        WORLD_ONE_LOCK_LEVEL_07.ID, WORLD_ONE_LOCK_LEVEL_08.ID, WORLD_ONE_LOCK_LEVEL_09.ID, WORLD_ONE_LOCK_LEVEL_10.ID, WORLD_ONE_LOCK_LEVEL_11.ID, WORLD_ONE_LOCK_LEVEL_12.ID})
     );
 
 }
