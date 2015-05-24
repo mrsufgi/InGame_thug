@@ -1269,7 +1269,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22437116, guid: 82fe156de19b6114fbc377944a5c7775, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 88
+      value: 86.1609192
       objectReference: {fileID: 0}
     - target: {fileID: 22437116, guid: 82fe156de19b6114fbc377944a5c7775, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -1301,7 +1301,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22484196, guid: 82fe156de19b6114fbc377944a5c7775, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 163.678162
       objectReference: {fileID: 0}
     - target: {fileID: 22484196, guid: 82fe156de19b6114fbc377944a5c7775, type: 2}
       propertyPath: m_SizeDelta.y
@@ -1534,8 +1534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532cad422dff769489b5a7510b0cfa36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OpenLevel: {fileID: 131682, guid: c391713ce32412e4aaeaef86302586e0, type: 2}
-  LockedLevel: {fileID: 116512, guid: ed47ebc0ebdfd42499a65341bc9a0013, type: 2}
+  m_LevelSelect: {fileID: 108024, guid: fe5edd1fac7ea8743baf4d05c9bdeb49, type: 2}
 --- !u!222 &1903328290
 CanvasRenderer:
   m_ObjectHideFlags: 0

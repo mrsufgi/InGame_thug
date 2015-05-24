@@ -178,12 +178,15 @@ public class InitialWorld
              StoreInfo.Currencies[0].ID,           // Associated Item ID
                 600                          // Desired balance
 );
-           
+            PurchasableGate pGate = new PurchasableGate(
+              "LevelLock_W1_L" + i.ToString() + "_ID",              // ID
+               StoreInfo.GetItemByItemId("LevelLock_W1_L" + i.ToString() + "_ID").ID               // Associated item ID
+            );
 
             // The gates in this Level's GatesListAND are the 2 gates declared above.
             currentLevel.Gate = new GatesListOR(
               "gate_" + world.ID + "_level_" + i.ToString(),                    // ID
-              new List<Gate>() {gatesListORGenerator(i), prevLevelCompletionGate }  // List of Gates
+              new List<Gate>() {pGate, prevLevelCompletionGate }  // List of Gates
             );
          //   currentLevel.Gate = pGate;
         }
