@@ -47,7 +47,7 @@ public class LevelManager : MonoBehaviour
 	void Start ()
 	{
 		gameOver = false;
-
+		timer.gameObject.SetActive(false);
 		//End Panel
 		panelTimesUp.SetActive (false);
 		scoreTimesUpText.text = "";
@@ -76,6 +76,7 @@ public class LevelManager : MonoBehaviour
 	public void startLevel()
 	{
 
+		timer.gameObject.SetActive(true);
 		Time.timeScale = 1;
 		panelMissionDisplay.SetActive (false);		
 		AudioSource.PlayClipAtPoint (startLevelSound, transform.position);
@@ -189,8 +190,8 @@ public class LevelManager : MonoBehaviour
 		} else {
 			endLevelBtnTxt.text = "Play Again";
 			outputToUser = "Mission Missed" ;
-			outputScoreToUser = "Mission:\n" +
-				levelCongif.levelPointsTarget + " Space Points"+  
+			outputScoreToUser = "Mission: " +
+				levelCongif.levelPointsTarget + 
 					"\nYou Got: " + score;
 		}
 

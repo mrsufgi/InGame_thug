@@ -15,12 +15,23 @@ public class gate : MonoBehaviour {
 
 	void  OnTriggerEnter2D(Collider2D other) 
 	{
+		if(other.tag == "Creature")
+			Debug.Log(this.tag);
 
-		if (other.tag == "Creature") {
+		//Blue
+		if (other.tag == "Creature" && other.name=="Creature_1(Clone)" && this.tag=="gate_L") {
 			Debug.Log (other.name);
 			Animator anim = gameObject.GetComponent<Animator> ();
 			anim.SetTrigger ("StartGateAnimation");
-			anim.SetTrigger (0);
+//			anim.SetTrigger (0);
+			Debug.Log (anim.GetAnimatorTransitionInfo (0)); 
+		}
+		//Orange
+		if (other.tag == "Creature" && other.name =="Creature_2(Clone)" && this.tag=="gate_R") {
+			Debug.Log (other.name);
+			Animator anim = gameObject.GetComponent<Animator> ();
+			anim.SetTrigger ("StartOrangeGateAnimation");
+//			anim.SetTrigger (0);
 			Debug.Log (anim.GetAnimatorTransitionInfo (0)); 
 		}
 	}
