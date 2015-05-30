@@ -47,7 +47,7 @@ MonoBehaviour:
   scoreTimesUpText: {fileID: 0}
   timesUpText: {fileID: 0}
   endLevelBtnTxt: {fileID: 0}
-  startLevelSound: {fileID: 0}
+  startLevelSound: {fileID: 8300000, guid: 57d276855272149c0a43712ae4c9415c, type: 3}
   pauseMenu: {fileID: 0}
   timer: {fileID: 0}
 --- !u!1001 &100100000

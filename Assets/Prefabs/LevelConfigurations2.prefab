@@ -44,24 +44,22 @@ MonoBehaviour:
   startWait: 1
   gates:
   - {fileID: 131236, guid: 60c622ae6889e4e8d9a4ce51d5508d54, type: 2}
-  - {fileID: 131236, guid: 9a544827bc18a4b99a2c77da9bae47d4, type: 2}
-  - {fileID: 155824, guid: 67044430caf934f4aba30e7d0f6a70cf, type: 2}
-  - {fileID: 155824, guid: c189571ff46b949ef94fe38c4d6f9ddc, type: 2}
+  - {fileID: 155320, guid: 67044430caf934f4aba30e7d0f6a70cf, type: 2}
   pointsLeft: {fileID: 174632, guid: 2d66fea0982994b299692e3c33f8f555, type: 2}
   pointsRight: {fileID: 104070, guid: fc001f92961924a639aa3cf9c2fcc459, type: 2}
-  levelPointsTarget: 50
+  levelPointsTarget: 100
   frequency: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
   creatures:
   - {fileID: 170644, guid: e8c1c8ecf58a14d33bc1251499221633, type: 2}
   - {fileID: 170644, guid: e8c1c8ecf58a14d33bc1251499221633, type: 2}
-  - {fileID: 105990, guid: bf4d69da3ffd541f98df15ad547198b0, type: 2}
-  - {fileID: 105990, guid: bf4d69da3ffd541f98df15ad547198b0, type: 2}
+  - {fileID: 170644, guid: e8c1c8ecf58a14d33bc1251499221633, type: 2}
+  - {fileID: 170644, guid: e8c1c8ecf58a14d33bc1251499221633, type: 2}
   - {fileID: 170644, guid: e8c1c8ecf58a14d33bc1251499221633, type: 2}
   - {fileID: 105990, guid: 646470d46ae5b40439ceae561ad8980a, type: 2}
   - {fileID: 105990, guid: 646470d46ae5b40439ceae561ad8980a, type: 2}
-  - {fileID: 170644, guid: bc2e8f4a4daa54c44bc5308e356b7653, type: 2}
-  - {fileID: 170644, guid: bc2e8f4a4daa54c44bc5308e356b7653, type: 2}
-  - {fileID: 170644, guid: bc2e8f4a4daa54c44bc5308e356b7653, type: 2}
+  - {fileID: 105990, guid: 646470d46ae5b40439ceae561ad8980a, type: 2}
+  - {fileID: 105990, guid: 646470d46ae5b40439ceae561ad8980a, type: 2}
+  - {fileID: 105990, guid: 646470d46ae5b40439ceae561ad8980a, type: 2}
   gameLevel: 2
 --- !u!1001 &100100000
 Prefab:
