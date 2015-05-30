@@ -211,3 +211,5 @@ ModelManifest.xml
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+*.meta
