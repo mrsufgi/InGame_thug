@@ -1834,7 +1834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeRemaining: 100
-  maxTime: 30
+  maxTime: 75
   timeText: {fileID: 544615149}
   timeToDecrease: 1
   panel: {fileID: 25434589}
@@ -2326,7 +2326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &929186762
 RectTransform:
   m_ObjectHideFlags: 0
