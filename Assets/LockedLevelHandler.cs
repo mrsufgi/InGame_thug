@@ -13,8 +13,8 @@ public class LockedLevelHandler : MonoBehaviour {
 
     void Start()
     {
-        m_LevelGate = m_LockedLevel.Gate;
-        print(m_LevelGate.ID);
+    //    m_LevelGate = m_LockedLevel.Gate;
+//        print(m_LevelGate.ID);
         m_Button = this.GetComponent<Button>();
         print(m_Button);
         PrefabHandler = GetComponentInParent<GUILevelSelectCreator>();
