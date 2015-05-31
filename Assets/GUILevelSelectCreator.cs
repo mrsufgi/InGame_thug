@@ -98,7 +98,7 @@ public class GUILevelSelectCreator : MonoBehaviour {
         newItem.SetActive(true);
         newItem.GetComponentInChildren<Text>().text = index + 1 + "";
         LevelSelectObject.transform.GetChild(1).gameObject.SetActive(false);
-     //   starCalculator();
+       starCalculator();
     }
 
     private void starCalculator()

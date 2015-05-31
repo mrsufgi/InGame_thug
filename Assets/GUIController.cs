@@ -29,7 +29,7 @@ public class GUIController : MonoBehaviour {
         {
           //  gasCoinText.text = "wohoo";
             // update gasCoins text
-            if (StoreInventory.GetItemBalance("coin_currency_ID") > 0)
+            if (StoreInventory.GetItemBalance("coin_currency_ID") >= 0)
                 gasCoinText.text = "" + StoreInventory.GetItemBalance("coin_currency_ID");
             else
                 gasCoinText.text = "damn";
@@ -58,6 +58,25 @@ public class GUIController : MonoBehaviour {
     public void CollectCoins()
     {
         StoreAssets.COIN_CURRENCY.Give(50);
+    }
+
+    public void CloseLockedPanel()
+    {
+        Util.CloseLockedPanel();
+    }
+
+    public void ClosePlayGamePanel()
+    {
+        Util.ClosePlayGamePanel();
+    }
+
+    public void OpenLockedPanel()
+    {
+        Button b = gameObject.GetComponent<Button>();
+
+        GameObject o = GameObject.FindGameObjectWithTag("LockedLevelPanel");
+        LockedLevelHandler l = o.GetComponent<LockedLevelHandler>();
+        
     }
 
 }

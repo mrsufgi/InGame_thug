@@ -17,6 +17,7 @@ TagManager:
   - Background
   - LevelConfiguration
   - TextPoints
+  - LockedLevelPanel
   layers:
   - Default
   - TransparentFX

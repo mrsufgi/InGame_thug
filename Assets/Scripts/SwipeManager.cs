@@ -53,7 +53,6 @@ public class SwipeManager : MonoBehaviour
         // TODO: you can initiate swipes of object there are not visible (but are already running)
         // you should prevent swipe to effect them if there are no visible item in queue...
 
-        Debug.Log("Swiping");
         Rigidbody2D rigidbody;
         if (gameController.q.Count != 0)
         {
