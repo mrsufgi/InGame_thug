@@ -82,7 +82,6 @@ public class LevelManager : MonoBehaviour
 		AudioSource.PlayClipAtPoint (startLevelSound, transform.position);
 
         if (panelMissionDisplay != null) {
-            Debug.Log("panelMission exist");
 		    panelMissionDisplay.SetActive(false);
         }
 

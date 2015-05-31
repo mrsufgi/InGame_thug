@@ -23,7 +23,6 @@ public class swipe3 : MonoBehaviour {
         lp = touch.position;
  
     }*/
-			Debug.Log("here");
 			
 			if (touch.phase == TouchPhase.Moved) //add the touches to list as the swipe is being made
 			{
