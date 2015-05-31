@@ -91,7 +91,7 @@ public class LevelPauseManager : MonoBehaviour {
 	public void loadLevel4()
 	{
 		Time.timeScale = 1;
-		Application.LoadLevel (4);
+		Application.LoadLevel ("level 1");
 		Debug.Log ("level 4 loaded");
 	}
 
