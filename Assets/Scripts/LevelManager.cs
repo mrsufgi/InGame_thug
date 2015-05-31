@@ -42,21 +42,23 @@ public class LevelManager : MonoBehaviour
 	private int score = 0;
 	private int creaturesArraySize;
 	public Timer timer;
+	private float directionChangeVariable = 1.0f; //changes every time a creature is creates si that they would apear right or left to the screen center
 
 	void Start ()
 	{
+		gameOver = false;
+		timer.gameObject.SetActive(false);
+		//End Panel
 		panelTimesUp.SetActive (false);
 		scoreTimesUpText.text = "";
-		scoreTimesUpText.text = "";
+
+		//Open Pnanel
 		pointsMission.text = getPointsTarget ().ToString ();
 
-		gameOver = false;
-		//		restartText.text = "";
-		//		gameOverText.text = "";
 		score = 0;
-		creaturesArraySize = 10;
-		
 		UpdateScore ();
+
+		creaturesArraySize = 10;
 		spawnValues = levelCongif.spawnValues;
 		spawnWait = levelCongif.spawnWait;
 		startWait = levelCongif.startWait;
@@ -74,6 +76,7 @@ public class LevelManager : MonoBehaviour
 	public void startLevel()
 	{
 
+		timer.gameObject.SetActive(true);
 		Time.timeScale = 1;
 		panelMissionDisplay.SetActive (false);		
 		AudioSource.PlayClipAtPoint (startLevelSound, transform.position);
@@ -120,16 +123,9 @@ public class LevelManager : MonoBehaviour
 			                            gate.transform.position.y,
 			                            gate.transform.position.z);
 
-//			spawnPosition = new Vector3(0,
-//			                           0,
-//			                          0);
 			Quaternion spawnRotation = Quaternion.identity;
 		    spawnRotation = Quaternion.identity;
-			GameObject creature = (GameObject)Instantiate(gate, spawnPosition, spawnRotation);
-
-			/*Update gate color*/
-//			float r,g,b,a;
-//			creature.GetComponent<SpriteRenderer>().color = Color(r,g,b,a);			
+			GameObject creature = (GameObject)Instantiate(gate, spawnPosition, spawnRotation);		
 		}
 	}
 
@@ -151,8 +147,9 @@ public class LevelManager : MonoBehaviour
 				rand = Random.Range (0,10);
 				curCreature = creatures [rand];
 
+				directionChangeVariable *= -1;
                 spawnPosition = new Vector3
-					(Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+					( spawnValues.x + directionChangeVariable * 0.5f, spawnValues.y, spawnValues.z);
 			
 				Quaternion spawnRotation = Quaternion.identity;
 				GameObject creature = (GameObject)Instantiate(curCreature, spawnPosition, spawnRotation);
@@ -193,10 +190,9 @@ public class LevelManager : MonoBehaviour
 		} else {
 			endLevelBtnTxt.text = "Play Again";
 			outputToUser = "Mission Missed" ;
-			outputScoreToUser = "Mission:\n" +
-				levelCongif.levelPointsTarget + " Space Points"+  
+			outputScoreToUser = "Mission: " +
+				levelCongif.levelPointsTarget + 
 					"\nYou Got: " + score;
-
 		}
 
 		timesUpText.text = outputToUser;
@@ -209,15 +205,9 @@ public class LevelManager : MonoBehaviour
 			PlayerPrefs.Save();
 		}
 
-//		highText.text =  "High Score: " + highScore;
 		gameOver = true;
 		StartCoroutine (wait ());
-
-		Debug.Log ("bla");
 		Time.timeScale = 0;
-	
-//		if(gameOverMenu != null)
-//			gameOverMenu.SetActive (true);
 	}
 
     // WHAT? 

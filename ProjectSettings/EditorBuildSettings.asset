@@ -6,14 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/open_screen.unity
+    path: Assets/Scenes/splash_open_screen.unity
   - enabled: 1
-    path: Assets/Scenes/main.unity
-  - enabled: 1
-    path: Assets/Scenes/world.unity
-  - enabled: 1
-    path: Assets/Scenes/level 1.unity
+    path: Assets/Scenes/Tutorial.unity
   - enabled: 1
     path: Assets/Scenes/level.unity
   - enabled: 1
-    path: Assets/Scenes/level 2.unity
+    path: Assets/Scenes/mainMap.unity
