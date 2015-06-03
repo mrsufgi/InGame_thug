@@ -4,7 +4,7 @@ using System.Collections;
 
 public class LevelPauseManager : MonoBehaviour {
 
-	public Canvas settingCanvas;
+	public GameObject settingCanvas;
 	public  Text soundMode;
 	private static AudioSource settingsClip;
 	public static bool isTutorialOpen =  false;
@@ -15,7 +15,7 @@ public class LevelPauseManager : MonoBehaviour {
 		settingsClip = gameObject.GetComponent<AudioSource> ();
 		
 		if (!isTutorialOpen) {
-			settingCanvas.enabled = false;
+            settingCanvas.SetActive(false);
 			settingsClip.Stop ();
 		} else {
 		}
@@ -40,7 +40,7 @@ public class LevelPauseManager : MonoBehaviour {
 	public void resumeTimePause()
 	{
 		Time.timeScale = 1;
-		settingCanvas.enabled = false;
+        settingCanvas.SetActive(false);
 	}
 	
 	
@@ -68,7 +68,7 @@ public class LevelPauseManager : MonoBehaviour {
 	
 	public void openSettings()
 	{
-		settingCanvas.enabled = true;
+		settingCanvas.SetActive(true);
 		if (settingsClip != null) {
 			settingsClip.Play ();
 		}
@@ -76,7 +76,7 @@ public class LevelPauseManager : MonoBehaviour {
 	
 	public void closeSettings()
 	{
-		settingCanvas.enabled = false;
+        settingCanvas.SetActive(false);
 		if (settingsClip != null) {
 			settingsClip.Stop ();
 		}

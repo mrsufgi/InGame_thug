@@ -71,6 +71,7 @@ public class LevelManager : MonoBehaviour
 		getFrequenciesOfCreatures ();
 
 		q = new Queue<Creature>();
+        startLevel();//TODO:CHANGE IT - JUST FOR TESTING
 	}
 
 	public void startLevel()
@@ -177,14 +178,15 @@ public class LevelManager : MonoBehaviour
 	
 	public void GameOver ()
 	{
+        timer.gameObject.SetActive(false);
 		panelTimesUp.SetActive (true);
 
 		string outputToUser;
 		string outputScoreToUser;
 
-		if (score >= levelCongif.levelPointsTarget) {		
-			outputScoreToUser="";
-			outputToUser = "Well Done! \n Mission Accomplished" ;
+		if (score >= levelCongif.levelPointsTarget) {
+            outputScoreToUser = "You Got: " + score;
+			outputToUser = "Great Job" ;
 			endLevelBtnTxt.text= "Next";
 		} else {
 			endLevelBtnTxt.text = "Play Again";
