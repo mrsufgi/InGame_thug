@@ -60,7 +60,7 @@ public class InitialWorld
           "Point Mission 1",                            // Name
           new List<Reward>() { medalReward },            // Rewards
           "blueWorld_ID_level0_score0",                              // Associated score
-          100                                           // Desired record 
+          50                                           // Desired record 
         );
 
         Mission pointMission2 = new RecordMission(
@@ -68,7 +68,7 @@ public class InitialWorld
        "Point Mission 2",                            // Name
        new List<Reward>() { medalReward },            // Rewards
        "blueWorld_ID_level0_score0",                              // Associated score
-       200                                           // Desired record 
+       100                                           // Desired record 
      );
 
         Mission pointMission3 = new RecordMission(

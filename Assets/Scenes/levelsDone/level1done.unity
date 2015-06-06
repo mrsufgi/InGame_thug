@@ -1182,6 +1182,14 @@ Prefab:
       propertyPath: spawnWait
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
+      propertyPath: pointsLeft
+      value: 
+      objectReference: {fileID: 176906, guid: e10c4231750304e6887a8bd920eaab3e, type: 2}
+    - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
+      propertyPath: pointsRight
+      value: 
+      objectReference: {fileID: 176906, guid: e10c4231750304e6887a8bd920eaab3e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
   m_IsPrefabParent: 0

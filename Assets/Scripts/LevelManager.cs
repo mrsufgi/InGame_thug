@@ -2,15 +2,19 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Soomla.Levelup;
 
 public class LevelManager : MonoBehaviour
 {
 	public LevelConfiguration levelCongif;
 	private static int level=3;
 
-	/* GUI */	
-//	public GameObject gameOverMenu;
-	public Text scoreText;
+    /* GUI */
+    //	public GameObject gameOverMenu;
+    private Score PointScore;
+    public static int currentLevelIndex = 1;
+    public static Level CurrentLevel = null;
+    public Text scoreText;
 	public Text pointsMission;  //from mission canvas
     public GameObject panelMissionDisplay; 
 	public GameObject panelTimesUp; 	
@@ -47,6 +51,10 @@ public class LevelManager : MonoBehaviour
 
 	void Start ()
 	{
+        // Soomla stuff // 
+        PointScore = CurrentLevel.GetSingleScore();
+        print(PointScore.Latest);
+
 		gameOver = false;
 		timer.gameObject.SetActive(false);
 		//End Panel
@@ -77,6 +85,9 @@ public class LevelManager : MonoBehaviour
 
 	public void startLevel()
 	{
+        //Soomla
+        CurrentLevel.Start();
+        //
 
 		timer.gameObject.SetActive(true);
 		Time.timeScale = 1;
@@ -155,35 +166,50 @@ public class LevelManager : MonoBehaviour
                 q.Enqueue(creature.GetComponent<Creature>());
 				yield return new WaitForSeconds (spawnWait);
 			}
+            if (CurrentLevel.Missions[0].Complete() || !CurrentLevel.Missions[0].IsAvailable())
+            {
+                CurrentLevel.End(true);
+                print("youasokjakslj;klsjg");
+                break;
+            }
+            else
+            {
+                CurrentLevel.End(false);
+                print("yo");
+                break;
+            }
+            //yield return new WaitForSeconds (waveWait);
 
-			//yield return new WaitForSeconds (waveWait);
-		}
+        }
 	}
 
-    // export Score stuff into a different class.. really.. 	
+    	
 	public void AddScore (int newScoreValue)
 	{
-		int tempScore = score;
-		if ((tempScore += newScoreValue) < 0)//cannot be negative
-			return;
-		score += newScoreValue;
-		UpdateScore ();
+		if (newScoreValue > 0)
+        {
+            PointScore.Inc(newScoreValue);
+            UpdateScore();
+        }
 	}
 	
 	void UpdateScore ()
 	{
-		scoreText.text =  ""+score;
+		scoreText.text =  ""+ PointScore.GetTempScore();
 	}
 	
 	public void GameOver ()
 	{
+       
+
+
         timer.gameObject.SetActive(false);
 		panelTimesUp.SetActive (true);
 
 		string outputToUser;
 		string outputScoreToUser;
 
-		if (score >= levelCongif.levelPointsTarget) {
+		if (CurrentLevel.Missions[0].IsCompleted()) {
             outputScoreToUser = "You Got: " + score;
 			outputToUser = "Great Job" ;
 			endLevelBtnTxt.text= "Next";
@@ -251,3 +277,4 @@ public class LevelManager : MonoBehaviour
 	}
 
 }
+
