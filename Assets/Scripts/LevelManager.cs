@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
 	public Text endLevelBtnTxt;
 
 	public AudioClip startLevelSound;
+    public AudioClip gameplaySound;
 	//	public Text highText;
 //	public Text restartText;
 
@@ -71,7 +72,7 @@ public class LevelManager : MonoBehaviour
 		getFrequenciesOfCreatures ();
 
 		q = new Queue<Creature>();
-        startLevel();//TODO:CHANGE IT - JUST FOR TESTING
+        //startLevel();//TODO:CHANGE IT - JUST FOR TESTING
 	}
 
 	public void startLevel()
@@ -81,7 +82,8 @@ public class LevelManager : MonoBehaviour
 		Time.timeScale = 1;
 		panelMissionDisplay.SetActive (false);		
 		AudioSource.PlayClipAtPoint (startLevelSound, transform.position);
-
+        AudioSource.PlayClipAtPoint(gameplaySound, transform.position);
+        
         if (panelMissionDisplay != null) {
 		    panelMissionDisplay.SetActive(false);
         }

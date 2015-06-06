@@ -78,7 +78,7 @@ public class LevelPauseManager : MonoBehaviour {
 	{
         settingCanvas.SetActive(false);
 		if (settingsClip != null) {
-			settingsClip.Stop ();
+			//settingsClip.Stop ();
 		}
 	}
 	
@@ -87,6 +87,11 @@ public class LevelPauseManager : MonoBehaviour {
 		isTutorialOpen = true;
 		Application.LoadLevel ("Tutorial");
 	}
+
+    public void loadWorld()
+    {
+        Application.LoadLevel("world");
+    }
 
 	public void loadLevel4()
 	{
