@@ -9,37 +9,41 @@ using Soomla.Profile;
 public class MainGame : MonoBehaviour {
 
     private static LevelUpEventHandler handler = new LevelUpEventHandler();
+    public static bool firstRun = true;
     // Use this for initialization
     void Start () {
         // Initialize Event Handler
 
-        // CLEAR PLAYERPREF!!!!!!!!!!!!!!
-          PlayerPrefs.DeleteAll();
+        if (firstRun)
+        {
+            // cleaR PLAYERPREF!!!!!!!!!!!!!!
+          //  PlayerPrefs.DeleteAll();
 
 
-      //  SoomlaHighway.Initialize();
-      //  IStoreAssets store = new StoreAssets();
-      //  store.GetVersion();
-//        SoomlaHighway.Initialize();
-        StoreAssets store = new StoreAssets();
-        print(store);
-        store.GetVersion();
-        SoomlaStore.Initialize(store);
-        // Initialize LevelUp
-       // World mainWorld = new InitialWorld().createMainWorld();
-        
-         
-        
-        SoomlaLevelUp.Initialize(new InitialWorld().createMainWorld());
+            //  SoomlaHighway.Initialize();
+            //  IStoreAssets store = new StoreAssets();
+            //  store.GetVersion();
+            //        SoomlaHighway.Initialize();
+            StoreAssets store = new StoreAssets();
+            print(store);
+            store.GetVersion();
+            SoomlaStore.Initialize(store);
+            // Initialize LevelUp
+            // World mainWorld = new InitialWorld().createMainWorld();
 
-        //TODO: should catch an event on FIRST RUN 
-        StoreAssets.COIN_CURRENCY.Give(10000);
-        
-	}
+
+
+            SoomlaLevelUp.Initialize(new InitialWorld().createMainWorld());
+
+            //TODO: should catch an event on FIRST RUN 
+            StoreAssets.COIN_CURRENCY.Give(10000);
+            firstRun = false;
+        }
+        }
 
     void Awake()
     {
-    //    DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame

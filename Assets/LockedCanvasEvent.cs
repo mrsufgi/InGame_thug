@@ -25,7 +25,7 @@ public class LockedCanvasEvent : MonoBehaviour {
         LevelPrice = transform.Find("Locked_Panel/GasCoinsPanel/txt_GasPoints").gameObject.GetComponent<Text>();
         m_UnlockButton = transform.Find("Locked_Panel/btn_Unlock").gameObject.GetComponent<Button>();
 
-        print(LevelName.text);
+//        print(LevelName.text);
 
 
     }
@@ -59,7 +59,7 @@ public class LockedCanvasEvent : MonoBehaviour {
         // set price text
             LevelPrice.text = i_Price + "";
         // set level name
-        LevelName.text = string.Format("Level {0}", i_Index);
+        LevelName.text = string.Format("Level {0}", i_Index + 1);
 
         //
     }
@@ -85,8 +85,10 @@ public class LockedCanvasEvent : MonoBehaviour {
     public void BuyGate()
     {
         LockedLevelHandler l = m_Triggered.GetComponent<LockedLevelHandler>();
-        l.BuyGate();
-        gameObject.GetComponent<Canvas>().enabled = false;
+        if (l.BuyGate())
+        {
+            gameObject.GetComponent<Canvas>().enabled = false;
+        }
 
     }
 

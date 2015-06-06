@@ -42,7 +42,7 @@ public class GUILevelSelectCreator : MonoBehaviour
             v_LockedLevelFlag = true;
             v_LockedLevelFlag = (currentInstantiatedLevel.CanStart()) ? true : false;
 
-            print(v_LockedLevelFlag);
+         //   print(v_LockedLevelFlag);
 
             // NEW BUTTON - ADD TO LEVEL ARRAY
             GameObject LevelSelectObject = Instantiate(m_LevelSelect) as GameObject;
@@ -78,7 +78,7 @@ public class GUILevelSelectCreator : MonoBehaviour
 
         //
         LockedLevelHandler lockedLevelHandler = newItem.GetComponent<LockedLevelHandler>();
-  
+
         lockedLevelHandler.LockedLevel = currentInstantiatedLevel;
         lockedLevelHandler.Index = index;
         PurchasableGate pg = Util.GetPurchasableGateInORList((GatesListOR)currentInstantiatedLevel.Gate);
@@ -92,12 +92,16 @@ public class GUILevelSelectCreator : MonoBehaviour
     public void ActiveLevelEnbale(int index)
     {
         GameObject LevelSelectObject = m_Levels[index];
-        print(LevelSelectObject.name);
+//        print(LevelSelectObject.name);
         newItem = LevelSelectObject.transform.GetChild(0).gameObject;
         newItem.SetActive(true);
         newItem.GetComponentInChildren<Text>().text = index + 1 + "";
         LevelSelectObject.transform.GetChild(1).gameObject.SetActive(false);
         starCalculator();
+
+        ActiveLevelHandler activeLevelHandler = newItem.GetComponent<ActiveLevelHandler>();
+        activeLevelHandler.Level = currentInstantiatedLevel;
+        activeLevelHandler.Index = index;
     }
 
     private void starCalculator()
@@ -120,14 +124,30 @@ public class GUILevelSelectCreator : MonoBehaviour
             //}
             Score starRank = currentInstantiatedLevel.Scores.Values.ElementAt<Score>(1);
 
-            if (starRank.HasRecordReached(k + 1))
+            //if (starRank.HasRecordReached(k + 1))
+            //{
+            //    sh[k].SetActiveStarSprite(true);
+            //}
+            //else
+            //{
+            //    sh[k].SetActiveStarSprite(false);
+            //}
+            if (currentInstantiatedLevel.Missions.Count > 0)
             {
-                sh[k].SetActiveStarSprite(true);
-            }
-            else
+                print(currentInstantiatedLevel.Missions[k].ID);
+                if (currentInstantiatedLevel.Missions[k].IsCompleted())
+                {
+                    sh[k].SetActiveStarSprite(true);
+                }
+                else
+                {
+                    print("empty");
+                    sh[k].SetActiveStarSprite(false);
+                }
+            } else
             {
-                sh[k].SetActiveStarSprite(false);
+                print("empty");
             }
         }
+        }
     }
-}

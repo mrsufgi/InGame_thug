@@ -59,7 +59,7 @@ public class InitialWorld
           "pointMission_1_ID",                          // ID
           "Point Mission 1",                            // Name
           new List<Reward>() { medalReward },            // Rewards
-          pointScore.ID,                              // Associated score
+          "blueWorld_ID_level0_score0",                              // Associated score
           100                                           // Desired record 
         );
 
@@ -67,7 +67,7 @@ public class InitialWorld
        "pointMission_2_ID",                          // ID
        "Point Mission 2",                            // Name
        new List<Reward>() { medalReward },            // Rewards
-       pointScore.ID,                              // Associated score
+       "blueWorld_ID_level0_score0",                              // Associated score
        200                                           // Desired record 
      );
 
@@ -75,7 +75,7 @@ public class InitialWorld
       "pointMission_ID_3_ID",                          // ID
       "Point Mission 3",                            // Name
       new List<Reward>() { medalReward },                                       // Rewards
-      pointScore.ID,                              // Associated score
+      "blueWorld_ID_level0_score0",                              // Associated score
       300                                           // Desired record 
     );
 
@@ -99,7 +99,7 @@ public class InitialWorld
           null  // Missions
         );
 
-        starRank.StartValue = 2;
+        starRank.StartValue = 0;
         /** Levels **/
 
         blueWorld.BatchAddLevelsWithTemplates(

@@ -8,7 +8,7 @@ public class DiabledButtonText : MonoBehaviour {
     public Color DisabledTextColor;
   
 
-    void Update () {
+    void Start () {
         Button parent = GetComponentInParent<Button>();
         if (parent.enabled)
         {

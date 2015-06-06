@@ -23,7 +23,11 @@ public class LockedLevelHandler : MonoBehaviour {
         UnlockCanvas = GameObject.FindWithTag("LockedLevelPanel");
 //        print(UnlockCanvas);
         m_Button = this.GetComponent<Button>();
-        m_LevelGate = m_LockedLevel.Gate;
+
+        if (m_LockedLevel != null)
+        {
+            m_LevelGate = m_LockedLevel.Gate;
+        }
         PrefabHandler = GetComponentInParent<GUILevelSelectCreator>();
         m_Button.onClick.AddListener(() => OpenCanvas(m_LockedLevel));
     }
@@ -81,12 +85,20 @@ public class LockedLevelHandler : MonoBehaviour {
 
 
 
-    public void BuyGate()
+    public bool BuyGate()
     {
             if (m_LevelGate.Open()) 
-        {
+          {
             enabled = false;
             PrefabHandler.ActiveLevelEnbale(m_Index);
-           }
+                string level = "level" + (m_Index + 1) + "done";
+                LevelManager.currentLevelIndex = m_Index + 1;
+                LevelManager.CurrentLevel = m_LockedLevel;
+                Application.LoadLevel(level);
+            return true;
+           } else
+        {
+            return false;
+        }
     }
 }
