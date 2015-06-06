@@ -91,12 +91,9 @@ public class LevelManager : MonoBehaviour
 		timer.startTimer ();
 		StartCoroutine (SpawnWaves ());
 	}
-
-
-
+		
 	public void nextLevel()
 	{
-
 		level++;
 		Application.LoadLevel (level);
 	}
@@ -201,12 +198,12 @@ public class LevelManager : MonoBehaviour
 		timesUpText.text = outputToUser;
 		scoreTimesUpText.text =  outputScoreToUser;
 
-		string highScoreKey = "HighScore";
-		int highScore = PlayerPrefs.GetInt (highScoreKey, 0);
-		if (score > highScore) {//update score
-			PlayerPrefs.SetInt (highScoreKey, score);
-			PlayerPrefs.Save();
-		}
+//		string highScoreKey = "HighScore";
+//		int highScore = PlayerPrefs.GetInt (highScoreKey, 0);
+//		if (score > highScore) {//update score
+//			PlayerPrefs.SetInt (highScoreKey, score);
+//			PlayerPrefs.Save();
+//		}
 
 		gameOver = true;
 		StartCoroutine (wait ());
