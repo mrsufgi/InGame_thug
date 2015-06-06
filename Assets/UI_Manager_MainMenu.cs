@@ -61,7 +61,7 @@ public class UI_Manager_MainMenu : MonoBehaviour {
 
 	public void openSettings()
 	{
-        settingCanvas.SetActive(true);
+        settingCanvas.gameObject.GetComponent<Canvas>().enabled = true ;
 		if (settingsClip != null) {
 			settingsClip.Play ();
 		}
@@ -70,11 +70,21 @@ public class UI_Manager_MainMenu : MonoBehaviour {
 	public void closeSettings()
 	{
         Debug.Log("close load");
-        settingCanvas.gameObject.SetActive(false);
+        settingCanvas.gameObject.GetComponent<Canvas>().enabled = false;
 		if (settingsClip != null) {
 			settingsClip.Stop ();
 		}
 	}
+
+    public void closeUnlockedCanvas()
+    {
+        Debug.Log("close load");
+        unlockCanvas.gameObject.GetComponent<Canvas>().enabled = false;
+        if (settingsClip != null)
+        {
+            settingsClip.Stop();
+        }
+    }
 
 
     public void howToPlayTut()

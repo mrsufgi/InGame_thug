@@ -12,16 +12,18 @@ public class LockedLevelHandler : MonoBehaviour {
     private GUILevelSelectCreator PrefabHandler;
     private GameObject UnlockCanvas;
 
-    public delegate void OpenAndSetCanvas(Level o_Level);
+    private PurchasableGate m_PurGate;
+    private double m_Price;
+
+    public delegate void OpenAndSetCanvas(GameObject o_Self, Level o_Level, PurchasableGate o_Gate, int o_Index, double o_Price);
     public static event OpenAndSetCanvas OnOpenCanvas;
     void Start()
     {
     //    txt_LevelName = gameObject.GetComponentInChildren<Text>();
         UnlockCanvas = GameObject.FindWithTag("LockedLevelPanel");
-        print(UnlockCanvas);
+//        print(UnlockCanvas);
         m_Button = this.GetComponent<Button>();
         m_LevelGate = m_LockedLevel.Gate;
-        print(m_Button);
         PrefabHandler = GetComponentInParent<GUILevelSelectCreator>();
         m_Button.onClick.AddListener(() => OpenCanvas(m_LockedLevel));
     }
@@ -32,11 +34,11 @@ public class LockedLevelHandler : MonoBehaviour {
     }
 
 
-    public static void OpenCanvas(Level i_Level)
+    public  void OpenCanvas(Level i_Level)
     {
         if (OnOpenCanvas != null)
         {
-            OnOpenCanvas(i_Level);
+            OnOpenCanvas(gameObject, i_Level,m_PurGate ,m_Index, m_Price);
         }
     }
 
@@ -65,14 +67,25 @@ public class LockedLevelHandler : MonoBehaviour {
         }
     }
 
+    public double Price { get
+        {
+            return m_Price;
+        }
+         set 
+        {
+            m_Price = value;
+        }
+    }
+
+    public PurchasableGate PurchasableGate { get { return m_PurGate; } set { m_PurGate = value; }  }
+
+
+
     public void BuyGate()
     {
-       PurchasableGate gate = Util.GetPurchasableGateInORList((GatesListOR)m_LevelGate);
-       print(gate.ID);
-      gate.Open();
-        if (gate.Open()) 
-      {
-           enabled = false;
+            if (m_LevelGate.Open()) 
+        {
+            enabled = false;
             PrefabHandler.ActiveLevelEnbale(m_Index);
            }
     }

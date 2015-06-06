@@ -7,7 +7,7 @@ public class StoreAssets : IStoreAssets
 {
     public int GetVersion()
     {
-        return 4;
+        return 5;
     }
 
     // NOTE: Even if you have no use in one of these functions, you still need to

@@ -7,7 +7,8 @@ using System.Linq;
 using Soomla.Store;
 using System;
 
-public class GUILevelSelectCreator : MonoBehaviour {
+public class GUILevelSelectCreator : MonoBehaviour
+{
 
     //    public GameObject OpenLevel;
     //   public GameObject LockedLevel;
@@ -22,13 +23,6 @@ public class GUILevelSelectCreator : MonoBehaviour {
     {
         m_currentWorld = SoomlaLevelUp.GetWorld("blueWorld_ID");
         m_Levels = new List<GameObject>();
-        //   levelCount = SoomlaLevelUp.GetLevelCountInWorld(m_currentWorld);
-        //int j = 0;
-        //for (int i = 0; i < levelCount; i++)
-        //{
-        //    //this is used instead of a double for loop because itemCount may not fit perfectly into the rows/columns
-        //    if (i % columnCount == 0)
-        //        j++;
         int j = 0;
 
 
@@ -41,14 +35,13 @@ public class GUILevelSelectCreator : MonoBehaviour {
                 j++;
             }
             currentInstantiatedLevel = (Level)m_currentWorld.GetInnerWorldAt(i);
-            print(currentInstantiatedLevel.ID);
-
-            //  print(currentInstantiatedLevel.Scores.Values.ElementAt<Score>(1).ID);
 
             //create a new item, name it, and set the parent
             bool v_LockedLevelFlag = true;
 
+            v_LockedLevelFlag = true;
             v_LockedLevelFlag = (currentInstantiatedLevel.CanStart()) ? true : false;
+
             print(v_LockedLevelFlag);
 
             // NEW BUTTON - ADD TO LEVEL ARRAY
@@ -60,12 +53,11 @@ public class GUILevelSelectCreator : MonoBehaviour {
             LevelSelectObject.transform.parent = gameObject.transform;
 
             LevelSelectObject.transform.localScale = new Vector3(0.9f, 0.9f, 1);
-            LockedLevelHandler lockedLevelHandler = null;
 
-            print(LevelSelectObject.name);
             if (v_LockedLevelFlag)
 
             {
+
                 ActiveLevelEnbale(i);
             }
             else
@@ -81,19 +73,20 @@ public class GUILevelSelectCreator : MonoBehaviour {
         GameObject LevelSelectObject = m_Levels[index];
         newItem = LevelSelectObject.transform.GetChild(1).gameObject;
         newItem.SetActive(true);
-        print(newItem.name);
+        LevelSelectObject.transform.GetChild(0).gameObject.SetActive(false);
 
 
         //
-        LevelSelectObject.transform.GetChild(0).gameObject.SetActive(false);
         LockedLevelHandler lockedLevelHandler = newItem.GetComponent<LockedLevelHandler>();
+  
         lockedLevelHandler.LockedLevel = currentInstantiatedLevel;
         lockedLevelHandler.Index = index;
-
         PurchasableGate pg = Util.GetPurchasableGateInORList((GatesListOR)currentInstantiatedLevel.Gate);
-       double price = Util.GetVirtualItemPriceByID(pg.AssociatedItemId);
+        lockedLevelHandler.PurchasableGate = pg;
+        double price = Util.GetVirtualItemPriceByID(pg.AssociatedItemId);
+        lockedLevelHandler.Price = price;
         newItem.GetComponentInChildren<Text>().text = price + "";
-      
+
     }
 
     public void ActiveLevelEnbale(int index)
@@ -104,7 +97,7 @@ public class GUILevelSelectCreator : MonoBehaviour {
         newItem.SetActive(true);
         newItem.GetComponentInChildren<Text>().text = index + 1 + "";
         LevelSelectObject.transform.GetChild(1).gameObject.SetActive(false);
-       starCalculator();
+        starCalculator();
     }
 
     private void starCalculator()

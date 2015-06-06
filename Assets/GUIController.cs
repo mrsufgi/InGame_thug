@@ -60,23 +60,4 @@ public class GUIController : MonoBehaviour {
         StoreAssets.COIN_CURRENCY.Give(50);
     }
 
-    public void CloseLockedPanel()
-    {
-        Util.CloseLockedPanel();
-    }
-
-    public void ClosePlayGamePanel()
-    {
-        Util.ClosePlayGamePanel();
-    }
-
-    public void OpenLockedPanel()
-    {
-        Button b = gameObject.GetComponent<Button>();
-
-        GameObject o = GameObject.FindGameObjectWithTag("LockedLevelPanel");
-        LockedLevelHandler l = o.GetComponent<LockedLevelHandler>();
-        
-    }
-
 }
