@@ -10,14 +10,34 @@ public class LockedLevelHandler : MonoBehaviour {
     private Button m_Button;
     private int m_Index;
     private GUILevelSelectCreator PrefabHandler;
+    private GameObject UnlockCanvas;
 
+    public delegate void OpenAndSetCanvas(Level o_Level);
+    public static event OpenAndSetCanvas OnOpenCanvas;
     void Start()
     {
-    //    m_LevelGate = m_LockedLevel.Gate;
-//        print(m_LevelGate.ID);
+    //    txt_LevelName = gameObject.GetComponentInChildren<Text>();
+        UnlockCanvas = GameObject.FindWithTag("LockedLevelPanel");
+        print(UnlockCanvas);
         m_Button = this.GetComponent<Button>();
+        m_LevelGate = m_LockedLevel.Gate;
         print(m_Button);
         PrefabHandler = GetComponentInParent<GUILevelSelectCreator>();
+        m_Button.onClick.AddListener(() => OpenCanvas(m_LockedLevel));
+    }
+
+    void Update()
+    {
+
+    }
+
+
+    public static void OpenCanvas(Level i_Level)
+    {
+        if (OnOpenCanvas != null)
+        {
+            OnOpenCanvas(i_Level);
+        }
     }
 
 
@@ -47,13 +67,13 @@ public class LockedLevelHandler : MonoBehaviour {
 
     public void BuyGate()
     {
-        PurchasableGate gate = Util.GetPurchasableGateInORList((GatesListOR)m_LevelGate);
-        print(gate.ID);
-      //  gate.Open();
+       PurchasableGate gate = Util.GetPurchasableGateInORList((GatesListOR)m_LevelGate);
+       print(gate.ID);
+      gate.Open();
         if (gate.Open()) 
-        {
-            enabled = false;
+      {
+           enabled = false;
             PrefabHandler.ActiveLevelEnbale(m_Index);
-        }
+           }
     }
 }

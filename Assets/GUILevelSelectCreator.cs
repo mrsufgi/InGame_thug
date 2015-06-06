@@ -58,6 +58,7 @@ public class GUILevelSelectCreator : MonoBehaviour {
 
             LevelSelectObject.name = gameObject.name + " item at (" + i + "," + j + ")";
             LevelSelectObject.transform.parent = gameObject.transform;
+
             LevelSelectObject.transform.localScale = new Vector3(0.9f, 0.9f, 1);
             LockedLevelHandler lockedLevelHandler = null;
 
@@ -76,14 +77,19 @@ public class GUILevelSelectCreator : MonoBehaviour {
 
     public void LockedLevelEnable(int index)
     {
+
         GameObject LevelSelectObject = m_Levels[index];
         newItem = LevelSelectObject.transform.GetChild(1).gameObject;
         newItem.SetActive(true);
         print(newItem.name);
+
+
+        //
         LevelSelectObject.transform.GetChild(0).gameObject.SetActive(false);
         LockedLevelHandler lockedLevelHandler = newItem.GetComponent<LockedLevelHandler>();
         lockedLevelHandler.LockedLevel = currentInstantiatedLevel;
         lockedLevelHandler.Index = index;
+
         PurchasableGate pg = Util.GetPurchasableGateInORList((GatesListOR)currentInstantiatedLevel.Gate);
        double price = Util.GetVirtualItemPriceByID(pg.AssociatedItemId);
         newItem.GetComponentInChildren<Text>().text = price + "";

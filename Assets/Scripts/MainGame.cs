@@ -22,6 +22,7 @@ public class MainGame : MonoBehaviour {
       //  store.GetVersion();
 //        SoomlaHighway.Initialize();
         StoreAssets store = new StoreAssets();
+        print(store);
         store.GetVersion();
         SoomlaStore.Initialize(store);
         // Initialize LevelUp

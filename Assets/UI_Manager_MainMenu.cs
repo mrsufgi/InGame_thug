@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
 public class UI_Manager_MainMenu : MonoBehaviour {
 
 	public GameObject settingCanvas;
-	public  Text soundMode;
+    public GameObject unlockCanvas;
+    public Text soundMode;
 	private static AudioSource settingsClip;
 	public static bool isTutorialOpen =  false;
 
@@ -75,7 +76,8 @@ public class UI_Manager_MainMenu : MonoBehaviour {
 		}
 	}
 
-	public void howToPlayTut()
+
+    public void howToPlayTut()
 	{
 		isTutorialOpen = true;
 		Application.LoadLevel ("Tutorial");
