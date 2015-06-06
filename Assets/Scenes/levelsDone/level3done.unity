@@ -1134,6 +1134,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
+      propertyPath: gates.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 442024, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
       propertyPath: m_LocalPosition.x
       value: 128
@@ -1169,15 +1173,27 @@ Prefab:
     - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
       propertyPath: gates.Array.data[1]
       value: 
-      objectReference: {fileID: 191802, guid: 67044430caf934f4aba30e7d0f6a70cf, type: 2}
+      objectReference: {fileID: 131236, guid: f4ae85cc0e75ec0438f3a472f9387fc7, type: 2}
     - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
       propertyPath: levelPointsTarget
-      value: 50
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
       propertyPath: gameLevel
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
+      propertyPath: gates.Array.data[2]
+      value: 
+      objectReference: {fileID: 191802, guid: 7bcf485624de3aa46bd64b02ee19b5c9, type: 2}
+    - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
+      propertyPath: gates.Array.data[3]
+      value: 
+      objectReference: {fileID: 191802, guid: 111a9d20f54cb1e4b84921a28987160f, type: 2}
+    - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
+      propertyPath: gates.Array.data[0]
+      value: 
+      objectReference: {fileID: 131236, guid: 5579f9d20b48e1947ab38b3208438577, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
   m_IsPrefabParent: 0
@@ -1735,6 +1751,10 @@ Prefab:
       propertyPath: timer
       value: 
       objectReference: {fileID: 554976742}
+    - target: {fileID: 11406588, guid: 2118365fbc63a44edab5019b01c41268, type: 2}
+      propertyPath: gameplaySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1d5ab75cb377f45d4b9e6ceb2c363eb9, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2118365fbc63a44edab5019b01c41268, type: 2}
   m_IsPrefabParent: 0

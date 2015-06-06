@@ -51,11 +51,12 @@ public class Creature : MonoBehaviour {
 		if (other.tag == "Boundary")
 		{
 			//Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
-			if (explosion != null)
+            //no animation when missed a creature (hit bottom gate)
+			/*if (explosion != null)
 			{
 				Instantiate(explosion, transform.position, transform.rotation);
 			}
-			print("dashit");
+			print("dashit");*/
             Destroy (gameObject);
 		}
 

@@ -57,4 +57,9 @@ public class LevelConfiguration : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	}
+
+    public void RestartLevel()
+    {
+        Application.LoadLevel("level"+gameLevel+"done");
+    }
 }

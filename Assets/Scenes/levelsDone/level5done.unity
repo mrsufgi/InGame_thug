@@ -1169,15 +1169,23 @@ Prefab:
     - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
       propertyPath: gates.Array.data[1]
       value: 
-      objectReference: {fileID: 191802, guid: 67044430caf934f4aba30e7d0f6a70cf, type: 2}
+      objectReference: {fileID: 191802, guid: e9bae210cf22b624fb859ee92c7b6547, type: 2}
     - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
       propertyPath: levelPointsTarget
-      value: 50
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
       propertyPath: gameLevel
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
+      propertyPath: spawnWait
+      value: .699999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
+      propertyPath: gates.Array.data[0]
+      value: 
+      objectReference: {fileID: 131236, guid: 08999800d4e3e7c4a9b173b786307040, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
   m_IsPrefabParent: 0
@@ -1735,6 +1743,10 @@ Prefab:
       propertyPath: timer
       value: 
       objectReference: {fileID: 554976742}
+    - target: {fileID: 11406588, guid: 2118365fbc63a44edab5019b01c41268, type: 2}
+      propertyPath: gameplaySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1d5ab75cb377f45d4b9e6ceb2c363eb9, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2118365fbc63a44edab5019b01c41268, type: 2}
   m_IsPrefabParent: 0

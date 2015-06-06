@@ -1172,11 +1172,11 @@ Prefab:
       objectReference: {fileID: 191802, guid: 67044430caf934f4aba30e7d0f6a70cf, type: 2}
     - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
       propertyPath: levelPointsTarget
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
       propertyPath: gameLevel
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
@@ -1735,6 +1735,10 @@ Prefab:
       propertyPath: timer
       value: 
       objectReference: {fileID: 554976742}
+    - target: {fileID: 11406588, guid: 2118365fbc63a44edab5019b01c41268, type: 2}
+      propertyPath: gameplaySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1d5ab75cb377f45d4b9e6ceb2c363eb9, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2118365fbc63a44edab5019b01c41268, type: 2}
   m_IsPrefabParent: 0
