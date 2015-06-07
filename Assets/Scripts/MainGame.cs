@@ -17,7 +17,7 @@ public class MainGame : MonoBehaviour {
         if (firstRun)
         {
             // cleaR PLAYERPREF!!!!!!!!!!!!!!
-          //  PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteAll();
 
 
             //  SoomlaHighway.Initialize();
