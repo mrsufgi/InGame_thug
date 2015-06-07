@@ -6,57 +6,48 @@ using Soomla;
 using Soomla.Store;
 using Soomla.Profile;
 
-public class MainGame : MonoBehaviour
-{
-	
-	private static LevelUpEventHandler handler = new LevelUpEventHandler();
-	// Use this for initialization
-	void Start()
-	{
-		// Initialize Event Handler
-		
-		// cleaR PLAYERPREF!!!!!!!!!!!!!!
-		//     PlayerPrefs.DeleteAll();
+public class MainGame : MonoBehaviour {
 
-		//  SoomlaHighway.Initialize();
-		//  IStoreAssets store = new StoreAssets();
-		//  store.GetVersion();
-		SoomlaHighway.Initialize();
-		StoreAssets store = new StoreAssets();
-		print(store);
-		store.GetVersion();
-		SoomlaStore.Initialize(store);
-		// Initialize LevelUp
-		// World mainWorld = new InitialWorld().createMainWorld();
-		
-		
-		
-		SoomlaLevelUp.Initialize(new InitialWorld().createMainWorld());
-		
-		
-		int firstRun = PlayerPrefs.GetInt("firstRun");
-		print(firstRun);
-		if (firstRun == 0)
-		{
-			StoreAssets.COIN_CURRENCY.Give(10000);
-			PlayerPrefs.SetInt("firstRun", 1);
-		}
-		else
-		{
-			
-			// not first run
-		}
-	}
+    private static LevelUpEventHandler handler = new LevelUpEventHandler();
+    public static bool firstRun = true;
+    // Use this for initialization
+    void Start () {
+        // Initialize Event Handler
+
+        if (firstRun)
+        {
+            // cleaR PLAYERPREF!!!!!!!!!!!!!!
+            PlayerPrefs.DeleteAll();
+
+
+            //  SoomlaHighway.Initialize();
+            //  IStoreAssets store = new StoreAssets();
+            //  store.GetVersion();
+            //        SoomlaHighway.Initialize();
+            StoreAssets store = new StoreAssets();
+            print(store);
+            store.GetVersion();
+            SoomlaStore.Initialize(store);
+            // Initialize LevelUp
+            // World mainWorld = new InitialWorld().createMainWorld();
+
+
+
+            SoomlaLevelUp.Initialize(new InitialWorld().createMainWorld());
+
+            //TODO: should catch an event on FIRST RUN 
+            StoreAssets.COIN_CURRENCY.Give(10000);
+            firstRun = false;
+        }
+        }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
-	
-	void Awake()
-	{
-		DontDestroyOnLoad(this);
-	}
-	
-	// Update is called once per frame
-	void Update()
-	{
-		
 	}
 }
