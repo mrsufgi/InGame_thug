@@ -20,12 +20,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Tutorial.unity
   - enabled: 0
-    path: Assets/Scenes/level.unity
+    path: Assets/level.unity
   - enabled: 0
-    path: Assets/Scenes/level 1.unity
+    path: Assets/level 1.unity
   - enabled: 0
-    path: Assets/Scenes/level 2.unity
+    path: Assets/level 2.unity
   - enabled: 0
-    path: Assets/Scenes/level 3.unity
+    path: Assets/level 3.unity
   - enabled: 0
     path: Assets/Scenes/levelsDone/level5done.unity

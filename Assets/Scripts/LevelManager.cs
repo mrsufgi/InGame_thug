@@ -89,7 +89,7 @@ public class LevelManager : MonoBehaviour
 	public void startLevel()
 	{
         //Soomla
-        CurrentLevel.Start();
+//        CurrentLevel.Start();
         //
 
 		timer.gameObject.SetActive(true);

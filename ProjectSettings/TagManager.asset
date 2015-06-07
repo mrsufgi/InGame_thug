@@ -18,6 +18,7 @@ TagManager:
   - LevelConfiguration
   - TextPoints
   - LockedLevelPanel
+  - LeftPoint_Anim
   layers:
   - Default
   - TransparentFX

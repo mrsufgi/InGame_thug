@@ -59,7 +59,7 @@ GameObject:
   - 114: {fileID: 11408172}
   - 111: {fileID: 11102904}
   m_Layer: 0
-  m_Name: Points_10
+  m_Name: Points_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0780339241, y: 21.8358078, z: 1.44000006}
+  m_LocalPosition: {x: -.928291082, y: 27.874054, z: 1.44000006}
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children:
   - {fileID: 413744}
@@ -124,7 +124,7 @@ Animation:
   m_GameObject: {fileID: 176906}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: cc0590cd37f5841ed83d7a9211b8cd70, type: 2}
+  m_Animation: {fileID: 7400000, guid: 46e6eab7a828745a3b4f4aa7ca959038, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: cc0590cd37f5841ed83d7a9211b8cd70, type: 2}
   m_WrapMode: 0

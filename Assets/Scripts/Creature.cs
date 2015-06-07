@@ -73,9 +73,10 @@ public class Creature : MonoBehaviour {
 			} else {
 				if (side == enum_Side.side_right) 
 				{ 
-					Instantiate(levelManager.levelCongif.pointsRight,
-					            this.transform.position,
-					            Quaternion.identity);
+					GameObject newObject = Instantiate(levelManager.levelCongif.pointsRight,
+					                                   transform.position, transform.rotation) as GameObject;
+					newObject.transform.position =  this.transform.position + new Vector3(2,-15,0);
+
 					levelManager.AddScore (scoreValue);
                     Destroy (gameObject);
 				}
@@ -92,10 +93,12 @@ public class Creature : MonoBehaviour {
 					}
                 Destroy (gameObject);
 				} else{
-					if(side == enum_Side.side_left) { 		
-					Instantiate(levelManager.levelCongif.pointsLeft,
-					            this.transform.position,
-					            Quaternion.identity);
+					if(side == enum_Side.side_left) { 	
+
+					GameObject newObject = Instantiate(levelManager.levelCongif.pointsLeft,
+					                                   transform.position, transform.rotation) as GameObject;
+					newObject.transform.position =  this.transform.position + new Vector3(2,-15,0);
+
 					levelManager.AddScore(scoreValue);
 						Destroy (gameObject);
 					}
