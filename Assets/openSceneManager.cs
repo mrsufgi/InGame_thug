@@ -12,8 +12,6 @@ public class openSceneManager : MonoBehaviour {
 		if (startScreenClip != null) {
 			AudioSource.PlayClipAtPoint (startScreenClip, transform.position);
 		}
-		//StartCoroutine (StartGame());
-        
 	}
 	
 	// Update is called once per frame
@@ -26,7 +24,6 @@ public class openSceneManager : MonoBehaviour {
 
 	void StartGame ()
 	{
-		//yield return new WaitForSeconds (startWait);
 		Application.LoadLevel (LevelID);				
 	}
 

@@ -192,7 +192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604ae12d534834953ab02b5b527acf8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWait: 2.5
   startScreenClip: {fileID: 8300000, guid: f084da4ccd5684fd9b085a9a2c639e7d, type: 3}
   LevelID: 1
 --- !u!4 &754668678
@@ -266,7 +265,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 4, y: 60}
-  m_SizeDelta: {x: 606, y: 331}
+  m_SizeDelta: {x: 610.799988, y: 331}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &924049528
 GameObject:
@@ -470,7 +469,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
   m_AnchoredPosition: {x: -8.27000046, y: 72}
-  m_SizeDelta: {x: 410.399994, y: 50}
+  m_SizeDelta: {x: 428.950012, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1621141513
 GameObject:
