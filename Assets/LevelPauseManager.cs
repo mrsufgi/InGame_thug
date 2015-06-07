@@ -16,7 +16,7 @@ public class LevelPauseManager : MonoBehaviour {
 		
 		if (!isTutorialOpen) {
             settingCanvas.SetActive(false);
-			settingsClip.Stop ();
+			//settingsClip.Stop ();
 		} else {
 		}
 

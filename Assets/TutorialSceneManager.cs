@@ -4,7 +4,6 @@ using System.Collections;
 public class TutorialSceneManager : MonoBehaviour {
 	
 	public AudioClip startScreenClip;
-
 	// Use this for initialization
 	
 	void Start () {
@@ -21,7 +20,7 @@ public class TutorialSceneManager : MonoBehaviour {
 
 	public void goToMainMenuScene()
 	{
-		Application.LoadLevel ("mainMap");
+		Application.LoadLevel ("world");
 	}
 
 }

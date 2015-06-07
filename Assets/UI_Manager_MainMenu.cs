@@ -5,6 +5,7 @@ using System.Collections;
 public class UI_Manager_MainMenu : MonoBehaviour {
 
 	public GameObject settingCanvas;
+    public GameObject shopCanvas;
     public GameObject unlockCanvas;
     public Text soundMode;
 	private static AudioSource settingsClip;
@@ -75,6 +76,28 @@ public class UI_Manager_MainMenu : MonoBehaviour {
 			settingsClip.Stop ();
 		}
 	}
+
+
+    public void openShop()
+    {
+        shopCanvas.gameObject.SetActive(true);
+        //shopCanvas.gameObject.GetComponent<Canvas>().enabled = true;
+        /*if (settingsClip != null)
+        {
+            settingsClip.Play();
+        }*/
+    }
+
+    public void closeShop()
+    {
+        Debug.Log("close load");
+        shopCanvas.gameObject.SetActive(false);
+        //shopCanvas.gameObject.GetComponent<Canvas>().enabled = false;
+        /*if (settingsClip != null)
+        {
+            settingsClip.Stop();
+        }*/
+    }
 
     public void closeUnlockedCanvas()
     {
