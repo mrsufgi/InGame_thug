@@ -31,11 +31,11 @@ public class InitialWorld
               true                                        // Higher is better
             );
 
-        Score starRank = new Score(
-            "starRank_ID",
-            "Star Rank",
-            true
-    );
+    //    Score starRank = new Score(
+    //        "starRank_ID",
+    //        "Star Rank",
+    //        true
+    //);
 
 
         Score gasCoins = new VirtualItemScore(
@@ -52,32 +52,32 @@ public class InitialWorld
           "Medal Reward"                              // Name
         );
 
-        /** Missions **/
+    //    /** Missions **/
 
-        // well - everything must be parsed of course.. 
-        Mission pointMission1 = new RecordMission(
-          "pointMission_1_ID",                          // ID
-          "Point Mission 1",                            // Name
-          new List<Reward>() { medalReward },            // Rewards
-          "blueWorld_ID_level0_score0",                              // Associated score
-          50                                           // Desired record 
-        );
+    //    // well - everything must be parsed of course.. 
+    //    Mission pointMission1 = new RecordMission(
+    //      "pointMission_1_ID",                          // ID
+    //      "Point Mission 1",                            // Name
+    //      new List<Reward>() { medalReward },            // Rewards
+    //      "blueWorld_ID_level0_score0",                              // Associated score
+    //      50                                           // Desired record 
+    //    );
 
-        Mission pointMission2 = new RecordMission(
-       "pointMission_2_ID",                          // ID
-       "Point Mission 2",                            // Name
-       new List<Reward>() { medalReward },            // Rewards
-       "blueWorld_ID_level0_score0",                              // Associated score
-       100                                           // Desired record 
-     );
+    //    Mission pointMission2 = new RecordMission(
+    //   "pointMission_2_ID",                          // ID
+    //   "Point Mission 2",                            // Name
+    //   new List<Reward>() { medalReward },            // Rewards
+    //   "blueWorld_ID_level0_score0",                              // Associated score
+    //   100                                           // Desired record 
+    // );
 
-        Mission pointMission3 = new RecordMission(
-      "pointMission_ID_3_ID",                          // ID
-      "Point Mission 3",                            // Name
-      new List<Reward>() { medalReward },                                       // Rewards
-      "blueWorld_ID_level0_score0",                              // Associated score
-      300                                           // Desired record 
-    );
+    //    Mission pointMission3 = new RecordMission(
+    //  "pointMission_ID_3_ID",                          // ID
+    //  "Point Mission 3",                            // Name
+    //  new List<Reward>() { medalReward },                                       // Rewards
+    //  "blueWorld_ID_level0_score0",                              // Associated score
+    //  300                                           // Desired record 
+    //);
 
 
         /** Worlds **/
@@ -99,21 +99,21 @@ public class InitialWorld
           null  // Missions
         );
 
-        starRank.StartValue = 0;
+       // starRank.StartValue = 0;
         /** Levels **/
 
         blueWorld.BatchAddLevelsWithTemplates(
           12,                                          // Number of levels
           null,                                       // Gate template
-          new List<Score>() { pointScore, starRank},          // Score templates
-         new List<Mission>() { pointMission1, pointMission2, pointMission3 }                                         // Mission templates
+          new List<Score>() { pointScore},          // Score templates
+         new List<Mission>() { }                                         // Mission templates
         );
 
         redWorld.BatchAddLevelsWithTemplates(
           12,                                          // Number of levels
           null,                                       // Gate template
-          new List<Score>() { pointScore, starRank},          // Score templates
-          new List<Mission>() {pointMission1, pointMission2, pointMission3}                                        // Mission templates
+          new List<Score>() { pointScore},          // Score templates
+          new List<Mission>() { }                                        // Mission templates
         );
 
 
@@ -136,7 +136,7 @@ public class InitialWorld
             new List<Gate>() { redRecordGate, redGate });
 
 
-  
+        
 
 
         redWorld.Gate = redWorldORGate;
@@ -154,6 +154,15 @@ public class InitialWorld
         /** Add gas points**/
         mainWorld.AddScore(gasCoins);
         return mainWorld;
+    }
+
+   private void AddMissionsToWorld(World world)
+    {
+        //foreach(Level level in world.InnerWorldsList)
+        //{
+        //    for 
+        //    Mission 
+        //}
     }
 
     private void AddGatesToWorld(World world)
@@ -199,6 +208,22 @@ public class InitialWorld
                StoreInfo.GetItemByItemId("LevelLock_W1_L" + i.ToString() + "_ID").ID               // Associated item ID
             );
         return gate;
+    }
+
+    // TODO add rewards
+    private Mission recordMissionGenerator(int i_Index, string i_ScoreID, string i_LevelID, int i_Value)
+    {
+        /** Missions **/
+
+        // well - everything must be parsed of course.. 
+        Mission pointMission = new RecordMission(
+          i_LevelID + "PointMission" + i_Index + "_ID",                          // ID
+          "Point Mission " + i_Index,                           // Name
+          new List<Reward>() {},            // Rewards
+          i_ScoreID,                              // Associated score
+          i_Value                                           // Desired record                                         // Desired record 
+    );
+        return pointMission;
     }
 
 

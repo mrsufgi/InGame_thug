@@ -122,7 +122,7 @@ public class GUILevelSelectCreator : MonoBehaviour
             //    print(currentInstantiatedLevel.GetSingleScore().ID);
 
             //}
-            Score starRank = currentInstantiatedLevel.Scores.Values.ElementAt<Score>(1);
+         //   Score starRank = currentInstantiatedLevel.Scores.Values.ElementAt<Score>(1);
 
             //if (starRank.HasRecordReached(k + 1))
             //{
