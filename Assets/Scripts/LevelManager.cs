@@ -54,6 +54,10 @@ public class LevelManager : MonoBehaviour
         // Soomla stuff // 
         PointScore = CurrentLevel.GetSingleScore();
         print(PointScore.Latest);
+        foreach (Mission m in CurrentLevel.Missions)
+        {
+            m.Schedule.Approve(5);
+        }
 
 		gameOver = false;
 		timer.gameObject.SetActive(false);
@@ -64,7 +68,6 @@ public class LevelManager : MonoBehaviour
 		//Open Pnanel
 		pointsMission.text = getPointsTarget ().ToString ();
 
-		score = 0;
 		UpdateScore ();
 
 		creaturesArraySize = 10;
@@ -166,7 +169,7 @@ public class LevelManager : MonoBehaviour
                 q.Enqueue(creature.GetComponent<Creature>());
 				yield return new WaitForSeconds (spawnWait);
 			}
-            if (CurrentLevel.Missions[0].Complete() || !CurrentLevel.Missions[0].IsAvailable())
+            if (true)
             {
                 CurrentLevel.End(true);
                 print("youasokjakslj;klsjg");
@@ -200,8 +203,6 @@ public class LevelManager : MonoBehaviour
 	
 	public void GameOver ()
 	{
-       
-
 
         timer.gameObject.SetActive(false);
 		panelTimesUp.SetActive (true);
@@ -209,17 +210,19 @@ public class LevelManager : MonoBehaviour
 		string outputToUser;
 		string outputScoreToUser;
 
-		if (CurrentLevel.Missions[0].IsCompleted()) {
-            outputScoreToUser = "You Got: " + score;
+        if (PointScore.HasTempReached(getPointsTarget())) {
+            outputScoreToUser = "You Got: " + PointScore.GetTempScore();
 			outputToUser = "Great Job" ;
 			endLevelBtnTxt.text= "Next";
-		} else {
+            CurrentLevel.End(true);
+        } else {
 			endLevelBtnTxt.text = "Play Again";
 			outputToUser = "Mission Missed" ;
 			outputScoreToUser = "Mission: " +
 				levelCongif.levelPointsTarget + 
-					"\nYou Got: " + score;
-		}
+					"\nYou Got: " + PointScore.GetTempScore();
+            CurrentLevel.End(false);
+        }
 
 		timesUpText.text = outputToUser;
 		scoreTimesUpText.text =  outputScoreToUser;

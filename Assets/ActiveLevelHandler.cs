@@ -3,6 +3,7 @@ using System.Collections;
 using Soomla.Levelup;
 using UnityEngine.UI;
 using System;
+using Soomla.Store;
 
 public class ActiveLevelHandler : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class ActiveLevelHandler : MonoBehaviour
             string level = "level" + (m_Index + 1) + "done";
             LevelManager.currentLevelIndex = m_Index + 1;
             LevelManager.CurrentLevel = m_ActiveLevel;
+            StoreAssets.COIN_CURRENCY.Take(100);
             Application.LoadLevel(level);
         }
     }

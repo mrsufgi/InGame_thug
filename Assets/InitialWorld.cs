@@ -145,6 +145,10 @@ public class InitialWorld
        AddGatesToWorld(blueWorld);
        AddGatesToWorld(redWorld);
 
+        // add missions to world
+        AddMissionsToWorld(blueWorld);
+        AddMissionsToWorld(redWorld);
+
 
 
         /** Add Worlds to Initial World **/
@@ -158,11 +162,18 @@ public class InitialWorld
 
    private void AddMissionsToWorld(World world)
     {
-        //foreach(Level level in world.InnerWorldsList)
-        //{
-        //    for 
-        //    Mission 
-        //}
+        foreach(Level level in world.InnerWorldsList)
+        {
+            int value = 50;
+            for (int i = 1; i < 4; i++)
+            {
+                Mission mission = recordMissionGenerator(i, level.GetSingleScore().ID, level.ID, value);
+                mission.Schedule = Schedule.AnyTimeUnLimited();
+                level.AddMission(mission);
+                value += 50;
+            }
+          
+        }
     }
 
     private void AddGatesToWorld(World world)
@@ -214,12 +225,19 @@ public class InitialWorld
     private Mission recordMissionGenerator(int i_Index, string i_ScoreID, string i_LevelID, int i_Value)
     {
         /** Missions **/
+        Reward coinReward = new VirtualItemReward(
+  "vReward",                            // ID
+  "Coin Reward",                        // Name
+  "coin_currency_ID",                              // Associated item ID
+  100                                   // Amount
+    );
 
+        coinReward.Schedule = Schedule.AnyTimeUnLimited();
         // well - everything must be parsed of course.. 
         Mission pointMission = new RecordMission(
           i_LevelID + "PointMission" + i_Index + "_ID",                          // ID
           "Point Mission " + i_Index,                           // Name
-          new List<Reward>() {},            // Rewards
+          new List<Reward>() { coinReward },            // Rewards
           i_ScoreID,                              // Associated score
           i_Value                                           // Desired record                                         // Desired record 
     );
