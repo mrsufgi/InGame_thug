@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour
 	public Text scoreTimesUpText;
 	public Text timesUpText;
 	public Text endLevelBtnTxt;
+	public GameObject panelShop; 
 
 	public AudioClip startLevelSound;
     public AudioClip gameplaySound;
@@ -89,12 +90,13 @@ public class LevelManager : MonoBehaviour
 	public void startLevel()
 	{
         //Soomla
-//        CurrentLevel.Start();
+        CurrentLevel.Start();
         //
 
 		timer.gameObject.SetActive(true);
 		Time.timeScale = 1;
-		panelMissionDisplay.SetActive (false);		
+		panelMissionDisplay.SetActive (false);	
+		panelShop.SetActive (false);
 		AudioSource.PlayClipAtPoint (startLevelSound, transform.position);
         AudioSource.PlayClipAtPoint(gameplaySound, transform.position);
         
@@ -124,6 +126,7 @@ public class LevelManager : MonoBehaviour
 			index++;
 		}
 	}
+
 
 	private void locateGates()
 	{
@@ -213,10 +216,10 @@ public class LevelManager : MonoBehaviour
         if (PointScore.HasTempReached(getPointsTarget())) {
             outputScoreToUser = "You Got: " + PointScore.GetTempScore();
 			outputToUser = "Great Job" ;
-			endLevelBtnTxt.text= "Next";
+			endLevelBtnTxt.text= "Done";
             CurrentLevel.End(true);
         } else {
-			endLevelBtnTxt.text = "Play Again";
+			endLevelBtnTxt.text = "Back";
 			outputToUser = "Mission Missed" ;
 			outputScoreToUser = "Mission: " +
 				levelCongif.levelPointsTarget + 
@@ -279,5 +282,16 @@ public class LevelManager : MonoBehaviour
 		return levelCongif.levelPointsTarget;
 	}
 
+	public void openShop()
+	{
+		panelShop.SetActive(true);
+
+	}
+	
+	public void closeShop()
+	{
+		panelShop.SetActive(false);
+
+	}
 }
 

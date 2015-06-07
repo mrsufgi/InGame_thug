@@ -8,24 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/splash_open_screen.unity
   - enabled: 1
-    path: Assets/Scenes/main_menu.unity
-  - enabled: 1
     path: Assets/Scenes/world.unity
   - enabled: 1
-    path: Assets/Scenes/levelsDone/level1done.unity
-  - enabled: 0
-    path: Assets/Scenes/levelsDone/level2done.unity
-  - enabled: 0
-    path: Assets/Scenes/mainMap.unity
-  - enabled: 1
     path: Assets/Scenes/Tutorial.unity
-  - enabled: 0
-    path: Assets/level.unity
-  - enabled: 0
-    path: Assets/level 1.unity
-  - enabled: 0
-    path: Assets/level 2.unity
-  - enabled: 0
-    path: Assets/level 3.unity
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/levelsDone/level1done.unity
+  - enabled: 1
+    path: Assets/Scenes/levelsDone/level2done.unity
+  - enabled: 1
+    path: Assets/Scenes/levelsDone/level3done.unity
+  - enabled: 1
+    path: Assets/Scenes/levelsDone/level4done.unity
+  - enabled: 1
     path: Assets/Scenes/levelsDone/level5done.unity
+  - enabled: 1
+    path: Assets/Scenes/levelsDone/level6done.unity
