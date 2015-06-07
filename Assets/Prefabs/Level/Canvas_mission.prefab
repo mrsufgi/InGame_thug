@@ -649,7 +649,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
+<<<<<<< HEAD
   m_Text: NEXT
+=======
+  m_Text: DONE
+>>>>>>> origin/master
 --- !u!114 &11466276
 MonoBehaviour:
   m_ObjectHideFlags: 1

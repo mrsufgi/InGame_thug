@@ -16,8 +16,10 @@ public class playSounds : MonoBehaviour {
 
 	public void playCoinSound()
 	{
-		if (coins_Clip != null) {
-			AudioSource.PlayClipAtPoint (coins_Clip, transform.position);
-		}
+        
+            AudioSource.PlayClipAtPoint (coins_Clip, transform.position);
+
+        
+
 	}
 }
