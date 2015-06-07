@@ -18,6 +18,7 @@ TagManager:
   - LevelConfiguration
   - TextPoints
   - LockedLevelPanel
+  - CoinSound
   layers:
   - Default
   - TransparentFX

@@ -213,7 +213,7 @@ public class LevelManager : MonoBehaviour
         if (PointScore.HasTempReached(getPointsTarget())) {
             outputScoreToUser = "You Got: " + PointScore.GetTempScore();
 			outputToUser = "Great Job" ;
-			endLevelBtnTxt.text= "Next";
+			endLevelBtnTxt.text= "Done";
             CurrentLevel.End(true);
         } else {
 			endLevelBtnTxt.text = "Play Again";

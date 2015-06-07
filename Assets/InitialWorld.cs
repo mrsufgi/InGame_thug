@@ -168,7 +168,7 @@ public class InitialWorld
             for (int i = 1; i < 4; i++)
             {
                 Mission mission = recordMissionGenerator(i, level.GetSingleScore().ID, level.ID, value);
-                mission.Schedule = Schedule.AnyTimeUnLimited();
+                mission.Schedule.ActivationLimit = 1000;
                 level.AddMission(mission);
                 value += 50;
             }
@@ -226,13 +226,13 @@ public class InitialWorld
     {
         /** Missions **/
         Reward coinReward = new VirtualItemReward(
-  "vReward",                            // ID
+  i_LevelID + "vReward",                            // ID
   "Coin Reward",                        // Name
   "coin_currency_ID",                              // Associated item ID
   100                                   // Amount
     );
 
-        coinReward.Schedule = Schedule.AnyTimeUnLimited();
+        coinReward.Schedule.ActivationLimit = 1000;
         // well - everything must be parsed of course.. 
         Mission pointMission = new RecordMission(
           i_LevelID + "PointMission" + i_Index + "_ID",                          // ID
