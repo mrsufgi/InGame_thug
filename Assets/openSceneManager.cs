@@ -6,11 +6,10 @@ public class openSceneManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-
-			AudioSource audio = GetComponent<AudioSource>();
-			audio.volume = 1;
-			audio.Play();
+        Time.timeScale = 1;
+		AudioSource audio = GetComponent<AudioSource>();
+		audio.volume = 1;
+		audio.Play();
 
 	}
 	
