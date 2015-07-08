@@ -5,12 +5,28 @@ public class gate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //int level = levelCongif.gameLevel;
+        //TODO: uncomment if we want to hide all gates after couple of seconds
+        //StartCoroutine("HideUnhide");
 	
 	}
-	
+
+    IEnumerator HideUnhide()
+    {
+        bool toHideGate = true;
+        while (true)
+        {
+            yield return (new WaitForSeconds(1));
+            this.gameObject.SetActive(toHideGate);
+            toHideGate = !toHideGate;
+            yield return (new WaitForSeconds(2));
+            this.gameObject.SetActive(toHideGate);
+        }
+
+    }
+
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	void  OnTriggerEnter2D(Collider2D other) 
