@@ -40,6 +40,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30daf4331c09e4a2d9e72c9023d684ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deletePlayerPref: 0
+  test: 1
 --- !u!114 &11464548
 MonoBehaviour:
   m_ObjectHideFlags: 1

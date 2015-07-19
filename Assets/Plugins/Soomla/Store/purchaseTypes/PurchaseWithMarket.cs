@@ -82,6 +82,11 @@ namespace Soomla.Store
 			// for market purchases, always assume it can be afforded
 			return true;
 		}
+
+        public override string GetPrice()
+        {
+            return MarketItem.Price.ToString();
+        }
 	}
 }
 

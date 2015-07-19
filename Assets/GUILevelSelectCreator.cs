@@ -42,7 +42,7 @@ public class GUILevelSelectCreator : MonoBehaviour
             v_LockedLevelFlag = true;
             v_LockedLevelFlag = (currentInstantiatedLevel.CanStart()) ? true : false;
 
-         //   print(v_LockedLevelFlag);
+            //   print(v_LockedLevelFlag);
 
             // NEW BUTTON - ADD TO LEVEL ARRAY
             GameObject LevelSelectObject = Instantiate(m_LevelSelect) as GameObject;
@@ -81,7 +81,8 @@ public class GUILevelSelectCreator : MonoBehaviour
 
         lockedLevelHandler.LockedLevel = currentInstantiatedLevel;
         lockedLevelHandler.Index = index;
-        PurchasableGate pg = Util.GetPurchasableGateInORList((GatesListOR)currentInstantiatedLevel.Gate);
+        //PurchasableGate pg = Util.GetPurchasableGateInORList((GatesListOR)currentInstantiatedLevel.Gate);
+        PurchasableGate pg = SoomlaLevelUp.GetGate(string.Format("LevelLock_W1_L{0}_ID", index)) as PurchasableGate;
         lockedLevelHandler.PurchasableGate = pg;
         double price = Util.GetVirtualItemPriceByID(pg.AssociatedItemId);
         lockedLevelHandler.Price = price;
@@ -92,7 +93,7 @@ public class GUILevelSelectCreator : MonoBehaviour
     public void ActiveLevelEnbale(int index)
     {
         GameObject LevelSelectObject = m_Levels[index];
-//        print(LevelSelectObject.name);
+        //        print(LevelSelectObject.name);
         newItem = LevelSelectObject.transform.GetChild(0).gameObject;
         newItem.SetActive(true);
         newItem.GetComponentInChildren<Text>().text = index + 1 + "";
@@ -122,7 +123,7 @@ public class GUILevelSelectCreator : MonoBehaviour
             //    print(currentInstantiatedLevel.GetSingleScore().ID);
 
             //}
-         //   Score starRank = currentInstantiatedLevel.Scores.Values.ElementAt<Score>(1);
+            //   Score starRank = currentInstantiatedLevel.Scores.Values.ElementAt<Score>(1);
 
             //if (starRank.HasRecordReached(k + 1))
             //{
@@ -141,13 +142,14 @@ public class GUILevelSelectCreator : MonoBehaviour
                 }
                 else
                 {
-                    print("empty");
+                    //                    print("empty");
                     sh[k].SetActiveStarSprite(false);
                 }
-            } else
+            }
+            else
             {
-                print("empty");
+                //      print("empty");
             }
         }
-        }
     }
+}

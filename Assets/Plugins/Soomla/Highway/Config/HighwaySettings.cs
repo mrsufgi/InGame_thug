@@ -52,7 +52,7 @@ namespace Soomla.Highway
 		}
 
 		public void OnInfoGUI() {
-			SoomlaEditorScript.SelectableLabelField(frameworkVersion, "1.3.12");
+			SoomlaEditorScript.SelectableLabelField(frameworkVersion, "1.3.14");
 			SoomlaEditorScript.SelectableLabelField(buildVersion, "1");
 			EditorGUILayout.Space();
 		}

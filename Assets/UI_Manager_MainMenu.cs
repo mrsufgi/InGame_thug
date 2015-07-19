@@ -1,10 +1,12 @@
-﻿    using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class UI_Manager_MainMenu : MonoBehaviour {
+public class UI_Manager_MainMenu : MonoBehaviour
+{
 
-    public static GameObject settingCanvas;
+    public static CanvasGroup canvasGroup;
+    public static GameObject PopupCanvas;
     public GameObject shopCanvas;
     public GameObject unlockCanvas;
     public Text soundMode;
@@ -14,14 +16,18 @@ public class UI_Manager_MainMenu : MonoBehaviour {
     // Use this for initialization
     void Awake()
     {
-        settingCanvas = GameObject.FindGameObjectWithTag("Settings");
+        canvasGroup = GameObject.FindGameObjectWithTag("CanvasGroup").GetComponent<CanvasGroup>();
+        PopupCanvas = GameObject.FindGameObjectWithTag("PopupCanvas");
         settingsClip = gameObject.GetComponent<AudioSource>();
 
-        if (!isTutorialOpen) {
-            settingCanvas.gameObject.GetComponent<Canvas>().enabled = false;
+        if (!isTutorialOpen)
+        {
+            PopupCanvas.gameObject.GetComponent<Canvas>().enabled = false;
             settingsClip.Stop();
-        } else {
-            settingCanvas.gameObject.GetComponent<Canvas>().enabled = false;
+        }
+        else
+        {
+            PopupCanvas.gameObject.GetComponent<Canvas>().enabled = false;
         }
         settingsClip.Play();
     }
@@ -36,17 +42,19 @@ public class UI_Manager_MainMenu : MonoBehaviour {
     public void resumeTimePause()
     {
         Time.timeScale = 1;
-        settingCanvas.SetActive(false);
+        PopupCanvas.SetActive(false);
     }
 
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
 
     }
 
     public void toggleSound()
     {
+  
         if (AudioListener.volume > 0)
         {// sound off
             AudioListener.volume = 0;
@@ -64,13 +72,28 @@ public class UI_Manager_MainMenu : MonoBehaviour {
 
     public void openSettings(Animator anim)
     {
-        anim.SetBool("isOpen", true);
-            settingCanvas.gameObject.GetComponent<Canvas>().enabled = true;
-            if (settingsClip != null)
+        foreach (Transform child in PopupCanvas.transform)
+        {
+            // PopupCanvas.transform.FindChild("Panel_settings").gameObject.SetActive(true);
+            bool active = true;
+            if(child.name == "Panel_settings")
             {
-                settingsClip.Play();
+
+                // true
+            } else
+            {
+                active = false;  
             }
+            child.gameObject.SetActive(active);
         }
+
+        anim.SetBool("isOpen", true);
+        PopupCanvas.gameObject.GetComponent<Canvas>().enabled = true;
+        if (settingsClip != null)
+        {
+            settingsClip.Play();
+        }
+    }
 
 
 
@@ -78,12 +101,12 @@ public class UI_Manager_MainMenu : MonoBehaviour {
     {
 
         Debug.Log("close load");
-        anim.SetBool("isOpen", false);      
+        anim.SetBool("isOpen", false);
     }
 
 
 
-public void openShop()
+    public void openShop()
     {
         shopCanvas.gameObject.SetActive(true);
         //shopCanvas.gameObject.GetComponent<Canvas>().enabled = true;
@@ -116,15 +139,15 @@ public void openShop()
 
 
     public void howToPlayTut()
-	{
-		isTutorialOpen = true;
-		Application.LoadLevel ("Tutorial");
-	}
+    {
+        isTutorialOpen = true;
+        Application.LoadLevel("Tutorial");
+    }
 
 
-	public void loadLevelOne()
-	{
-		Application.LoadLevel (3);
-		Debug.Log ("level load");
-	}
+    public void loadLevelOne()
+    {
+        Application.LoadLevel(3);
+        Debug.Log("level load");
+    }
 }

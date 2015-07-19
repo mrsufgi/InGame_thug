@@ -25,7 +25,7 @@ namespace Soomla.Gifting
 			#if UNITY_ANDROID && !UNITY_EDITOR
 			AndroidJNI.PushLocalFrame(100);
 			using(AndroidJavaClass jniSoomlaSyncClass = new AndroidJavaClass("com.soomla.gifting.SoomlaGifting")) {
-				
+
 				AndroidJavaObject jniSoomlaSyncInstance = jniSoomlaSyncClass.CallStatic<AndroidJavaObject>("getInstance");
 				jniSoomlaSyncInstance.Call("initialize");
 			}
@@ -58,27 +58,26 @@ namespace Soomla.Gifting
 		/// <param name="toProfileId">The social provider user ID to send gift to.</param>
 		/// <param name="itemId">The virtual item ID to give as a gift.</param>
 		/// <param name="amount">The amount of virtual items to gift.</param>
-		/// <param name="deductFromUser">Should the virtual items be deducted from the 
+		/// <param name="deductFromUser">Should the virtual items be deducted from the
 		/// player upon sending the gift</param>
 		public static bool SendGift(int toProvider, string toProfileId, string itemId, int amount, bool deductFromUser) {
 			SoomlaUtils.LogDebug (TAG, "SOOMLA/UNITY Sending Gift");
-			#if UNITY_ANDROID && !UNITY_EDITOR
 			bool result = false;
+			
+			#if UNITY_ANDROID && !UNITY_EDITOR
 			AndroidJNI.PushLocalFrame(100);
 			using(AndroidJavaClass jniSoomlaSyncClass = new AndroidJavaClass("com.soomla.gifting.SoomlaGifting")) {
-				
+
 				AndroidJavaObject jniSoomlaSyncInstance = jniSoomlaSyncClass.CallStatic<AndroidJavaObject>("getInstance");
 				result = jniSoomlaSyncInstance.Call<bool>("sendGift", toProvider, toProfileId, itemId, amount, deductFromUser);
 			}
 			AndroidJNI.PopLocalFrame(IntPtr.Zero);
-			return result;
+
 			#elif UNITY_IOS && !UNITY_EDITOR
-			bool result = false;
 			soomlaGifting_sendGift(toProvider, toProfileId, itemId, amount, deductFromUser, out result);
-			return result;
 			#endif
 
-			return false;
+			return result;
 		}
 
 		private const string TAG = "SOOMLA SoomlaGifting";

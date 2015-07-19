@@ -38,7 +38,7 @@ namespace Soomla.Dlc
 			#if UNITY_ANDROID && !UNITY_EDITOR
 			AndroidJNI.PushLocalFrame(100);
 			using(AndroidJavaClass jniSoomlaDLCClass = new AndroidJavaClass("com.soomla.dlc.SoomlaDLC")) {
-				
+
 				AndroidJavaObject jniSoomlaDLCInstance = jniSoomlaDLCClass.CallStatic<AndroidJavaObject>("getInstance");
 				jniSoomlaDLCInstance.Call("initialize");
 			}
@@ -58,7 +58,7 @@ namespace Soomla.Dlc
 			#if UNITY_ANDROID && !UNITY_EDITOR
 			AndroidJNI.PushLocalFrame(100);
 			using(AndroidJavaClass jniSoomlaDLCClass = new AndroidJavaClass("com.soomla.dlc.SoomlaDLC")) {
-				
+
 				AndroidJavaObject jniSoomlaDLCInstance = jniSoomlaDLCClass.CallStatic<AndroidJavaObject>("getInstance");
 				jniSoomlaDLCInstance.Call("checkSyncedPackagesStatus");
 			}
@@ -78,7 +78,6 @@ namespace Soomla.Dlc
 			#if UNITY_ANDROID && !UNITY_EDITOR
 			AndroidJNI.PushLocalFrame(100);
 			using(AndroidJavaClass jniSoomlaDLCClass = new AndroidJavaClass("com.soomla.dlc.SoomlaDLC")) {
-				
 				AndroidJavaObject jniSoomlaDLCInstance = jniSoomlaDLCClass.CallStatic<AndroidJavaObject>("getInstance");
 				jniSoomlaDLCInstance.Call("checkPackageStatus", packageId);
 			}
@@ -95,22 +94,19 @@ namespace Soomla.Dlc
 		/// <param name="packageId">The ID of a defined package for the game.</param>
 		public static bool StartSync(string packageId) {
 			SoomlaUtils.LogDebug (TAG, "SOOMLA/UNITY Starting DLC sync for package " + packageId);
-			#if UNITY_ANDROID && !UNITY_EDITOR
 			bool result = false;
+			#if UNITY_ANDROID && !UNITY_EDITOR
 			AndroidJNI.PushLocalFrame(100);
 			using(AndroidJavaClass jniSoomlaDLCClass = new AndroidJavaClass("com.soomla.dlc.SoomlaDLC")) {
-				
+
 				AndroidJavaObject jniSoomlaDLCInstance = jniSoomlaDLCClass.CallStatic<AndroidJavaObject>("getInstance");
 				result = jniSoomlaDLCInstance.Call<bool>("startSync", packageId);
 			}
 			AndroidJNI.PopLocalFrame(IntPtr.Zero);
-			return result;
 			#elif UNITY_IOS && !UNITY_EDITOR
-			bool result = false;
 			soomlaDlc_startSync(packageId, out result);
-			return result;
 			#endif
-			return false;
+			return result;
 		}
 
 		/// <summary>
@@ -122,28 +118,25 @@ namespace Soomla.Dlc
 		/// <param name="fileName">The filename which may or may not exist in the package.</param>
 		public static string GetFilePath(string packageId, string fileName) {
 			SoomlaUtils.LogDebug (TAG, "SOOMLA/UNITY Getting full file path for " + fileName + " in package " + packageId);
-			#if UNITY_ANDROID && !UNITY_EDITOR
 			string result = null;
+			#if UNITY_ANDROID && !UNITY_EDITOR
 			AndroidJNI.PushLocalFrame(100);
 			using(AndroidJavaClass jniSoomlaDLCClass = new AndroidJavaClass("com.soomla.dlc.SoomlaDLC")) {
-				
+
 				AndroidJavaObject jniSoomlaDLCInstance = jniSoomlaDLCClass.CallStatic<AndroidJavaObject>("getInstance");
 				result = jniSoomlaDLCInstance.Call<string>("getPathToFile", packageId, fileName);
 			}
 			AndroidJNI.PopLocalFrame(IntPtr.Zero);
-			return result;
 			#elif UNITY_IOS && !UNITY_EDITOR
 			IntPtr p = IntPtr.Zero;
 			soomlaDlc_getFilePath(packageId, fileName, out p);
 
-			string result = Marshal.PtrToStringAnsi(p);
+			result = Marshal.PtrToStringAnsi(p);
 			Marshal.FreeHGlobal(p);
 			SoomlaUtils.LogDebug(TAG, "Got file-path: " + result);
-
-			return result;
 			#endif
 
-			return null;
+			return result;
 		}
 
 		/// <summary>
@@ -178,7 +171,7 @@ namespace Soomla.Dlc
 					filePaths.Add(filePathJSON.str);
 				}
 			}
-			
+
 			return filePaths;
 		}
 

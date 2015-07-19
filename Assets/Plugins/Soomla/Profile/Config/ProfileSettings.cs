@@ -54,8 +54,8 @@ namespace Soomla.Profile
 //		GUIContent fbAppId = new GUIContent("FB app Id:");
 //		GUIContent fbAppNS = new GUIContent("FB app namespace:");
 
-		GUIContent fbPermissionsContent = new GUIContent ("Permissions [?]", "Permissions your app will request from users");
-		
+		GUIContent fbPermissionsContent = new GUIContent ("Login Permissions [?]", "Permissions your app will request from users on login");
+
 		GUIContent gpClientId = new GUIContent ("Client ID [?]", "Client id of your google+ app (iOS only)");
 
 		GUIContent twCustKey = new GUIContent ("Consumer Key [?]", "Consumer key of your twitter app");
@@ -126,7 +126,7 @@ namespace Soomla.Profile
 		}
 
 		public void OnInfoGUI() {
-			SoomlaEditorScript.SelectableLabelField(profileVersion, "2.0.8");
+			SoomlaEditorScript.SelectableLabelField(profileVersion, "2.1.2");
 			SoomlaEditorScript.SelectableLabelField(profileBuildVersion, "1");
 			EditorGUILayout.Space();
 		}
@@ -416,7 +416,7 @@ namespace Soomla.Profile
 			}
 		}
 
-		public static string FB_PERMISSIONS_DEFAULT = "email,publish_action,user_birthday,user_photos,user_friends,read_stream";
+		public static string FB_PERMISSIONS_DEFAULT = "email,user_birthday,user_photos,user_friends,read_stream";
 
 
 		public static string FBPermissions

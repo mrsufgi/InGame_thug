@@ -17,23 +17,21 @@ MonoBehaviour:
       value: puffs
     - name: DebugUnityMessages
       value: True
-    - name: GPlayBP
-      value: True
-    - name: AndroidPublicKey
-      value: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1sp8caWsbVWlo/UTBMWmhhPmSNgYMj52hKuqddJkSc0s7SYsVx3wPq/CFmI17C0fWczbS+ubgeRbJrZiDADk+ZKDcKgnyllVzvvkgDL2XYftIDVXfFqCHRJYmwrvrJAn0qWNlF/0ohpNAq7tiOa5ZiNhMYOhtcCqXMqh/CYZ3oKqUUCR067lwUZ5ChyOmz801CwCWKvaTAlSqkUyDdMh3FHAmvwLHEEYyf4pz3QoKC7HdALaUgO67gYczambXEa7/giFjevSqC/Xg+rylHwgu5GMlVWfcYBxWQSOTHL6eRNVXD0Ukl0yhg8uWAv1j7fDQcm/4R3Dyh8zqlVNT1QGZwIDAQAB
     - name: HighwayGameKey
       value: 6248a113-e85d-4fd2-affb-49da4ff49861
     - name: HighwayEnvKey
       value: f8789996-6a84-4089-a7f3-dba3585c2193
     - name: FBPermissions
-      value: email,publish_action,user_birthday,user_photos,user_friends,read_stream
+      value: email,user_birthday,user_photos,user_friends,read_stream
     - name: TwitterConsumerKey
       value: YOUR TWITTER CONSUMER KEY
     - name: TwitterConsumerSecret
       value: YOUR TWITTER CONSUMER SECRET
     - name: GPClientId
-      value: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1sp8caWsbVWlo/UTBMWmhhPmSNgYMj52hKuqddJkSc0s7SYsVx3wPq/CFmI17C0fWczbS+ubgeRbJrZiDADk+ZKDcKgnyllVzvvkgDL2XYftIDVXfFqCHRJYmwrvrJAn0qWNlF/0ohpNAq7tiOa5ZiNhMYOhtcCqXMqh/CYZ3oKqUUCR067lwUZ5ChyOmz801CwCWKvaTAlSqkUyDdMh3FHAmvwLHEEYyf4pz3QoKC7HdALaUgO67gYczambXEa7/giFjevSqC/Xg+rylHwgu5GMlVWfcYBxWQSOTHL6eRNVXD0Ukl0yhg8uWAv1j7fDQcm/4R3Dyh8zqlVNT1QGZwIDAQAB
-    - name: AndroidTestPurchases
+      value: YOUR GOOGLE+ CLIENT ID
+    - name: GPlayBP
       value: True
-    - name: SocialIntegration
-      value: google,0
+    - name: AndroidPublicKey
+      value: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1sp8caWsbVWlo/UTBMWmhhPmSNgYMj52hKuqddJkSc0s7SYsVx3wPq/CFmI17C0fWczbS+ubgeRbJrZiDADk+ZKDcKgnyllVzvvkgDL2XYftIDVXfFqCHRJYmwrvrJAn0qWNlF/0ohpNAq7tiOa5ZiNhMYOhtcCqXMqh/CYZ3oKqUUCR067lwUZ5ChyOmz801CwCWKvaTAlSqkUyDdMh3FHAmvwLHEEYyf4pz3QoKC7HdALaUgO67gYczambXEa7/giFjevSqC/Xg+rylHwgu5GMlVWfcYBxWQSOTHL6eRNVXD0Ukl0yhg8uWAv1j7fDQcm/4R3Dyh8zqlVNT1QGZwIDAQAB
+    - name: AmazonBP
+      value: False

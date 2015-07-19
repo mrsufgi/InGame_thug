@@ -52,7 +52,7 @@ public class GUIController : MonoBehaviour {
 
     void Awake()
     {
-        DontDestroyOnLoad(this);    
+     //   DontDestroyOnLoad(this);    
     }
 
     public void CollectCoins()

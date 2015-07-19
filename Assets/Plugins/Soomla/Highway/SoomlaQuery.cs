@@ -33,23 +33,20 @@ namespace Soomla.Query
 			foreach (string profileId in friendsProfileIds) {
 				friendsProfileIdsJSON.Add(profileId);
 			}
+			bool result = false;
 
 			#if UNITY_ANDROID && !UNITY_EDITOR
-			bool result = false;
 			AndroidJNI.PushLocalFrame(100);
 			using(AndroidJavaClass jniSoomlaLeaderboardClass = new AndroidJavaClass("com.soomla.highway.unity.SoomlaQuery")) {
 
 				result = jniSoomlaLeaderboardClass.CallStatic<bool>("unityQueryFriendsStates", providerId, friendsProfileIdsJSON.ToString());
 			}
 			AndroidJNI.PopLocalFrame(IntPtr.Zero);
-			return result;
 			#elif UNITY_IOS && !UNITY_EDITOR
-			bool result = false;
 			soomlaQuery_queryFriendsStates(providerId, friendsProfileIdsJSON.ToString(), out result);
-			return result;
 			#endif
-			
-			return false;
+
+			return result;
 		}
 
 		private const string TAG = "SOOMLA SoomlaQuery";

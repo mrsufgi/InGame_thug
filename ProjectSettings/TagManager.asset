@@ -21,6 +21,10 @@ TagManager:
   - LeftPoint_Anim
   - CoinSound
   - Settings
+  - CanvasGroup
+  - PopupCanvas
+  - Panel_locked
+  - Panel_settings
   layers:
   - Default
   - TransparentFX

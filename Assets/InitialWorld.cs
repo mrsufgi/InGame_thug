@@ -31,18 +31,18 @@ public class InitialWorld
               true                                        // Higher is better
             );
 
-    //    Score starRank = new Score(
-    //        "starRank_ID",
-    //        "Star Rank",
-    //        true
-    //);
+        //    Score starRank = new Score(
+        //        "starRank_ID",
+        //        "Star Rank",
+        //        true
+        //);
 
 
         Score gasCoins = new VirtualItemScore(
               "gasCoins_ID",                           // ID  
               "gasCoins Score",                             // Name
               true,                                 // Higher is better
-              StoreInfoAndroid.Currencies[0].ID
+              "coin_currency_ID"
         );
 
         /** Rewards **/
@@ -52,32 +52,41 @@ public class InitialWorld
           "Medal Reward"                              // Name
         );
 
-    //    /** Missions **/
+        Reward FirstRun = new VirtualItemReward(
+          "firstRunReward",                           // ID
+          "First run starting gasCoins",                              // Name
+          "coin_currency_ID",
+          1500
+        );
 
-    //    // well - everything must be parsed of course.. 
-    //    Mission pointMission1 = new RecordMission(
-    //      "pointMission_1_ID",                          // ID
-    //      "Point Mission 1",                            // Name
-    //      new List<Reward>() { medalReward },            // Rewards
-    //      "blueWorld_ID_level0_score0",                              // Associated score
-    //      50                                           // Desired record 
-    //    );
+        FirstRun.Schedule.ActivationLimit = 1;
 
-    //    Mission pointMission2 = new RecordMission(
-    //   "pointMission_2_ID",                          // ID
-    //   "Point Mission 2",                            // Name
-    //   new List<Reward>() { medalReward },            // Rewards
-    //   "blueWorld_ID_level0_score0",                              // Associated score
-    //   100                                           // Desired record 
-    // );
+        //    /** Missions **/
 
-    //    Mission pointMission3 = new RecordMission(
-    //  "pointMission_ID_3_ID",                          // ID
-    //  "Point Mission 3",                            // Name
-    //  new List<Reward>() { medalReward },                                       // Rewards
-    //  "blueWorld_ID_level0_score0",                              // Associated score
-    //  300                                           // Desired record 
-    //);
+        //    // well - everything must be parsed of course.. 
+        //    Mission pointMission1 = new RecordMission(
+        //      "pointMission_1_ID",                          // ID
+        //      "Point Mission 1",                            // Name
+        //      new List<Reward>() { medalReward },            // Rewards
+        //      "blueWorld_ID_level0_score0",                              // Associated score
+        //      50                                           // Desired record 
+        //    );
+
+        //    Mission pointMission2 = new RecordMission(
+        //   "pointMission_2_ID",                          // ID
+        //   "Point Mission 2",                            // Name
+        //   new List<Reward>() { medalReward },            // Rewards
+        //   "blueWorld_ID_level0_score0",                              // Associated score
+        //   100                                           // Desired record 
+        // );
+
+        //    Mission pointMission3 = new RecordMission(
+        //  "pointMission_ID_3_ID",                          // ID
+        //  "Point Mission 3",                            // Name
+        //  new List<Reward>() { medalReward },                                       // Rewards
+        //  "blueWorld_ID_level0_score0",                              // Associated score
+        //  300                                           // Desired record 
+        //);
 
 
         /** Worlds **/
@@ -99,20 +108,20 @@ public class InitialWorld
           null  // Missions
         );
 
-       // starRank.StartValue = 0;
+        // starRank.StartValue = 0;
         /** Levels **/
 
         blueWorld.BatchAddLevelsWithTemplates(
           12,                                          // Number of levels
           null,                                       // Gate template
-          new List<Score>() { pointScore},          // Score templates
+          new List<Score>() { pointScore },          // Score templates
          new List<Mission>() { }                                         // Mission templates
         );
 
         redWorld.BatchAddLevelsWithTemplates(
           12,                                          // Number of levels
           null,                                       // Gate template
-          new List<Score>() { pointScore},          // Score templates
+          new List<Score>() { pointScore },          // Score templates
           new List<Mission>() { }                                        // Mission templates
         );
 
@@ -136,14 +145,14 @@ public class InitialWorld
             new List<Gate>() { redRecordGate, redGate });
 
 
-        
+
 
 
         redWorld.Gate = redWorldORGate;
 
         // See private function below
-       AddGatesToWorld(blueWorld);
-       AddGatesToWorld(redWorld);
+        AddGatesToWorld(blueWorld);
+        AddGatesToWorld(redWorld);
 
         // add missions to world
         AddMissionsToWorld(blueWorld);
@@ -160,9 +169,9 @@ public class InitialWorld
         return mainWorld;
     }
 
-   private void AddMissionsToWorld(World world)
+    private void AddMissionsToWorld(World world)
     {
-        foreach(Level level in world.InnerWorldsList)
+        foreach (Level level in world.InnerWorldsList)
         {
             int value = 50;
             for (int i = 1; i < 4; i++)
@@ -172,7 +181,7 @@ public class InitialWorld
                 level.AddMission(mission);
                 value += 50;
             }
-          
+
         }
     }
 
@@ -183,8 +192,8 @@ public class InitialWorld
         for (int i = 1; i < world.InnerWorldsMap.Count; i++)
         {
 
-            Level previousLevel = (Level)world.GetInnerWorldAt(i - 1);    
-            Level currentLevel = (Level)world.GetInnerWorldAt(i);        
+            Level previousLevel = (Level)world.GetInnerWorldAt(i - 1);
+            Level currentLevel = (Level)world.GetInnerWorldAt(i);
 
             // The associated world of this Level's WorldCompletionGate is the
             // previous level.
@@ -193,12 +202,13 @@ public class InitialWorld
               previousLevel.ID                                    // Associated World
             );
 
-            Gate bGate = new BalanceGate(
-             "bGate",                              // ID
-             StoreInfo.Currencies[0].ID,           // Associated Item ID
-                600                          // Desired balance
-);
-            PurchasableGate pGate = new PurchasableGate(
+            //            Gate bGate = new BalanceGate(
+            //             "bGate",                              // ID
+            //             StoreInfo.Currencies[0].ID,           // Associated Item ID
+            //                600                          // Desired balance
+            //);
+
+            Gate pGate = new PurchasableGate(
               "LevelLock_W1_L" + i.ToString() + "_ID",              // ID
                StoreInfo.GetItemByItemId("LevelLock_W1_L" + i.ToString() + "_ID").ID               // Associated item ID
             );
@@ -206,9 +216,9 @@ public class InitialWorld
             // The gates in this Level's GatesListAND are the 2 gates declared above.
             currentLevel.Gate = new GatesListOR(
               "gate_" + world.ID + "_level_" + i.ToString(),                    // ID
-              new List<Gate>() {pGate, prevLevelCompletionGate }  // List of Gates
+              new List<Gate>() { pGate, prevLevelCompletionGate }  // List of Gates
             );
-         //   currentLevel.Gate = pGate;
+            //   currentLevel.Gate = pGate;
         }
     }
 
@@ -262,7 +272,7 @@ public class InitialWorld
         // private static LevelUpEventHandler handler = new LevelUpEventHandler();
         // ProfileEvents.OnLoginFinished += onLoginFinished;
 
-  //      world = createMainWorld();
+        //      world = createMainWorld();
         //// MOUDULES
         //SoomlaHighway.Initialize();
         //// SoomlaStore.Initialize(new ExampleAssets());

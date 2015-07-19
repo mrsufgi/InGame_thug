@@ -12,18 +12,18 @@ public class LockedCanvasEvent : MonoBehaviour {
     private Text LevelPrice;
     private Level m_Level;
     private Button m_UnlockButton;
-    private PurchasableGate m_Gate;
+    private Gate m_Gate;
     private GameObject m_Triggered;
     void Start()
     {
 
         //
         UnlockCanvas = gameObject.GetComponent<Canvas>();
-        print(UnlockCanvas);
+        print(UnlockCanvas.name);
         settingsClip = gameObject.GetComponent<AudioSource>();
-        LevelName = transform.Find("Locked_Panel/Level Name/txt_levelName").gameObject.GetComponent<Text>();
-        LevelPrice = transform.Find("Locked_Panel/GasCoinsPanel/txt_GasPoints").gameObject.GetComponent<Text>();
-        m_UnlockButton = transform.Find("Locked_Panel/btn_Unlock").gameObject.GetComponent<Button>();
+        LevelName = transform.Find("Panel_locked/Level Name/txt_levelName").gameObject.GetComponent<Text>();
+        LevelPrice = transform.Find("Panel_locked/GasCoinsPanel/txt_GasPoints").gameObject.GetComponent<Text>();
+        m_UnlockButton = transform.Find("Panel_locked/btn_Unlock").gameObject.GetComponent<Button>();
 
 //        print(LevelName.text);
 
@@ -84,13 +84,12 @@ public class LockedCanvasEvent : MonoBehaviour {
 
     public void BuyGate()
     {
+ 
         LockedLevelHandler l = m_Triggered.GetComponent<LockedLevelHandler>();
-        if (l.BuyGate())
-        {
-            gameObject.GetComponent<Canvas>().enabled = false;
-        }
+        l.BuyGate();
+       
+         //   gameObject.GetComponent<Canvas>().enabled = false;
+        } 
 
     }
 
-
-}

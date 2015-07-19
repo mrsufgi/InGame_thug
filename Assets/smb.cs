@@ -15,7 +15,7 @@ public class smb : StateMachineBehaviour {
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-       GameObject settingCanvas = GameObject.FindGameObjectWithTag("Settings");
+       GameObject settingCanvas = GameObject.FindGameObjectWithTag("PopupCanvas");
         settingCanvas.gameObject.GetComponent<Canvas>().enabled = false;
     }
 
