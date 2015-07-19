@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &423806
 Transform:
   m_ObjectHideFlags: 1
@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331605f601689470a9d0c41edfe1a0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingCanvas: {fileID: 0}
-  unlockCanvas: {fileID: 0}
+  shopCanvas: {fileID: 186526, guid: e1bd5cc98f6f845f997dc65461bcb928, type: 2}
+  unlockCanvas: {fileID: 106938, guid: b96096848966ac64e83dbacb3a76dcb7, type: 2}
   soundMode: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -118,7 +118,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: unlockCanvas
+      value: 
+      objectReference: {fileID: 106938, guid: b96096848966ac64e83dbacb3a76dcb7, type: 2}
+    - target: {fileID: 0}
+      propertyPath: shopCanvas
+      value: 
+      objectReference: {fileID: 186526, guid: e1bd5cc98f6f845f997dc65461bcb928, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 184786}
