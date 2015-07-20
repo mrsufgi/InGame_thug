@@ -184,7 +184,6 @@ public class LevelManager : MonoBehaviour
 				Quaternion spawnRotation = Quaternion.identity;
 				GameObject creature = (GameObject)Instantiate(curCreature, spawnPosition, spawnRotation);
                 randBomb = Random.Range(0, bombFrequency);
-                Debug.Log(spawnValues.x + directionChangeVariableBomb * 0.5f);
                 if (createBomb && (randBomb == bombFrequency-1))
                 {
                     spawnBombPosition = new Vector3
