@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour
     public AudioClip gameplaySound;
 	//	public Text highText;
 //	public Text restartText;
+    private bool createBomb;
 
 	   	
     private bool isGameStopped=false;
@@ -38,17 +39,21 @@ public class LevelManager : MonoBehaviour
 
 	/* Level Depended vars */
 	private int[] creaturesfrequencies; //[freq = 1 to 10]
-	private GameObject[] creaturesType; 
+	private GameObject[] creaturesType;
+    private GameObject[] bombArray;
+    private GameObject bomb; 
 	private GameObject[] creatures; 
 	private Vector3 spawnValues;
 	private float spawnWait;
 	private float startWait;
+    private int bombFrequency;
 	/* General */
     private bool gameOver;
 	private int score = 0;
 	private int creaturesArraySize;
 	public Timer timer;
 	private float directionChangeVariable = 1.0f; //changes every time a creature is creates si that they would apear right or left to the screen center
+    private float directionChangeVariableBomb = 4.5f;
 
 	void Start ()
 	{
@@ -75,11 +80,17 @@ public class LevelManager : MonoBehaviour
 		spawnValues = levelCongif.spawnValues;
 		spawnWait = levelCongif.spawnWait;
 		startWait = levelCongif.startWait;
-		
+        bombFrequency = levelCongif.bombFrequency;
 		locateGates ();
 		
 		creaturesfrequencies = levelCongif.frequency;
 		creaturesType = levelCongif.creatures;
+        bomb = levelCongif.bomb;
+        createBomb = false;
+        if (bomb != null)
+        {
+            createBomb = true;
+        }
 		creatures = new GameObject[creaturesArraySize];
 		getFrequenciesOfCreatures ();
 
@@ -151,24 +162,35 @@ public class LevelManager : MonoBehaviour
 //		yield return new WaitForSeconds (1);
 
 		int rand;
+        int randBomb;
 		GameObject curCreature;
 		Vector3 spawnPosition;
-		Debug.Log ("0");
+        Vector3 spawnBombPosition;
+		//Debug.Log ("0");
 		while (true)
 		{
-			Debug.Log ("1");
+			//Debug.Log ("1");
 			while(!gameOver)
 			{
-				Debug.Log ("2");
+				//Debug.Log ("2");
 				rand = Random.Range (0,10);
 				curCreature = creatures [rand];
 
 				directionChangeVariable *= -1;
+                directionChangeVariableBomb *= -1;
                 spawnPosition = new Vector3
 					( spawnValues.x + directionChangeVariable * 0.5f, spawnValues.y, spawnValues.z);
 			
 				Quaternion spawnRotation = Quaternion.identity;
 				GameObject creature = (GameObject)Instantiate(curCreature, spawnPosition, spawnRotation);
+                randBomb = Random.Range(0, bombFrequency);
+                Debug.Log(spawnValues.x + directionChangeVariableBomb * 0.5f);
+                if (createBomb && (randBomb == bombFrequency-1))
+                {
+                    spawnBombPosition = new Vector3
+                    (directionChangeVariableBomb, spawnValues.y, spawnValues.z);
+                    Instantiate(bomb, spawnBombPosition, spawnRotation);
+                }
                 q.Enqueue(creature.GetComponent<Creature>());
 				yield return new WaitForSeconds (spawnWait);
 			}

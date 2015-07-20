@@ -56,7 +56,7 @@ public class InitialWorld
           "firstRunReward",                           // ID
           "First run starting gasCoins",                              // Name
           "coin_currency_ID",
-          1500
+          6000
         );
 
         FirstRun.Schedule.ActivationLimit = 1;

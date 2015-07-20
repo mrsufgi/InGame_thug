@@ -1194,6 +1194,14 @@ Prefab:
       propertyPath: pointsRight
       value: 
       objectReference: {fileID: 187522, guid: b7b7798854656466ca7de7ef0d716f11, type: 2}
+    - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
+      propertyPath: bomb
+      value: 
+      objectReference: {fileID: 105990, guid: e71815a08256e422c89d29a10bdcf357, type: 2}
+    - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
+      propertyPath: bombFrequency
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
   m_IsPrefabParent: 0

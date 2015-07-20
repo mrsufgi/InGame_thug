@@ -16,8 +16,10 @@ public class LevelConfiguration : MonoBehaviour {
 
 	public int[] frequency; //array of creatures for this level [prefab][percentage of 100%] 
 	//!the higher the precentage - the more this obejct will be shown
-	public GameObject[] creatures;//array of bonuses for this level
+    public GameObject[] creatures;//array of bonuses for this level
+    public GameObject bomb;//array of bonuses for this level
 
+    public int bombFrequency;
     /* csv */
     public int gameLevel;
     private string fileData;

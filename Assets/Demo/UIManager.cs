@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
-using EaseTools;
+//using EaseTools;
 using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
-	public EaseUI easeUIComponent;
+	//public EaseUI easeUIComponent;
 	
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Q))
+		/*if (Input.GetKeyDown(KeyCode.Q))
 			easeUIComponent.MoveIn();
 		else if (Input.GetKeyDown(KeyCode.W))
 			easeUIComponent.MoveOut();
@@ -22,6 +22,6 @@ public class UIManager : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Z))
 			easeUIComponent.ScaleIn();
 		else if (Input.GetKeyDown(KeyCode.X))
-			easeUIComponent.ScaleOut();
+			easeUIComponent.ScaleOut();*/
 	}
 }
