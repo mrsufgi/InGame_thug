@@ -11,20 +11,6 @@ public class gate : MonoBehaviour {
 	
 	}
 
-    IEnumerator HideUnhide()
-    {
-        bool toHideGate = true;
-        while (true)
-        {
-            yield return (new WaitForSeconds(1));
-            this.gameObject.SetActive(toHideGate);
-            toHideGate = !toHideGate;
-            yield return (new WaitForSeconds(2));
-            this.gameObject.SetActive(toHideGate);
-        }
-
-    }
-
 	// Update is called once per frame
 	void Update () {
 	}

@@ -22,7 +22,7 @@ public class Creature : MonoBehaviour {
     void OnDestroy()
     {
         if (!swiped) {
-			print ("dequeue now");
+			//print ("dequeue now");
 			if (levelManager.q.Count != 0)
 				levelManager.q.Dequeue ();
 		} else {

@@ -29,3 +29,5 @@ EditorBuildSettings:
     path: Assets/Scenes/levelsDone/level6done.unity
   - enabled: 1
     path: Assets/Scenes/levelsDone/level7done.unity
+  - enabled: 1
+    path: Assets/Scenes/levelsDone/level8done.unity
