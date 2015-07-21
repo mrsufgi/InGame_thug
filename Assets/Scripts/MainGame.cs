@@ -46,6 +46,8 @@ public class MainGame : MonoBehaviour
         World mainWorld = new InitialWorld().createMainWorld();
         SoomlaLevelUp.Initialize(mainWorld);
 
+        Store.GetVersion();
+
         // First Run
         Reward firstRun = SoomlaLevelUp.GetReward("firstRunReward");
         if(!firstRun.Give())

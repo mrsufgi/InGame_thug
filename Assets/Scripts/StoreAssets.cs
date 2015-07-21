@@ -7,7 +7,7 @@ public class StoreAssets : IStoreAssets
 {
     public int GetVersion()
     {
-        return 5;
+        return 10;
     }
 
     // NOTE: Even if you have no use in one of these functions, you still need to
@@ -52,7 +52,7 @@ public class StoreAssets : IStoreAssets
       1000,                                  // Number of currencies in the pack
       "coin_currency_ID",                   // ID of the currency associated with this pack
       new PurchaseWithMarket(               // Purchase type (with real money $)
-        "coins_1000_PROD_ID",                   // Product ID
+        "coins_1000_prod_id",                   // Product ID
         0.99                                   // Price (in real money $)
       )
     );
@@ -64,7 +64,7 @@ public class StoreAssets : IStoreAssets
      2000,                                  // Number of currencies in the pack
      "coin_currency_ID",                   // ID of the currency associated with this pack
      new PurchaseWithMarket(               // Purchase type (with real money $)
-       "coins_2000_PROD_ID",                   // Product ID
+       "coins_2000_prod_id",                   // Product ID
        1.99                                   // Price (in real money $)
      )
    );
@@ -76,7 +76,7 @@ public class StoreAssets : IStoreAssets
     3000,                                  // Number of currencies in the pack
     "coin_currency_ID",                   // ID of the currency associated with this pack
     new PurchaseWithMarket(               // Purchase type (with real money $)
-      "coins_3000_PROD_ID",                   // Product ID
+      "coins_3000_prod_id",                   // Product ID
       2.49                                  // Price (in real money $)
     )
   );

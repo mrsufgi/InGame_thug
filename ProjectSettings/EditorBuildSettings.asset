@@ -13,21 +13,21 @@ EditorBuildSettings:
     path: Assets/Scenes/world.unity
   - enabled: 0
     path: Assets/Scenes/temp/level1done.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/levelsDone/level1done.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/levelsDone/level2done.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/levelsDone/level3done.unity
   - enabled: 0
     path: Assets/Scenes/temp/level4done.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/levelsDone/level4done.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/levelsDone/level5done.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/levelsDone/level6done.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/levelsDone/level7done.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/levelsDone/level8done.unity

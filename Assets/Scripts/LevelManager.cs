@@ -55,14 +55,21 @@ public class LevelManager : MonoBehaviour
 	private float directionChangeVariable = 1.0f; //changes every time a creature is creates si that they would apear right or left to the screen center
     private float directionChangeVariableBomb = 4.5f;
 
-	void Start ()
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+        void Start ()
 	{
         // Soomla stuff // 
         PointScore = CurrentLevel.GetSingleScore();
         print(PointScore.Latest);
         foreach (Mission m in CurrentLevel.Missions)
         {
-            m.Schedule.Approve(5);
+            m.Schedule.Approve(500);
         }
 
 		gameOver = false;
@@ -95,7 +102,7 @@ public class LevelManager : MonoBehaviour
 		getFrequenciesOfCreatures ();
 
 		q = new Queue<Creature>();
-        //startLevel();//TODO:CHANGE IT - JUST FOR TESTING
+        startLevel();//TODO:CHANGE IT - JUST FOR TESTING
 	}
 
 	public void startLevel()

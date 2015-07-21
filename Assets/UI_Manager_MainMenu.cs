@@ -32,7 +32,10 @@ public class UI_Manager_MainMenu : MonoBehaviour
         settingsClip.Play();
     }
 
-
+    public void Exit()
+    {
+        Application.Quit();
+    }
 
     public void pausedTime()
     {

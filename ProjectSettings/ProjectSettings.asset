@@ -73,7 +73,8 @@ PlayerSettings:
     Others: 1
   bundleIdentifier: com.aaa.PetsDevided
   bundleVersion: 1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 4800000, guid: 1a70dc842413f4e088f6c53e5d4a481a, type: 3}
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
@@ -121,8 +122,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: G:/Users/sufgi_000/Game Dev/thug_life_beta/publish.keystore
+  AndroidKeyaliasName: petsdevided
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1
