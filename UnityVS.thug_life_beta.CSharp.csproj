@@ -148,6 +148,7 @@
     <Compile Include="Assets\WorldLoader.cs" />
     <Compile Include="Assets\gate.cs" />
     <Compile Include="Assets\gateMoving.cs" />
+    <Compile Include="Assets\gateShowHide.cs" />
     <Compile Include="Assets\increaseScaleScript.cs" />
     <Compile Include="Assets\openSceneManager.cs" />
     <Compile Include="Assets\playSounds.cs" />
