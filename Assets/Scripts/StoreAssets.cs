@@ -27,7 +27,7 @@ public class StoreAssets : IStoreAssets
 
     public VirtualCurrencyPack[] GetCurrencyPacks()
     {
-        return new VirtualCurrencyPack[] { HUND_COIN_PACK };
+        return new VirtualCurrencyPack[] { COIN_PACK_1000, COIN_PACK_2000, COIN_PACK_3000 };
     }
 
     public VirtualCategory[] GetCategories()
@@ -45,17 +45,41 @@ public class StoreAssets : IStoreAssets
 
     /** Virtual Currency Packs **/
 
-    public static VirtualCurrencyPack HUND_COIN_PACK = new VirtualCurrencyPack(
-      "100 Coins",                          // Name
-      "100 coin currency units",            // Description
-      "coins_100_ID",                       // Item ID
-      100,                                  // Number of currencies in the pack
+    public static VirtualCurrencyPack COIN_PACK_1000 = new VirtualCurrencyPack(
+      "1000 Coins",                          // Name
+      "1000 coin currency units",            // Description
+      "coins_1000_ID",                       // Item ID
+      1000,                                  // Number of currencies in the pack
       "coin_currency_ID",                   // ID of the currency associated with this pack
       new PurchaseWithMarket(               // Purchase type (with real money $)
-        "coins_100_PROD_ID",                   // Product ID
-        1.99                                   // Price (in real money $)
+        "coins_1000_PROD_ID",                   // Product ID
+        0.99                                   // Price (in real money $)
       )
     );
+
+    public static VirtualCurrencyPack COIN_PACK_2000 = new VirtualCurrencyPack(
+     "2000 Coins",                          // Name
+     "2000 coin currency units",            // Description
+     "coins_2000_ID",                       // Item ID
+     2000,                                  // Number of currencies in the pack
+     "coin_currency_ID",                   // ID of the currency associated with this pack
+     new PurchaseWithMarket(               // Purchase type (with real money $)
+       "coins_2000_PROD_ID",                   // Product ID
+       1.99                                   // Price (in real money $)
+     )
+   );
+
+    public static VirtualCurrencyPack COIN_PACK_3000 = new VirtualCurrencyPack(
+    "3000 Coins",                          // Name
+    "3000 coin currency units",            // Description
+    "coins_3000_ID",                       // Item ID
+    3000,                                  // Number of currencies in the pack
+    "coin_currency_ID",                   // ID of the currency associated with this pack
+    new PurchaseWithMarket(               // Purchase type (with real money $)
+      "coins_3000_PROD_ID",                   // Product ID
+      2.49                                  // Price (in real money $)
+    )
+  );
 
     /** LEVEL LOCKS **/
 
@@ -195,6 +219,10 @@ public class StoreAssets : IStoreAssets
 
     public static VirtualCategory GENERAL_CATEGORY = new VirtualCategory(
       "General", new List<string>(new string[] { WORLD_ONE_LOCK_LEVEL_01.ID, WORLD_ONE_LOCK_LEVEL_02.ID, WORLD_ONE_LOCK_LEVEL_03.ID })
+    );
+
+    public static VirtualCategory COIN_PACKS = new VirtualCategory(
+      "CoinPacks", new List<string>(new string[] { COIN_PACK_1000.ID, COIN_PACK_1000.ID, COIN_PACK_1000.ID })
     );
 
     public static VirtualCategory WORLD_LOCKS = new VirtualCategory(

@@ -12,6 +12,7 @@ public class MainGame : MonoBehaviour
     public static MainGame control;
     public bool deletePlayerPref = false;
     public bool test = true;
+    public static StoreAssets Store;
 
     void Awake()
     {
@@ -40,7 +41,8 @@ public class MainGame : MonoBehaviour
         {
             SoomlaHighway.Initialize();
         }
-        SoomlaStore.Initialize(new StoreAssets());
+        Store = new StoreAssets();
+        SoomlaStore.Initialize(Store);
         World mainWorld = new InitialWorld().createMainWorld();
         SoomlaLevelUp.Initialize(mainWorld);
 

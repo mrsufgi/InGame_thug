@@ -69,9 +69,6 @@
     <Reference Include="wp-store">
       <HintPath>Assets\Plugins\wp-store.dll</HintPath>
     </Reference>
-    <Reference Include="EaseUI">
-      <HintPath>Assets\Plugins\EaseUI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UnityVS.thug_life_beta.CSharp.Plugins.csproj">
@@ -139,7 +136,9 @@
     <Compile Include="Assets\Scripts\StoreAssets.cs" />
     <Compile Include="Assets\Scripts\SwipeManager.cs" />
     <Compile Include="Assets\Scripts\Util.cs" />
+    <Compile Include="Assets\ShopHandler.cs" />
     <Compile Include="Assets\StarsHandler.cs" />
+    <Compile Include="Assets\StoreItem.cs" />
     <Compile Include="Assets\TRASH\CreatureQueue.cs" />
     <Compile Include="Assets\TransitionKit\TransitionKit.cs" />
     <Compile Include="Assets\TransitionKit\TransitionKitDelegate.cs" />

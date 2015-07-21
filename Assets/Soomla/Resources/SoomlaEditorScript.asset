@@ -35,3 +35,5 @@ MonoBehaviour:
       value: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1sp8caWsbVWlo/UTBMWmhhPmSNgYMj52hKuqddJkSc0s7SYsVx3wPq/CFmI17C0fWczbS+ubgeRbJrZiDADk+ZKDcKgnyllVzvvkgDL2XYftIDVXfFqCHRJYmwrvrJAn0qWNlF/0ohpNAq7tiOa5ZiNhMYOhtcCqXMqh/CYZ3oKqUUCR067lwUZ5ChyOmz801CwCWKvaTAlSqkUyDdMh3FHAmvwLHEEYyf4pz3QoKC7HdALaUgO67gYczambXEa7/giFjevSqC/Xg+rylHwgu5GMlVWfcYBxWQSOTHL6eRNVXD0Ukl0yhg8uWAv1j7fDQcm/4R3Dyh8zqlVNT1QGZwIDAQAB
     - name: AmazonBP
       value: False
+    - name: AndroidTestPurchases
+      value: True

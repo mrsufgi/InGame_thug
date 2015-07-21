@@ -69,9 +69,6 @@
     <Reference Include="wp-store">
       <HintPath>Assets\Plugins\wp-store.dll</HintPath>
     </Reference>
-    <Reference Include="EaseUI">
-      <HintPath>Assets\Plugins\EaseUI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugins\Soomla\Core\AndroidImpl\KeyValueStorageAndroid.cs" />

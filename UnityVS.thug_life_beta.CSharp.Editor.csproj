@@ -102,6 +102,9 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
+    <Reference Include="EaseUIEditor">
+      <HintPath>Assets\Editor\EaseUIEditor.dll</HintPath>
+    </Reference>
     <Reference Include="soomla-wp-core">
       <HintPath>Assets\Plugins\soomla-wp-core.dll</HintPath>
     </Reference>
@@ -116,12 +119,6 @@
     </Reference>
     <Reference Include="UnityVS.VersionSpecific">
       <HintPath>Assets\UnityVS\Editor\UnityVS.VersionSpecific.dll</HintPath>
-    </Reference>
-    <Reference Include="EaseUI">
-      <HintPath>Assets\Plugins\EaseUI.dll</HintPath>
-    </Reference>
-    <Reference Include="EaseUIEditor">
-      <HintPath>Assets\Editor\EaseUIEditor.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-UnityScript">
       <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>

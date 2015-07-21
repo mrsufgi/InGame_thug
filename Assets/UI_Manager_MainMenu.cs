@@ -70,6 +70,32 @@ public class UI_Manager_MainMenu : MonoBehaviour
         }
     }
 
+    public void openShop(Animator anim)
+    {
+        foreach (Transform child in PopupCanvas.transform)
+        {
+            // PopupCanvas.transform.FindChild("Panel_settings").gameObject.SetActive(true);
+            bool active = true;
+            if (child.name == "Panel_shop")
+            {
+
+                // true
+            }
+            else
+            {
+                active = false;
+            }
+            child.gameObject.SetActive(active);
+        }
+
+        anim.SetBool("isOpen", true);
+        PopupCanvas.gameObject.GetComponent<Canvas>().enabled = true;
+        if (settingsClip != null)
+        {
+            settingsClip.Play();
+        }
+    }
+
     public void openSettings(Animator anim)
     {
         foreach (Transform child in PopupCanvas.transform)
