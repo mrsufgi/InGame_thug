@@ -176,7 +176,7 @@ public class LockedLevelHandler : MonoBehaviour {
             string level = "level" + (m_Index + 1) + "done";
             LevelManager.currentLevelIndex = m_Index + 1;
             LevelManager.CurrentLevel = m_LockedLevel;
-            Util.LoadScene(3);
+            Util.LoadScene(m_Index + 3);
         }
         Debug.Log("THE GATE IS NOW OPEN!!!!!");
     }

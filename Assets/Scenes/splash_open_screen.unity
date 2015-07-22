@@ -600,7 +600,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11450974, guid: 287c30265be51554cb2cc52eeeb2cc6a, type: 2}
       propertyPath: deletePlayerPref
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 287c30265be51554cb2cc52eeeb2cc6a, type: 2}
