@@ -102,7 +102,7 @@ public class LevelManager : MonoBehaviour
 		getFrequenciesOfCreatures ();
 
 		q = new Queue<Creature>();
-        startLevel();//TODO:CHANGE IT - JUST FOR TESTING
+       // startLevel();//TODO:CHANGE IT - JUST FOR TESTING
 	}
 
 	public void startLevel()

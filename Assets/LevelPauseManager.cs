@@ -90,7 +90,10 @@ public class LevelPauseManager : MonoBehaviour {
 
     public void loadWorld()
     {
-        Application.LoadLevel("world");
+        Time.timeScale = 1;
+
+        //hardcoded: WORLD
+        Util.LoadScene(2); 
     }
 
 	public void loadLevel4()

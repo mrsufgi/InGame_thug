@@ -59,12 +59,14 @@ public static class Util
     {
 
         // DISABLE interaction from UI in loading... [Canvas Group will ALWAYS load ENABLED.]
-        UI_Manager_MainMenu.canvasGroup.blocksRaycasts = false;
-
+        if (UI_Manager_MainMenu.canvasGroup != null)
+        {
+            UI_Manager_MainMenu.canvasGroup.blocksRaycasts = false;
+        }
         // SCENE INDEX IS HARDCODED, Since we have only constant number of scenes.
         var fader = new FadeTransition()
         {
-            nextScene = 1,// sceneIndex, // 3 is LEVEL SCENE // 2 is TUTORIAL
+            nextScene = sceneIndex,// sceneIndex, // 3 is LEVEL SCENE // 2 is TUTORIAL
             fadedDelay = 0.2f,
             fadeToColor = Color.black
         };
