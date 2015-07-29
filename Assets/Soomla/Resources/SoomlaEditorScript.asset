@@ -36,4 +36,6 @@ MonoBehaviour:
     - name: AmazonBP
       value: False
     - name: AndroidTestPurchases
-      value: True
+      value: False
+    - name: NoneBP
+      value: False

@@ -5,7 +5,7 @@ public class Creature : MonoBehaviour {
 
     public bool swiped = false;
     public int bonusModifier;
-    
+    public double spawnInterval;
 	public GameObject explosion;
 	public GameObject playerExplosion;
 	public int scoreValue;

@@ -1166,6 +1166,10 @@ Prefab:
       propertyPath: spawnWait
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 11444292, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
+      propertyPath: bomb
+      value: 
+      objectReference: {fileID: 105990, guid: e71815a08256e422c89d29a10bdcf357, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd2ca2fbacdf842f6a6adf8bfc37a28f, type: 2}
   m_IsPrefabParent: 0
