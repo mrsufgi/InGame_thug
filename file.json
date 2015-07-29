@@ -1,0 +1,29 @@
+{
+  "gameLevel": 1,
+  "spawnValues": {
+    "x": 12.0,
+    "y": 0.0,
+    "z": 1.0
+  }
+
+  "creatures": [
+    {
+      "type": 1,
+      "spawnInteral": 0.12
+    },
+
+    {
+      "type": 2,
+      "spawnInteral": 0.20
+    },
+
+    {
+      "type": 2,
+      "spawnInteral":  0.50
+    }
+  ]
+
+
+
+}
+
