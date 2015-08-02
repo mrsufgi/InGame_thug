@@ -35,7 +35,7 @@ public class JsonLevelLoader : MonoBehaviour {
         c.gameLevel = (int) obj["gameLevel"].n;
         JSONObject vector = obj["spawnValues"];
        c.spawnValues = ToVector3(vector);
-        c.creatures = 
+       // c.creatures = 
        // c.spawnValues = new Vector3((float) vector.list[0].n, (float) vector.list[1].n, (float) vector.list[2].n);
         
         //   for (int i = 0; i < obj.Count; i++)
