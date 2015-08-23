@@ -21,29 +21,29 @@ public class Creature : MonoBehaviour {
 
     void OnDestroy()
     {
-        if (!swiped) {
-			//print ("dequeue now");
-			if (levelManager.q.Count != 0)
-				levelManager.q.Dequeue ();
-		} else {
+  //      if (!swiped) {
+		//	//print ("dequeue now");
+		//	if (levelManager.q.Count != 0)
+		//		levelManager.q.Dequeue ();
+		//} else {
 
- 		}
+ 	//	}
     }
 	void Start ()
 	{
-        GameObject timer = GameObject.FindGameObjectWithTag ("Timer");
-		timerGameObject = timer.GetComponent <Timer>();
+  //      GameObject timer = GameObject.FindGameObjectWithTag ("Timer");
+		//timerGameObject = timer.GetComponent <Timer>();
 
-		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
-		if (gameControllerObject != null)
-		{
-			levelManager = gameControllerObject.GetComponent <LevelManager>();
-          //  print("set");
-		}
-		if (levelManager == null)
-		{
-			Debug.Log ("Cannot find 'GameController' script");
-		}
+		//GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
+		//if (gameControllerObject != null)
+		//{
+		//	levelManager = gameControllerObject.GetComponent <LevelManager>();
+  //        //  print("set");
+		//}
+		//if (levelManager == null)
+		//{
+		//	Debug.Log ("Cannot find 'GameController' script");
+		//}
 	}
 
 	void OnTriggerEnter2D (Collider2D other)
